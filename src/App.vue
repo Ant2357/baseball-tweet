@@ -29,7 +29,13 @@
 
         <div class="form-group">
           <label for="tweet-textarea">Tweet本文</label>
-          <textarea v-model="tweet" id="tweet-textarea" name="text" class="form-control"></textarea>
+          <textarea
+            v-model="tweet"
+            :rows="tweet.split(/\n/).length"
+            id="tweet-textarea"
+            name="text"
+            class="form-control"
+          ></textarea>
         </div>
         <button type="submit" class="btn btn-primary">送信</button>
       </form>
