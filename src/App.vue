@@ -62,13 +62,14 @@ export default {
       const tagNames = this.tagNames.slice();
 
       // ツイート本文に記述するタグ一覧
-      const tags = checkedTags.join(" ");
+      const tags = checkedTags.join("\n");
+
       // ツイート本文からハッシュタグを削除
       const msg = tagNames
-        .reduce((acc, v) => acc.split(v).join(""), tweet)
-        .replace(/^\s+/,"");
+        .reduce((acc, tagName) => acc.split(tagName).join(""), tweet)
+        .trim();
 
-      this.tweet = tags + "\n" + msg;
+      this.tweet = msg + "\n" + tags;
     }
   }
 };
