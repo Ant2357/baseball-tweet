@@ -13,7 +13,10 @@
             @change="tagUpdate"
             class="form-check-input"
           />
-          <label :for="tagInfo.name" class="form-check-label">{{ tagInfo.jpName }}</label>
+          <label
+            :for="tagInfo.name"
+            class="form-check-label animated jackInTheBox"
+          >{{ tagInfo.jpName }}</label>
         </div>
 
         <div class="form-group mt-2">
@@ -33,7 +36,9 @@
 </template>
 
 <script>
-import "@/css/bootstrap.min.css";
+import "@/assets/css/bootstrap.min.css";
+import "@/assets/css/animate.min.css"
+
 import tagInfo from "@/assets/json/tagInfo.json";
 
 export default {
