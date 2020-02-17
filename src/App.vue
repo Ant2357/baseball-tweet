@@ -4,7 +4,7 @@
       <form action="https://twitter.com/intent/tweet" method="get">
         <legend>野球実況用ツイート画面</legend>
 
-        <div v-for="tagInfo in tagInfos" :key="tagInfo.name" class="form-check">
+        <div v-for="tagInfo in tagInfo" :key="tagInfo.name" class="form-check">
           <input
             type="checkbox"
             :id="tagInfo.name"
@@ -34,6 +34,7 @@
 
 <script>
 import "@/css/bootstrap.min.css";
+import tagInfo from "@/assets/json/tagInfo.json";
 
 export default {
   name: "App",
@@ -41,21 +42,14 @@ export default {
     return {
       tweet: "テキスト",
       checkedTags: [],
-      tagInfos: [
-        { name: "#giants", jpName: "#読売巨人軍" },
-        { name: "#baystars", jpName: "#横浜DeNAベイスターズ" },
-        { name: "#tigers", jpName: "#阪神タイガース" },
-        { name: "#carp", jpName: "#広島東洋カープ" },
-        { name: "#dragons", jpName: "#中日ドラゴンズ" },
-        { name: "#swallows", jpName: "#東京ヤクルトスワローズ" }
-      ]
+      tagInfo: tagInfo
     };
   },
   methods: {
     tagUpdate: function() {
       const tweet = this.tweet.slice();
       const checkedTags = this.checkedTags.slice();
-      const tagNames = this.tagInfos.slice().map(tagInfo => tagInfo.name);
+      const tagNames = this.tagInfo.slice().map(tagInfo => tagInfo.name);
 
       // ツイート本文に記述するタグ一覧
       const tags = checkedTags.join("\n");
