@@ -16,6 +16,7 @@
           <label
             :for="tagInfo.name"
             class="form-check-label animated jackInTheBox"
+            :class="teamColor(tagInfo.jpName)"
           >{{ tagInfo.jpName }}</label>
         </div>
 
@@ -37,6 +38,8 @@
 
 <script>
 import "@/assets/css/bootstrap.min.css";
+import "@/assets/css/style.css";
+import "@/assets/css/text.css";
 import "@/assets/css/animate.min.css"
 
 import tagInfo from "@/assets/json/tagInfo.json";
@@ -51,6 +54,21 @@ export default {
     };
   },
   methods: {
+    teamColor: function(tagJpName) {
+      return {
+        "text-giants": tagJpName === "#読売巨人軍",
+        "text-baystars": tagJpName === "#横浜DeNAベイスターズ",
+        "text-tigers": tagJpName === "#阪神タイガース",
+        "text-carp": tagJpName === "#広島東洋カープ",
+        "text-dragons": tagJpName === "#中日ドラゴンズ",
+        "text-swallows": tagJpName === "#東京ヤクルトスワローズ",
+        "text-seibulions": tagJpName === "#埼玉西武ライオンズ",
+        "text-sbhawks": tagJpName === "#福岡ソフトバンクホークス",
+        "text-rakuteneagles": tagJpName === "#東北楽天ゴールデンイーグルス",
+        "text-chibalotte": tagJpName === "#千葉ロッテマリーンズ",
+        "text-bs": tagJpName === "#オリックス・バファローズ",
+      }
+    },
     tagUpdate: function() {
       const tweet = this.tweet.slice();
       const checkedTags = this.checkedTags.slice();
