@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="container mt-3">
-      <form action="https://twitter.com/intent/tweet" method="get">
+      <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
         <legend>野球実況用ツイート画面</legend>
 
         <div v-for="tagInfo in tagInfo" :key="tagInfo.name" class="form-check">
@@ -21,13 +21,14 @@
         </div>
 
         <div class="form-group mt-2">
-          <label for="tweet-textarea">Tweet本文</label>
+          <label for="tweet-textarea">本文</label>
           <textarea
             v-model="tweet"
             :rows="tweet.split(/\n/).length"
             id="tweet-textarea"
             name="text"
             class="form-control"
+            placeholder="ツイート本文"
           ></textarea>
         </div>
         <button type="submit" class="btn btn-primary">送信</button>
@@ -48,7 +49,7 @@ export default {
   name: "App",
   data: function() {
     return {
-      tweet: "テキスト",
+      tweet: "",
       checkedTags: [],
       tagInfo: tagInfo
     };
