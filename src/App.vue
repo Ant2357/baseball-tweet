@@ -67,6 +67,7 @@ export default {
         "text-sbhawks": tagJpName === "#福岡ソフトバンクホークス",
         "text-rakuteneagles": tagJpName === "#東北楽天ゴールデンイーグルス",
         "text-chibalotte": tagJpName === "#千葉ロッテマリーンズ",
+        "text-fighters": tagJpName === "#北海道日本ハムファイターズ",
         "text-bs": tagJpName === "#オリックス・バファローズ",
       }
     },
