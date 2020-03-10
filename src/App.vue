@@ -71,18 +71,19 @@ export default {
         "text-bs": tagJpName === "#オリックス・バファローズ",
       }
     },
-    tagUpdate: function() {
-      const tweet = this.tweet.slice();
-      const checkedTags = this.checkedTags.slice();
+    msgBody: function() {
       const tagNames = this.tagInfo.slice().map(tagInfo => tagInfo.name);
 
-      // ツイート本文に記述するタグ一覧
-      const tags = checkedTags.join("\n");
-
       // ツイート本文からハッシュタグを削除
-      const msg = tagNames
-        .reduce((acc, tagName) => acc.split(tagName).join(""), tweet)
+      return tagNames
+        .reduce((acc, tagName) => acc.split(tagName).join(""), this.tweet.slice())
         .trim();
+    },
+    tagUpdate: function() {
+      // ツイート本文に記述するタグ一覧
+      const tags = this.checkedTags.slice().join("\n");
+      // ツイート本文からハッシュタグを削除
+      const msg = this.msgBody();
 
       this.tweet = msg + "\n" + tags;
     }
