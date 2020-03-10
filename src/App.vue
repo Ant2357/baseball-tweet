@@ -20,6 +20,16 @@
           >{{ tagInfo.jpName }}</label>
         </div>
 
+        <div class="d-inline-flex mt-3">
+          <div v-for="templateMsg in templateMsgs" :key="templateMsg">
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-dark m-1"
+              @click="addTemplateMsg(templateMsg)"
+            >{{ templateMsg }}</button>
+          </div>
+        </div>
+
         <div class="form-group mt-2">
           <label for="tweet-textarea">本文</label>
           <textarea
@@ -51,6 +61,7 @@ export default {
     return {
       tweet: "",
       checkedTags: [],
+      templateMsgs: ["ナイスヒット！", "よく見た", "( ^ω^)个(´・ω・)个( ^ω^)个"],
       tagInfo: tagInfo
     };
   },
@@ -79,13 +90,15 @@ export default {
         .reduce((acc, tagName) => acc.split(tagName).join(""), this.tweet.slice())
         .trim();
     },
+
     tagUpdate: function() {
-      // ツイート本文に記述するタグ一覧
-      const tags = this.checkedTags.slice().join("\n");
       // ツイート本文からハッシュタグを削除
       const msg = this.msgBody();
-
-      this.tweet = msg + "\n" + tags;
+      this.tweet = msg + "\n" + this.checkedTags.join("\n");
+    },
+    addTemplateMsg: function(addMsg) {
+      const msg = this.msgBody() + addMsg;
+      this.tweet = msg + "\n" + this.checkedTags.join("\n");
     }
   }
 };
