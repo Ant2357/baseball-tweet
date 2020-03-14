@@ -20,11 +20,11 @@
           >{{ tagInfo.jpName }}</label>
         </div>
 
-        <div class="d-inline-flex mt-3">
-          <div v-for="templateMsg in templateMsgs" :key="templateMsg">
+        <div class="d-inline-flex flex-wrap mt-3">
+          <div v-for="templateMsg in templateMsgs" :key="templateMsg" class="p-1">
             <button
               type="button"
-              class="btn btn-sm btn-outline-dark m-1"
+              class="btn btn-sm btn-outline-dark"
               @click="addTemplateMsg(templateMsg)"
             >{{ templateMsg }}</button>
           </div>
@@ -61,7 +61,7 @@ export default {
     return {
       tweet: "",
       checkedTags: [],
-      templateMsgs: ["ナイスヒット！", "よく見た", "( ^ω^)个(´・ω・)个( ^ω^)个"],
+      templateMsgs: ["ナイスヒット！", "タイムリー！☂️☂️☂️", "( ^ω^)个(´・ω・)个( ^ω^)个"],
       tagInfo: tagInfo
     };
   },
