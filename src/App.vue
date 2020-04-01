@@ -21,12 +21,12 @@
         </div>
 
         <div class="d-inline-flex flex-wrap mt-3">
-          <div v-for="templateMsg in templateMsgs" :key="templateMsg" class="p-1">
+          <div v-for="t in templateMsgs" :key="t.label" class="p-1">
             <button
               type="button"
               class="btn btn-sm btn-outline-dark"
-              @click="addTemplateMsg(templateMsg)"
-            >{{ templateMsg }}</button>
+              @click="addTemplateMsg(t.msg)"
+            >{{ t.label }}</button>
           </div>
         </div>
 
@@ -54,6 +54,7 @@ import "@/assets/css/text.css";
 import "@/assets/css/animate.min.css"
 
 import tagInfo from "@/assets/json/tagInfo.json";
+import templateMsgs from "@/assets/json/templateMsgs.json"
 
 export default {
   name: "App",
@@ -61,8 +62,8 @@ export default {
     return {
       tweet: "",
       checkedTags: [],
-      templateMsgs: ["ナイスヒット！", "タイムリー！☂️☂️☂️", "( ^ω^)个(´・ω・)个( ^ω^)个"],
-      tagInfo: tagInfo
+      tagInfo: tagInfo,
+      templateMsgs: templateMsgs
     };
   },
   methods: {
