@@ -95,11 +95,11 @@ export default {
     tagUpdate: function() {
       // ツイート本文からハッシュタグを削除
       const msg = this.msgBody();
-      this.tweet = msg + "\n" + this.checkedTags.join("\n");
+      this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
     },
     addTemplateMsg: function(addMsg) {
       const msg = this.msgBody() + addMsg;
-      this.tweet = msg + "\n" + this.checkedTags.join("\n");
+      this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
     }
   }
 };
