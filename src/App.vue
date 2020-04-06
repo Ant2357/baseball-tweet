@@ -47,60 +47,57 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import "@/assets/css/bootstrap.min.css";
 import "@/assets/css/style.css";
 import "@/assets/css/text.css";
-import "@/assets/css/animate.min.css"
+import "@/assets/css/animate.min.css";
 
 import tagInfo from "@/assets/json/tagInfo.json";
-import templateMsgs from "@/assets/json/templateMsgs.json"
+import templateMsgs from "@/assets/json/templateMsgs.json";
 
-export default {
-  name: "App",
-  data: function() {
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component
+export default class App extends Vue {
+  tweet = "";
+  checkedTags: string[] = [];
+  tagInfo = tagInfo;
+  templateMsgs = templateMsgs;
+
+  teamColor(tagJpName: string) {
     return {
-      tweet: "",
-      checkedTags: [],
-      tagInfo: tagInfo,
-      templateMsgs: templateMsgs
-    };
-  },
-  methods: {
-    teamColor: function(tagJpName) {
-      return {
-        "text-giants": tagJpName === "#読売巨人軍",
-        "text-baystars": tagJpName === "#横浜DeNAベイスターズ",
-        "text-tigers": tagJpName === "#阪神タイガース",
-        "text-carp": tagJpName === "#広島東洋カープ",
-        "text-dragons": tagJpName === "#中日ドラゴンズ",
-        "text-swallows": tagJpName === "#東京ヤクルトスワローズ",
-        "text-seibulions": tagJpName === "#埼玉西武ライオンズ",
-        "text-sbhawks": tagJpName === "#福岡ソフトバンクホークス",
-        "text-rakuteneagles": tagJpName === "#東北楽天ゴールデンイーグルス",
-        "text-chibalotte": tagJpName === "#千葉ロッテマリーンズ",
-        "text-fighters": tagJpName === "#北海道日本ハムファイターズ",
-        "text-bs": tagJpName === "#オリックス・バファローズ",
-      }
-    },
-    msgBody: function() {
-      const tagNames = this.tagInfo.slice().map(tagInfo => tagInfo.name);
-
-      // ツイート本文からハッシュタグを削除
-      return tagNames
-        .reduce((acc, tagName) => acc.split(tagName).join(""), this.tweet.slice())
-        .trim();
-    },
-
-    tagUpdate: function() {
-      // ツイート本文からハッシュタグを削除
-      const msg = this.msgBody();
-      this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
-    },
-    addTemplateMsg: function(addMsg) {
-      const msg = this.msgBody() + addMsg;
-      this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
+      "text-giants": tagJpName === "#読売巨人軍",
+      "text-baystars": tagJpName === "#横浜DeNAベイスターズ",
+      "text-tigers": tagJpName === "#阪神タイガース",
+      "text-carp": tagJpName === "#広島東洋カープ",
+      "text-dragons": tagJpName === "#中日ドラゴンズ",
+      "text-swallows": tagJpName === "#東京ヤクルトスワローズ",
+      "text-seibulions": tagJpName === "#埼玉西武ライオンズ",
+      "text-sbhawks": tagJpName === "#福岡ソフトバンクホークス",
+      "text-rakuteneagles": tagJpName === "#東北楽天ゴールデンイーグルス",
+      "text-chibalotte": tagJpName === "#千葉ロッテマリーンズ",
+      "text-fighters": tagJpName === "#北海道日本ハムファイターズ",
+      "text-bs": tagJpName === "#オリックス・バファローズ",
     }
   }
-};
+
+  msgBody(): string {
+    const tagNames: string[] = this.tagInfo.slice().map(tagInfo => tagInfo.name);
+    // ツイート本文からハッシュタグを削除
+    return tagNames
+      .reduce((acc, tagName) => acc.split(tagName).join(""), this.tweet.slice())
+      .trim();
+  }
+
+  tagUpdate(): void {
+    // ツイート本文からハッシュタグを削除
+    const msg: string = this.msgBody();
+    this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
+  }
+  addTemplateMsg(addMsg: string): void {
+    const msg: string = this.msgBody() + addMsg;
+    this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
+  }
+}
 </script>

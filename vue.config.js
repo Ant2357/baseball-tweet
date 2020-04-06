@@ -1,3 +1,4 @@
 module.exports = {
-  publicPath: './'
+  publicPath: '/baseball-tweet',
+  outputDir: 'docs',
 }
