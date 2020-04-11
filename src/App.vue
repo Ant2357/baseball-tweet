@@ -10,7 +10,7 @@
             :id="tagInfo.name"
             :value="tagInfo.name"
             v-model="checkedTags"
-            @change="tagUpdate"
+            @change="updateTweet()"
             class="form-check-input"
           />
           <label
@@ -25,7 +25,7 @@
             <button
               type="button"
               class="btn btn-sm btn-outline-dark"
-              @click="addTemplateMsg(t.msg)"
+              @click="addTweetMsg(t.msg)"
             >{{ t.label }}</button>
           </div>
         </div>
@@ -65,6 +65,14 @@ export default class App extends Vue {
   tagInfo = tagInfo;
   templateMsgs = templateMsgs;
 
+  get tweetBody(): string {
+    const tagNames: string[] = this.tagInfo.slice().map(tagInfo => tagInfo.name);
+    // ツイート本文からハッシュタグを削除
+    return tagNames
+      .reduce((acc, tagName) => acc.split(tagName).join(""), this.tweet.slice())
+      .trim();
+  }
+
   teamColor(tagJpName: string) {
     return {
       "text-giants": tagJpName === "#読売巨人軍",
@@ -82,22 +90,16 @@ export default class App extends Vue {
     }
   }
 
-  msgBody(): string {
-    const tagNames: string[] = this.tagInfo.slice().map(tagInfo => tagInfo.name);
-    // ツイート本文からハッシュタグを削除
-    return tagNames
-      .reduce((acc, tagName) => acc.split(tagName).join(""), this.tweet.slice())
-      .trim();
+  updateTweetMsg(msg: string): void {
+    this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
   }
 
-  tagUpdate(): void {
-    // ツイート本文からハッシュタグを削除
-    const msg: string = this.msgBody();
-    this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
+  updateTweet(): void {
+    this.updateTweetMsg(this.tweetBody);
   }
-  addTemplateMsg(addMsg: string): void {
-    const msg: string = this.msgBody() + addMsg;
-    this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
+
+  addTweetMsg(msg: string): void {
+    this.updateTweetMsg(this.tweetBody + msg);
   }
 }
 </script>
