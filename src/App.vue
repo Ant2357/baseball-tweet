@@ -41,6 +41,8 @@
             placeholder="ツイート本文"
           ></textarea>
         </div>
+
+        <p>文字数:{{ tweet.length }}</p>
         <button type="submit" class="btn btn-primary">送信</button>
       </form>
     </div>
