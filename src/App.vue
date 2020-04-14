@@ -42,7 +42,7 @@
           ></textarea>
         </div>
 
-        <p>文字数:{{ tweet.length }}</p>
+        <p>文字数:{{ animatedTweetLength }}</p>
         <button type="submit" class="btn btn-primary">送信</button>
       </form>
     </div>
@@ -55,14 +55,16 @@ import "@/assets/css/style.css";
 import "@/assets/css/text.css";
 import "@/assets/css/animate.min.css";
 
+import gsap from 'gsap';
 import tagInfo from "@/assets/json/tagInfo.json";
 import templateMsgs from "@/assets/json/templateMsgs.json";
 
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 
 @Component
 export default class App extends Vue {
   tweet = "";
+  tweetLength = 0;
   checkedTags: string[] = [];
   tagInfo = tagInfo;
   templateMsgs = templateMsgs;
@@ -73,6 +75,15 @@ export default class App extends Vue {
     return tagNames
       .reduce((acc, tagName) => acc.split(tagName).join(""), this.tweet.slice())
       .trim();
+  }
+
+  get animatedTweetLength(): number {
+    return Math.floor(this.tweetLength);
+  }
+
+  @Watch("tweet")
+  onTweet(newTweet: string): void {
+    gsap.to(this.$data, 0.5, { tweetLength: newTweet.length });
   }
 
   teamColor(tagJpName: string) {
