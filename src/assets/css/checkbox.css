@@ -1,0 +1,9 @@
+.form-check-input:checked {
+  animation: checkbox-anime 0.5s linear;
+}
+
+@keyframes checkbox-anime {
+  30% { transform: scale(1.3); }
+  70% { transform: scale(1); }
+  100% { transform: none; }
+}
