@@ -69,7 +69,7 @@ export default class App extends Vue {
   tagInfo = tagInfo;
   templateMsgs = templateMsgs;
 
-  get tweetBody(): string {
+  get tweetMsg(): string {
     const tagNames: string[] = this.tagInfo.slice().map(tagInfo => tagInfo.name);
     // ツイート本文からハッシュタグを削除
     return tagNames
@@ -83,7 +83,7 @@ export default class App extends Vue {
 
   @Watch("checkedTags")
   onCheckedTags(): void {
-    this.updateTweetMsg(this.tweetBody);
+    this.updateTweetMsg(this.tweetMsg);
   }
 
   @Watch("tweet")
@@ -95,8 +95,8 @@ export default class App extends Vue {
     this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
   }
 
-  addTweetMsg(msg: string): void {
-    this.updateTweetMsg(this.tweetBody + msg);
+  addTweetMsg(addMsg: string): void {
+    this.updateTweetMsg(this.tweetMsg + addMsg);
   }
 
   teamColor(tagJpName: string) {
