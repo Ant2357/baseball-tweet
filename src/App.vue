@@ -10,7 +10,6 @@
             :id="tagInfo.name"
             :value="tagInfo.name"
             v-model="checkedTags"
-            @change="updateTweet()"
             class="form-check-input"
           />
           <label
@@ -82,9 +81,22 @@ export default class App extends Vue {
     return Math.floor(this.tweetLength);
   }
 
+  @Watch("checkedTags")
+  onCheckedTags(): void {
+    this.updateTweetMsg(this.tweetBody);
+  }
+
   @Watch("tweet")
   onTweet(newTweet: string): void {
     gsap.to(this.$data, 0.5, { tweetLength: newTweet.length });
+  }
+
+  updateTweetMsg(msg: string): void {
+    this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
+  }
+
+  addTweetMsg(msg: string): void {
+    this.updateTweetMsg(this.tweetBody + msg);
   }
 
   teamColor(tagJpName: string) {
@@ -102,18 +114,6 @@ export default class App extends Vue {
       "text-fighters": tagJpName === "#北海道日本ハムファイターズ",
       "text-bs": tagJpName === "#オリックス・バファローズ",
     }
-  }
-
-  updateTweetMsg(msg: string): void {
-    this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
-  }
-
-  updateTweet(): void {
-    this.updateTweetMsg(this.tweetBody);
-  }
-
-  addTweetMsg(msg: string): void {
-    this.updateTweetMsg(this.tweetBody + msg);
   }
 }
 </script>
