@@ -69,9 +69,12 @@ export default class App extends Vue {
   tagInfo = tagInfo;
   templateMsgs = templateMsgs;
 
+  /**
+  * ツイートの本文
+  */
   get tweetMsg(): string {
     const tagNames: string[] = this.tagInfo.slice().map(tagInfo => tagInfo.name);
-    // ツイート本文からハッシュタグを削除
+    // ハッシュタグを除去
     return tagNames
       .reduce((acc, tagName) => acc.split(tagName).join(""), this.tweet.slice())
       .trim();
@@ -83,6 +86,7 @@ export default class App extends Vue {
 
   @Watch("checkedTags")
   onCheckedTags(): void {
+    // ツイートを更新(ハッシュタグの状況反映)
     this.updateTweetMsg(this.tweetMsg);
   }
 
@@ -91,6 +95,9 @@ export default class App extends Vue {
     gsap.to(this.$data, 0.5, { tweetLength: newTweet.length });
   }
 
+  /**
+  * ツイートの本文を更新
+  */
   updateTweetMsg(msg: string): void {
     this.tweet = `${msg}\n${this.checkedTags.join("\n")}`;
   }
