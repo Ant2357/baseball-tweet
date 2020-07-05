@@ -41,7 +41,9 @@
           ></textarea>
         </div>
 
-        <p>文字数:{{ animatedTweetLength }}</p>
+        <p :class="{ 'text-danger': tweetLength > 280 }">
+          文字数:{{ animatedTweetLength }}
+        </p>
         <button type="submit" class="btn btn-primary">送信</button>
       </form>
     </div>
