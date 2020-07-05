@@ -23,7 +23,7 @@
           <div v-for="t in templateMsgs" :key="t.label" class="p-1">
             <button
               type="button"
-              class="btn btn-sm btn-outline-dark"
+              class="btn btn-sm btn-outline-dark animated jackInTheBox"
               @click="addTweetMsg(t.msg)"
             >{{ t.label }}</button>
           </div>
