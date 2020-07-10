@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
+  <div>
     <div class="container my-3">
+
       <div class="card shadow">
         <div class="card-body">
           <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
@@ -50,8 +51,9 @@
           </form>
         </div>
       </div>
-
     </div>
+
+    <v-footer/>
   </div>
 </template>
 
@@ -68,7 +70,13 @@ import templateMsgs from "@/assets/json/templateMsgs.json";
 
 import { Component, Vue, Watch } from 'vue-property-decorator';
 
-@Component
+import VFooter from '@/components/VFooter.vue';
+
+@Component({
+  components: {
+    VFooter
+  }
+})
 export default class App extends Vue {
   tweet = "";
   tweetLength = 0;
