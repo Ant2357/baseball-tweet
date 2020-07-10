@@ -1,51 +1,56 @@
 <template>
   <div id="app">
-    <div class="container mt-3">
-      <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
-        <legend>野球実況用ツイート画面</legend>
+    <div class="container my-3">
+      <div class="card shadow">
+        <div class="card-body">
+          <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
+            <h5 class="card-title">野球実況用ツイート画面</h5>
 
-        <div v-for="tagInfo in tagInfo" :key="tagInfo.name" class="form-check">
-          <input
-            type="checkbox"
-            :id="tagInfo.name"
-            :value="tagInfo.name"
-            v-model="checkedTags"
-            class="form-check-input"
-          />
-          <label
-            :for="tagInfo.name"
-            class="form-check-label animated jackInTheBox"
-            :class="teamColor(tagInfo.jpName)"
-          >{{ tagInfo.jpName }}</label>
+            <div v-for="tagInfo in tagInfo" :key="tagInfo.name" class="form-check">
+              <input
+                type="checkbox"
+                :id="tagInfo.name"
+                :value="tagInfo.name"
+                v-model="checkedTags"
+                class="form-check-input"
+              />
+              <label
+                :for="tagInfo.name"
+                class="form-check-label text-nowrap animated jackInTheBox"
+                :class="teamColor(tagInfo.jpName)"
+              >{{ tagInfo.jpName }}</label>
+            </div>
+
+            <div class="d-inline-flex flex-wrap mt-3">
+              <div v-for="t in templateMsgs" :key="t.label" class="p-1">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-dark animated jackInTheBox"
+                  @click="addTweetMsg(t.msg)"
+                >{{ t.label }}</button>
+              </div>
+            </div>
+
+            <div class="form-group mt-2">
+              <label for="tweet-textarea">本文</label>
+              <textarea
+                v-model="tweet"
+                :rows="tweet.split(/\n/).length"
+                id="tweet-textarea"
+                name="text"
+                class="form-control"
+                placeholder="ツイート本文"
+              ></textarea>
+            </div>
+
+            <p :class="{ 'text-danger': tweetLength > 280 }">
+              文字数:{{ animatedTweetLength }}
+            </p>
+            <button type="submit" class="btn btn-primary">送信</button>
+          </form>
         </div>
+      </div>
 
-        <div class="d-inline-flex flex-wrap mt-3">
-          <div v-for="t in templateMsgs" :key="t.label" class="p-1">
-            <button
-              type="button"
-              class="btn btn-sm btn-outline-dark animated jackInTheBox"
-              @click="addTweetMsg(t.msg)"
-            >{{ t.label }}</button>
-          </div>
-        </div>
-
-        <div class="form-group mt-2">
-          <label for="tweet-textarea">本文</label>
-          <textarea
-            v-model="tweet"
-            :rows="tweet.split(/\n/).length"
-            id="tweet-textarea"
-            name="text"
-            class="form-control"
-            placeholder="ツイート本文"
-          ></textarea>
-        </div>
-
-        <p :class="{ 'text-danger': tweetLength > 280 }">
-          文字数:{{ animatedTweetLength }}
-        </p>
-        <button type="submit" class="btn btn-primary">送信</button>
-      </form>
     </div>
   </div>
 </template>
