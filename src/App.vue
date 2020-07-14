@@ -58,11 +58,11 @@
 </template>
 
 <script lang="ts">
-import "@/assets/css/bootstrap.min.css";
-import "@/assets/css/style.css";
-import "@/assets/css/text.css";
-import "@/assets/css/checkbox.css";
-import "@/assets/css/animate.min.css";
+import "@/css/bootstrap.min.css";
+import "@/css/style.css";
+import "@/css/text.css";
+import "@/css/checkbox.css";
+import "@/css/animate.min.css";
 
 import gsap from 'gsap';
 import tagInfo from "@/assets/json/tagInfo.json";
