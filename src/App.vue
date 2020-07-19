@@ -121,7 +121,7 @@ export default class App extends Vue {
     this.updateTweetMsg(this.tweetMsg + addMsg);
   }
 
-  teamColor(tagJpName: string) {
+  teamColor(tagJpName: string): { [s: string]: boolean } {
     return {
       "text-giants": tagJpName === "#読売巨人軍",
       "text-baystars": tagJpName === "#横浜DeNAベイスターズ",
