@@ -22,15 +22,31 @@
               >{{ tagInfo.jpName }}</label>
             </div>
 
-            <div class="d-inline-flex flex-wrap mt-3">
-              <div v-for="t in templateMsgs" :key="t.label" class="p-1">
-                <button
-                  type="button"
-                  class="btn btn-sm btn-outline-dark animated jackInTheBox"
-                  @click="addTweetMsg(t.msg)"
-                >{{ t.label }}</button>
-              </div>
-            </div>
+            <b-tabs content-class="mt-2" class="mt-3">
+              <b-tab title="AA" active>
+                <div class="d-inline-flex flex-wrap">
+                  <div v-for="t in templateMsgs" :key="t.label" class="p-1">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary animated jackInTheBox"
+                      @click="addTweetMsg(t.msg)"
+                    >{{ t.label }}</button>
+                  </div>
+                </div>
+              </b-tab>
+
+              <b-tab title="画像AA">
+                <div class="d-inline-flex flex-wrap">
+                  <div v-for="t in templateImgs" :key="t.label" class="p-1">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary animated jackInTheBox"
+                      @click="addTweetMsg(t.msg)"
+                    >{{ t.label }}</button>
+                  </div>
+                </div>
+              </b-tab>
+            </b-tabs>
 
             <div class="form-group mt-2">
               <label for="tweet-textarea">本文</label>
@@ -67,6 +83,7 @@ import "@/css/animate.min.css";
 import gsap from 'gsap';
 import tagInfo from "@/assets/json/tagInfo.json";
 import templateMsgs from "@/assets/json/templateMsgs.json";
+import templateImgs from "@/assets/json/templateImgs.json";
 
 import { Component, Vue, Watch } from 'vue-property-decorator';
 
@@ -83,6 +100,7 @@ export default class App extends Vue {
   checkedTags: string[] = [];
   tagInfo = tagInfo;
   templateMsgs = templateMsgs;
+  templateImgs = templateImgs;
 
   /**
   * ツイートの本文
