@@ -36,13 +36,24 @@
               </b-tab>
 
               <b-tab title="画像AA">
-                <div class="d-inline-flex flex-wrap">
-                  <div v-for="t in templateImgs" :key="t.label" class="p-1">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary animated jackInTheBox"
-                      @click="addTweetMsg(t.msg)"
-                    >{{ t.label }}</button>
+                <div class="container">
+                  <div class="row">
+
+                    <div v-for="t in templateImgs" :key="t.label" class="col-12 col-md-3 p-1">
+                      <div class="card h-100 text-center">
+                        <img class="card-img-top img-fluid" :src="t.url">
+                        <div class="card-body">
+                          <button
+                            type="button"
+                            class="btn btn-sm btn-outline-secondary"
+                            @click="addTweetMsg(t.msg)"
+                          >
+                            {{ t.label }}を追加
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </b-tab>
