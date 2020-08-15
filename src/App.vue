@@ -46,7 +46,7 @@
                           <button
                             type="button"
                             class="btn btn-sm btn-outline-secondary"
-                            @click="addTweetMsg(t.msg)"
+                            @click="pushTweetPicture(t)"
                           >
                             {{ t.label }}を追加
                           </button>
@@ -59,7 +59,7 @@
               </b-tab>
             </b-tabs>
 
-            <div class="form-group mt-2">
+            <div class="form-group mt-2 p-2">
               <label for="tweet-textarea">本文</label>
               <textarea
                 v-model="tweet"
@@ -69,12 +69,29 @@
                 class="form-control"
                 placeholder="ツイート本文"
               ></textarea>
+
+              <div class="container">
+                <div class="row">
+                  <div v-for="(picture, index) in this.tweetPictures" :key="index" class="col-12 col-md-3 p-1">
+                    <div class="card h-100 text-center">
+                      <img class="card-img-top img-fluid" :src="picture.url">
+                      <div class="card-body">
+                        <button type="button" class="btn btn-sm btn-outline-danger" @click="removePicture(index)">
+                          {{ picture.label }}を削除
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
             <p :class="{ 'text-danger': tweetLength > 280 }">
               文字数:{{ animatedTweetLength }}
             </p>
-            <button type="submit" class="btn btn-primary">送信</button>
+
+            <button type="button" class="btn btn-primary" @click="newTweetTab">送信</button>
           </form>
         </div>
       </div>
@@ -107,6 +124,7 @@ import VFooter from '@/components/VFooter.vue';
 })
 export default class App extends Vue {
   tweet = "";
+  tweetPictures: { [s: string]: string }[] = [];
   tweetLength = 0;
   checkedTags: string[] = [];
   tagInfo = tagInfo;
@@ -140,6 +158,17 @@ export default class App extends Vue {
   }
 
   /**
+  *  ツイート画面を開く
+  */
+  newTweetTab(): void {
+    const pictureLinks = this.tweetPictures
+      .reduce((acc, p) => acc + p.msg, "");
+    const tweet = encodeURIComponent(`${this.tweet}${pictureLinks}`);
+
+    window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
+  }
+
+  /**
   * ツイートの本文を更新
   */
   updateTweetMsg(msg: string): void {
@@ -148,6 +177,13 @@ export default class App extends Vue {
 
   addTweetMsg(addMsg: string): void {
     this.updateTweetMsg(this.tweetMsg + addMsg);
+  }
+
+  pushTweetPicture(picture: { [s: string]: string }): void {
+    this.tweetPictures.push(picture);
+  }
+  removePicture(index: number): void {
+    this.tweetPictures.splice(index, 1);
   }
 
   teamColor(tagJpName: string): { [s: string]: boolean } {
