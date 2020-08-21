@@ -180,6 +180,11 @@ export default class App extends Vue {
   }
 
   pushTweetPicture(picture: { [s: string]: string }): void {
+    if (this.tweetPictures.length >= 4) {
+      alert("送付画像の上限を越えています。");
+      return;
+    }
+
     this.tweetPictures.push(picture);
   }
   removePicture(index: number): void {
