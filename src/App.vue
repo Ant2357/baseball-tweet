@@ -162,7 +162,7 @@ export default class App extends Vue {
   */
   newTweetTab(): void {
     const pictureLinks = this.tweetPictures
-      .reduce((acc, p) => acc + p.msg, "");
+      .reduce((acc, p) => `${acc} ${p.msg}`, "");
     const tweet = encodeURIComponent(`${this.tweet}${pictureLinks}`);
 
     window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
