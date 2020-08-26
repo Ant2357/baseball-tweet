@@ -7,19 +7,19 @@
           <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
             <h5 class="card-title">野球実況用ツイート画面</h5>
 
-            <div v-for="tagInfo in tagInfo" :key="tagInfo.name" class="form-check">
+            <div v-for="tag in tagInfo" :key="tag.name" class="form-check">
               <input
                 type="checkbox"
-                :id="tagInfo.name"
-                :value="tagInfo.name"
+                :id="tag.name"
+                :value="tag.name"
                 v-model="checkedTags"
                 class="form-check-input"
               />
               <label
-                :for="tagInfo.name"
+                :for="tag.name"
                 class="form-check-label text-nowrap animated jackInTheBox"
-                :class="teamColor(tagInfo.jpName)"
-              >{{ tagInfo.jpName }}</label>
+                :class="teamColor(tag.jpName)"
+              >{{ tag.jpName }}</label>
             </div>
 
             <b-tabs content-class="mt-2" class="mt-3">
