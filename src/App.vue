@@ -7,7 +7,7 @@
           <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
             <h5 class="card-title">野球実況用ツイート画面</h5>
 
-            <div v-for="tag in state.tagInfo" :key="tag.name" class="form-check">
+            <div v-for="tag in state.tags" :key="tag.name" class="form-check">
               <input
                 type="checkbox"
                 :id="tag.name"
@@ -106,7 +106,7 @@ import "@/css/text.css";
 import "@/css/checkbox.css";
 import "@/css/animate.min.css";
 
-import tagInfo from "@/assets/json/tagInfo.json";
+import tags from "@/assets/json/tagInfo.json";
 import templateMsgs from "@/assets/json/templateMsgs.json";
 import templateImgs from "@/assets/json/templateImgs.json";
 
@@ -124,7 +124,7 @@ export default defineComponent({
       tweetPictures: { [s: string]: string }[];
       tweetLength: number;
       checkedTags: string[];
-      tagInfo: { [s: string]: string }[];
+      tags: { [s: string]: string }[];
       templateMsgs: { [s: string]: string }[];
       templateImgs: { [s: string]: string }[];
     }>({
@@ -132,7 +132,7 @@ export default defineComponent({
       tweetPictures: [],
       tweetLength: 0,
       checkedTags: [],
-      tagInfo: tagInfo,
+      tags: tags,
       templateMsgs: templateMsgs,
       templateImgs: templateImgs
     });
@@ -177,7 +177,7 @@ export default defineComponent({
       () => state.checkedTags,
       () => {
         // ツイートを更新(ハッシュタグの状況反映)
-        updateTweetMsg(removeHashTags(tagInfo, state.tweet));
+        updateTweetMsg(removeHashTags(tags, state.tweet));
       }
     );
 
