@@ -110,7 +110,7 @@ import tagInfo from "@/assets/json/tagInfo.json";
 import templateMsgs from "@/assets/json/templateMsgs.json";
 import templateImgs from "@/assets/json/templateImgs.json";
 
-import { defineComponent, reactive } from '@vue/composition-api';
+import { defineComponent, reactive, watch } from '@vue/composition-api';
 
 import VFooter from '@/components/VFooter.vue';
 
@@ -137,6 +137,25 @@ export default defineComponent({
       templateImgs: templateImgs
     });
 
+    /**
+    * ツイートの本文を更新
+    */
+    const updateTweetMsg = (msg: string): void => {
+      state.tweet = `${msg}\n${state.checkedTags.join("\n")}`;
+    }
+
+    /**
+    * ハッシュタグを取り除いた値を返す
+    */
+    const removeHashTags = (tags: { [s: string]: string }[], text: string): string => {
+      const tagNames: string[] = tags.slice().map(tag => tag.name);
+
+      // ハッシュタグを除去
+      return tagNames
+        .reduce((acc, tagName) => acc.split(tagName).join(""), text.slice())
+        .trim();
+    }
+
     const teamColor = (tagJpName: string): { [s: string]: boolean } => {
       return {
         "text-giants": tagJpName === "#読売巨人軍",
@@ -153,6 +172,14 @@ export default defineComponent({
         "text-bs": tagJpName === "#オリックス・バファローズ",
       }
     }
+
+    watch(
+      () => state.checkedTags,
+      () => {
+        // ツイートを更新(ハッシュタグの状況反映)
+        updateTweetMsg(removeHashTags(tagInfo, state.tweet));
+      }
+    );
 
     return {
       state,
