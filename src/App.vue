@@ -18,6 +18,7 @@
               <label
                 :for="tag.name"
                 class="form-check-label text-nowrap animated jackInTheBox"
+                :class="teamColor(tag.jpName)"
               >{{ tag.jpName }}</label>
             </div>
 
@@ -136,10 +137,28 @@ export default defineComponent({
       templateImgs: templateImgs
     });
 
+    const teamColor = (tagJpName: string): { [s: string]: boolean } => {
+      return {
+        "text-giants": tagJpName === "#読売巨人軍",
+        "text-baystars": tagJpName === "#横浜DeNAベイスターズ",
+        "text-tigers": tagJpName === "#阪神タイガース",
+        "text-carp": tagJpName === "#広島東洋カープ",
+        "text-dragons": tagJpName === "#中日ドラゴンズ",
+        "text-swallows": tagJpName === "#東京ヤクルトスワローズ",
+        "text-seibulions": tagJpName === "#埼玉西武ライオンズ",
+        "text-sbhawks": tagJpName === "#福岡ソフトバンクホークス",
+        "text-rakuteneagles": tagJpName === "#東北楽天ゴールデンイーグルス",
+        "text-chibalotte": tagJpName === "#千葉ロッテマリーンズ",
+        "text-fighters": tagJpName === "#北海道日本ハムファイターズ",
+        "text-bs": tagJpName === "#オリックス・バファローズ",
+      }
+    }
+
     return {
-      state
+      state,
+      teamColor
     };
   }
-})
+});
 
 </script>
