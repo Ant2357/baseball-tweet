@@ -110,7 +110,7 @@ import tags from "@/assets/json/tagInfo.json";
 import templateMsgs from "@/assets/json/templateMsgs.json";
 import templateImgs from "@/assets/json/templateImgs.json";
 
-import { defineComponent, reactive, watch } from '@vue/composition-api';
+import { defineComponent, reactive, watch, computed } from '@vue/composition-api';
 
 import VFooter from '@/components/VFooter.vue';
 
@@ -138,22 +138,21 @@ export default defineComponent({
     });
 
     /**
+    * ツイートの本文部分
+    */
+    const tweetMsg = computed((): string => {
+      const tagNames: string[] = state.tags.slice().map(tag => tag.name);
+      // ハッシュタグを除去
+      return tagNames
+        .reduce((acc, tagName) => acc.split(tagName).join(""), state.tweet.slice())
+        .trim();
+    });
+
+    /**
     * ツイートを更新
     */
     const updateTweet = (msg: string, hashtags: string[]): void => {
       state.tweet = `${msg}\n${hashtags.join("\n")}`;
-    }
-
-    /**
-    * ハッシュタグを取り除いた値を返す
-    */
-    const removeHashTags = (tags: { [s: string]: string }[], text: string): string => {
-      const tagNames: string[] = tags.slice().map(tag => tag.name);
-
-      // ハッシュタグを除去
-      return tagNames
-        .reduce((acc, tagName) => acc.split(tagName).join(""), text.slice())
-        .trim();
     }
 
     const teamColor = (tagJpName: string): { [s: string]: boolean } => {
@@ -177,7 +176,7 @@ export default defineComponent({
       () => state.checkedTags,
       checkedTags => {
         // ツイートを更新(ハッシュタグの状況反映)
-        updateTweet(removeHashTags(tags, state.tweet), checkedTags);
+        updateTweet(tweetMsg.value, checkedTags);
       }
     );
 
