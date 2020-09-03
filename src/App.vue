@@ -138,10 +138,10 @@ export default defineComponent({
     });
 
     /**
-    * ツイートの本文を更新
+    * ツイートを更新
     */
-    const updateTweetMsg = (msg: string, tags: string[]): void => {
-      state.tweet = `${msg}\n${tags.join("\n")}`;
+    const updateTweet = (msg: string, hashtags: string[]): void => {
+      state.tweet = `${msg}\n${hashtags.join("\n")}`;
     }
 
     /**
@@ -177,7 +177,7 @@ export default defineComponent({
       () => state.checkedTags,
       checkedTags => {
         // ツイートを更新(ハッシュタグの状況反映)
-        updateTweetMsg(removeHashTags(tags, state.tweet), checkedTags);
+        updateTweet(removeHashTags(tags, state.tweet), checkedTags);
       }
     );
 
