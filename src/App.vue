@@ -29,6 +29,7 @@
                     <button
                       type="button"
                       class="btn btn-sm btn-outline-secondary animated jackInTheBox"
+                      @click="addTweetMsg(t.msg)"
                     >{{ t.label }}</button>
                   </div>
                 </div>
@@ -128,7 +129,7 @@ export default defineComponent({
       templateMsgs: { [s: string]: string }[];
       templateImgs: { [s: string]: string }[];
     }>({
-      tweet: "Welcome",
+      tweet: "",
       tweetPictures: [],
       tweetLength: 0,
       checkedTags: [],
@@ -153,6 +154,10 @@ export default defineComponent({
     */
     const updateTweet = (msg: string, hashtags: string[]): void => {
       state.tweet = `${msg}\n${hashtags.join("\n")}`;
+    }
+
+    const addTweetMsg = (addMsg: string): void => {
+      updateTweet(tweetMsg.value + addMsg, state.checkedTags);
     }
 
     const teamColor = (tagJpName: string): { [s: string]: boolean } => {
@@ -182,7 +187,8 @@ export default defineComponent({
 
     return {
       state,
-      teamColor
+      teamColor,
+      addTweetMsg
     };
   }
 });
