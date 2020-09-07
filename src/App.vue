@@ -46,6 +46,7 @@
                           <button
                             type="button"
                             class="btn btn-sm btn-outline-secondary"
+                            @click="pushTweetPicture(t)"
                           >
                             {{ t.label }}を追加
                           </button>
@@ -75,7 +76,11 @@
                     <div class="card h-100 text-center">
                       <img class="card-img-top img-fluid" :src="picture.url">
                       <div class="card-body">
-                        <button type="button" class="btn btn-sm btn-outline-danger">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger"
+                          @click="removePicture(index)"
+                        >
                           {{ picture.label }}を削除
                         </button>
                       </div>
@@ -160,6 +165,19 @@ export default defineComponent({
       updateTweet(tweetMsg.value + addMsg, state.checkedTags);
     }
 
+    const pushTweetPicture = (picture: { [s: string]: string }): void => {
+      if (state.tweetPictures.length >= 4) {
+        alert("送付画像の上限を越えています。");
+        return;
+      }
+
+      state.tweetPictures.push(picture);
+    }
+
+    const removePicture = (index: number): void => {
+      state.tweetPictures.splice(index, 1);
+    }
+
     const teamColor = (tagJpName: string): { [s: string]: boolean } => {
       return {
         "text-giants": tagJpName === "#読売巨人軍",
@@ -188,7 +206,9 @@ export default defineComponent({
     return {
       state,
       teamColor,
-      addTweetMsg
+      addTweetMsg,
+      pushTweetPicture,
+      removePicture
     };
   }
 });
