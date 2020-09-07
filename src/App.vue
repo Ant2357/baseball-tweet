@@ -156,17 +156,6 @@ export default defineComponent({
     }
 
     /**
-    *  新規タブで、ツイート画面を開く
-    */
-    const newTweetTab = (): void => {
-      const pictureLinks = state.tweetPictures
-        .reduce((acc, p) => `${acc} ${p.msg}`, "");
-      const tweet = encodeURIComponent(`${state.tweet}${pictureLinks}`);
-
-      window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
-    }
-
-    /**
     * ツイートの本文部分
     */
     const tweetMsg = computed((): string => {
@@ -176,6 +165,18 @@ export default defineComponent({
         .reduce((acc, tagName) => acc.split(tagName).join(""), state.tweet.slice())
         .trim();
     });
+
+
+    /**
+    *  新規タブで、ツイート画面を開く
+    */
+    const newTweetTab = (): void => {
+      const pictureLinks = state.tweetPictures
+        .reduce((acc, p) => `${acc} ${p.msg}`, "");
+      const tweet = encodeURIComponent(`${state.tweet}${pictureLinks}`);
+
+      window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
+    }
 
     const updateTweet = (msg: string, hashtags: string[]): void => {
       state.tweet = `${msg}\n${hashtags.join("\n")}`;
