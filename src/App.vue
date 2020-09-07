@@ -154,9 +154,6 @@ export default defineComponent({
         .trim();
     });
 
-    /**
-    * ツイートを更新
-    */
     const updateTweet = (msg: string, hashtags: string[]): void => {
       state.tweet = `${msg}\n${hashtags.join("\n")}`;
     }
