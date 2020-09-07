@@ -95,7 +95,7 @@
               文字数:
             </p>
 
-            <button type="button" class="btn btn-primary">送信</button>
+            <button type="button" class="btn btn-primary" @click="newTweetTab">送信</button>
           </form>
         </div>
       </div>
@@ -142,6 +142,18 @@ export default defineComponent({
       templateMsgs: templateMsgs,
       templateImgs: templateImgs
     });
+
+
+    /**
+    *  新規タブで、ツイート画面を開く
+    */
+    const newTweetTab = (): void => {
+      const pictureLinks = state.tweetPictures
+        .reduce((acc, p) => `${acc} ${p.msg}`, "");
+      const tweet = encodeURIComponent(`${state.tweet}${pictureLinks}`);
+
+      window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
+    }
 
     /**
     * ツイートの本文部分
@@ -205,7 +217,8 @@ export default defineComponent({
       teamColor,
       addTweetMsg,
       pushTweetPicture,
-      removePicture
+      removePicture,
+      newTweetTab
     };
   }
 });
