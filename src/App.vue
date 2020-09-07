@@ -91,8 +91,14 @@
 
             </div>
 
-            <p :class="{ 'text-danger': state.tweetLength > 280 }">
-              文字数:
+            <p :class="{ 'text-danger': state.tweet.length > 280 }">
+              <span>文字数:</span>
+              <animated-number
+                :value="state.tweet.length"
+                :round="true"
+                :formatValue="state.animatedTweetLength"
+                :duration="500"
+              />
             </p>
 
             <button type="button" class="btn btn-primary" @click="newTweetTab">送信</button>
@@ -116,19 +122,22 @@ import tags from "@/assets/json/tagInfo.json";
 import templateMsgs from "@/assets/json/templateMsgs.json";
 import templateImgs from "@/assets/json/templateImgs.json";
 
+//@ts-ignore
+import AnimatedNumber from "animated-number-vue";
+
 import { defineComponent, reactive, watch, computed } from '@vue/composition-api';
 
 import VFooter from '@/components/VFooter.vue';
 
 export default defineComponent({
   components: {
+    AnimatedNumber,
     VFooter
   },
   setup() {
     const state = reactive<{
       tweet: string;
       tweetPictures: { [s: string]: string }[];
-      tweetLength: number;
       checkedTags: string[];
       tags: { [s: string]: string }[];
       templateMsgs: { [s: string]: string }[];
@@ -136,13 +145,15 @@ export default defineComponent({
     }>({
       tweet: "",
       tweetPictures: [],
-      tweetLength: 0,
       checkedTags: [],
       tags: tags,
       templateMsgs: templateMsgs,
       templateImgs: templateImgs
     });
 
+    const animatedTweetLength = (): number => {
+      return Math.floor(state.tweet.length);
+    }
 
     /**
     *  新規タブで、ツイート画面を開く
