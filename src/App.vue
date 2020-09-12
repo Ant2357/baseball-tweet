@@ -72,7 +72,7 @@
 
               <div class="container">
                 <div class="row">
-                  <div v-for="(picture, index) in this.state.tweetPictures" :key="index" class="col-12 col-md-3 p-1">
+                  <div v-for="(picture, index) in pictureState.pictures" :key="index" class="col-12 col-md-3 p-1">
                     <div class="card h-100 text-center">
                       <img class="card-img-top img-fluid" :src="picture.url">
                       <div class="card-body">
@@ -101,7 +101,12 @@
               />
             </p>
 
-            <button type="button" class="btn btn-primary" @click="newTweetTab">送信</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="newTweetTab(state.tweet, pictureState.pictures)"
+            >送信</button>
+
           </form>
         </div>
       </div>
@@ -126,6 +131,7 @@ import templateImgs from "@/assets/json/templateImgs.json";
 import AnimatedNumber from "animated-number-vue";
 
 import { defineComponent, reactive, watch, computed } from '@vue/composition-api';
+import { usePicture } from '@/composition/picture.ts';
 
 import VFooter from '@/components/VFooter.vue';
 
@@ -137,19 +143,19 @@ export default defineComponent({
   setup() {
     const state = reactive<{
       tweet: string;
-      tweetPictures: { [s: string]: string }[];
       checkedTags: string[];
       tags: { [s: string]: string }[];
       templateMsgs: { [s: string]: string }[];
       templateImgs: { [s: string]: string }[];
     }>({
       tweet: "",
-      tweetPictures: [],
       checkedTags: [],
       tags: tags,
       templateMsgs: templateMsgs,
       templateImgs: templateImgs
     });
+
+    const { pictureState, pushTweetPicture, removePicture } = usePicture();
 
     const animatedTweetLength = (): number => {
       return Math.floor(state.tweet.length);
@@ -170,10 +176,9 @@ export default defineComponent({
     /**
     *  新規タブで、ツイート画面を開く
     */
-    const newTweetTab = (): void => {
-      const pictureLinks = state.tweetPictures
-        .reduce((acc, p) => `${acc} ${p.msg}`, "");
-      const tweet = encodeURIComponent(`${state.tweet}${pictureLinks}`);
+    const newTweetTab = (text: string, pictures: { [s: string]: string }[]): void => {
+      const pictureLinks = pictures.reduce((acc, p) => `${acc} ${p.msg}`, "");
+      const tweet = encodeURIComponent(`${text}${pictureLinks}`);
 
       window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
     }
@@ -184,19 +189,6 @@ export default defineComponent({
 
     const addTweetMsg = (addMsg: string): void => {
       updateTweet(tweetMsg.value + addMsg, state.checkedTags);
-    }
-
-    const pushTweetPicture = (picture: { [s: string]: string }): void => {
-      if (state.tweetPictures.length >= 4) {
-        alert("送付画像の上限を越えています。");
-        return;
-      }
-
-      state.tweetPictures.push(picture);
-    }
-
-    const removePicture = (index: number): void => {
-      state.tweetPictures.splice(index, 1);
     }
 
     const teamColor = (tagJpName: string): { [s: string]: boolean } => {
@@ -226,6 +218,7 @@ export default defineComponent({
 
     return {
       state,
+      pictureState,
       teamColor,
       addTweetMsg,
       pushTweetPicture,
