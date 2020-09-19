@@ -6,7 +6,7 @@ const useTweet = () => {
   const tweetState = reactive<{
       tweet: string;
       tweetMsg: ComputedRef<string>;
-      checkedTags: string[];
+      hashtags: string[];
       allTags: { [s: string]: string }[];
     }>({
       tweet: "",
@@ -18,7 +18,7 @@ const useTweet = () => {
           .reduce((acc, tagName) => acc.split(tagName).join(""), tweetState.tweet.slice())
           .trim();
       }),
-      checkedTags: [],
+      hashtags: [],
       allTags: allTags,
     });
 
@@ -27,14 +27,14 @@ const useTweet = () => {
   }
 
   const addTweetMsg = (addMsg: string): void => {
-    updateTweet(tweetState.tweetMsg + addMsg, tweetState.checkedTags);
+    updateTweet(tweetState.tweetMsg + addMsg, tweetState.hashtags);
   }
 
   watch(
-    () => tweetState.checkedTags,
-    checkedTags => {
+    () => tweetState.hashtags,
+    hashtags => {
       // ツイートを更新(ハッシュタグの状況反映)
-      updateTweet(tweetState.tweetMsg, checkedTags);
+      updateTweet(tweetState.tweetMsg, hashtags);
     }
   );
 

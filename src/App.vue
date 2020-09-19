@@ -12,7 +12,7 @@
                 type="checkbox"
                 :id="tag.name"
                 :value="tag.name"
-                v-model="tweetState.checkedTags"
+                v-model="tweetState.hashtags"
                 class="form-check-input"
               />
               <label
