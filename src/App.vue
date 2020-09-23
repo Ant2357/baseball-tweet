@@ -25,7 +25,7 @@
             <b-tabs content-class="mt-2" class="mt-3">
               <b-tab title="AA" active>
                 <div class="d-inline-flex flex-wrap">
-                  <div v-for="t in state.templateMsgs" :key="t.label" class="p-1">
+                  <div v-for="t in templateState.templateMsgs" :key="t.label" class="p-1">
                     <button
                       type="button"
                       class="btn btn-sm btn-outline-secondary animated jackInTheBox"
@@ -39,7 +39,7 @@
                 <div class="container">
                   <div class="row">
 
-                    <div v-for="t in state.templateImgs" :key="t.label" class="col-12 col-md-3 p-1">
+                    <div v-for="t in templateState.templateImgs" :key="t.label" class="col-12 col-md-3 p-1">
                       <div class="card h-100 text-center">
                         <img class="card-img-top img-fluid" :src="t.url">
                         <div class="card-body">
@@ -122,14 +122,12 @@ import "@/css/text.css";
 import "@/css/checkbox.css";
 import "@/css/animate.min.css";
 
-import templateMsgs from "@/assets/json/templateMsgs.json";
-import templateImgs from "@/assets/json/templateImgs.json";
-
 // @ts-ignore
 import AnimatedNumber from "animated-number-vue";
 
 import { defineComponent, reactive } from '@vue/composition-api';
 
+import { useTemplate } from '@/composition/template.ts';
 import { useTweet } from '@/composition/tweet.ts';
 import { usePicture } from '@/composition/picture.ts';
 
@@ -141,13 +139,9 @@ export default defineComponent({
     VFooter
   },
   setup() {
-    const state = reactive<{
-      templateMsgs: { [s: string]: string }[];
-      templateImgs: { [s: string]: string }[];
-    }>({
-      templateMsgs: templateMsgs,
-      templateImgs: templateImgs
-    });
+
+    // AAテンプレート一覧(AA or AA画像)
+    const { templateState } = useTemplate();
 
     // ツイート関連の機能
     const { tweetState, addTweetMsg } = useTweet();
@@ -183,14 +177,16 @@ export default defineComponent({
     }
 
     return {
-      state,
+      // State
+      templateState,
       tweetState,
       pictureState,
+      // Function
+      newTweetTab,
       teamColor,
       addTweetMsg,
       pushTweetPicture,
-      removePicture,
-      newTweetTab
+      removePicture
     };
   }
 });
