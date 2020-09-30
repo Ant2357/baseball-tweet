@@ -57,6 +57,19 @@
                   </div>
                 </div>
               </b-tab>
+
+              <b-tab title="応援歌(作成中)">
+                <div class="d-inline-flex flex-wrap">
+                  <div v-for="song in templateState.templateSongs" :key="song.label" class="p-1">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary animated jackInTheBox"
+                      @click="setMovie(song)"
+                    >{{ song.label }}</button>
+                  </div>
+                </div>
+              </b-tab>
+
             </b-tabs>
 
             <div class="form-group mt-2 p-2">
@@ -89,6 +102,14 @@
                 </div>
               </div>
 
+              <button
+                v-if="Object.keys(mediaState.movie).length !== 0"
+                type="button"
+                class="mt-2 btn btn-outline-danger"
+                @click="removeMovie"
+              >
+                応援歌『{{ mediaState.movie.label }}』を削除
+              </button>
             </div>
 
             <p :class="{ 'text-danger': tweetState.tweet.length > 280 }">
@@ -140,21 +161,22 @@ export default defineComponent({
   },
   setup() {
 
-    // AAテンプレート一覧(AA or AA画像)
+    // テンプレート一覧(AA, AA画像, 応援歌一覧)
     const { templateState } = useTemplate();
 
     // ツイート関連の機能
     const { tweetState, addTweetMsg } = useTweet();
 
     // メディア(画像 or 動画)関連の機能
-    const { mediaState, pushTweetPicture, removePicture } = useMedia();
+    const { mediaState, pushTweetPicture, removePicture, setMovie, removeMovie } = useMedia();
 
     /**
     *  新規タブで、ツイート画面を開く
     */
     const newTweetTab = (text: string, pictures: { [s: string]: string }[]): void => {
       const pictureLinks = pictures.reduce((acc, p) => `${acc} ${p.msg}`, "");
-      const tweet = encodeURIComponent(`${text}${pictureLinks}`);
+      const movieUrl = Object.keys(mediaState.movie).length === 0 ? "" : mediaState.movie.url;
+      const tweet = encodeURIComponent(`${text}${pictureLinks} ${movieUrl}`);
 
       window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
     }
@@ -186,7 +208,9 @@ export default defineComponent({
       teamColor,
       addTweetMsg,
       pushTweetPicture,
-      removePicture
+      removePicture,
+      setMovie,
+      removeMovie
     };
   }
 });
