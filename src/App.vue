@@ -72,7 +72,7 @@
 
               <div class="container">
                 <div class="row">
-                  <div v-for="(picture, index) in pictureState.pictures" :key="index" class="col-12 col-md-3 p-1">
+                  <div v-for="(picture, index) in mediaState.pictures" :key="index" class="col-12 col-md-3 p-1">
                     <div class="card h-100 text-center">
                       <img class="card-img-top img-fluid" :src="picture.url">
                       <div class="card-body">
@@ -103,7 +103,7 @@
             <button
               type="button"
               class="btn btn-primary"
-              @click="newTweetTab(tweetState.tweet, pictureState.pictures)"
+              @click="newTweetTab(tweetState.tweet, mediaState.pictures)"
             >送信</button>
 
           </form>
@@ -125,11 +125,11 @@ import "@/css/animate.min.css";
 // @ts-ignore
 import AnimatedNumber from "animated-number-vue";
 
-import { defineComponent, reactive } from '@vue/composition-api';
+import { defineComponent } from '@vue/composition-api';
 
 import { useTemplate } from '@/composition/template.ts';
 import { useTweet } from '@/composition/tweet.ts';
-import { usePicture } from '@/composition/picture.ts';
+import { useMedia } from '@/composition/media.ts';
 
 import VFooter from '@/components/VFooter.vue';
 
@@ -146,8 +146,8 @@ export default defineComponent({
     // ツイート関連の機能
     const { tweetState, addTweetMsg } = useTweet();
 
-    // 画像関連の機能
-    const { pictureState, pushTweetPicture, removePicture } = usePicture();
+    // メディア(画像 or 動画)関連の機能
+    const { mediaState, pushTweetPicture, removePicture } = useMedia();
 
     /**
     *  新規タブで、ツイート画面を開く
@@ -180,7 +180,7 @@ export default defineComponent({
       // State
       templateState,
       tweetState,
-      pictureState,
+      mediaState,
       // Function
       newTweetTab,
       teamColor,
