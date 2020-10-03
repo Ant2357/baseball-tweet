@@ -178,7 +178,8 @@ export default defineComponent({
       const movieUrl = Object.keys(mediaState.movie).length === 0 ? "" : mediaState.movie.url;
       const tweet = encodeURIComponent(`${text}${pictureLinks} ${movieUrl}`);
 
-      window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
+      const homePageUrl = "https://ant2357.github.io/baseball-tweet/";
+      window.open(`https://twitter.com/intent/tweet?url=${homePageUrl}&text=${tweet}`, "_blank");
     }
 
     const teamColor = (tagJpName: string): { [s: string]: boolean } => {
