@@ -1,12 +1,16 @@
-import { reactive } from '@vue/composition-api';
+import { reactive, computed, ComputedRef } from '@vue/composition-api';
 
 const useMedia = () => {
   const mediaState = reactive<{
       pictures: { [s: string]: string }[];
-      movie: { [s: string]: string };
+      movieObject: { [s: string]: string };
+      movieUrl: ComputedRef<string>;
     }>({
       pictures: [],
-      movie: {}
+      // 動画情報
+      movieObject: {},
+      // 動画URL
+      movieUrl: computed((): string => "url" in mediaState.movieObject ? mediaState.movieObject.url : "")
     });
 
   const pushTweetPicture = (picture: { [s: string]: string }): void => {
@@ -15,7 +19,7 @@ const useMedia = () => {
       return;
     }
 
-    if (Object.keys(mediaState.movie).length !== 0) {
+    if (Object.keys(mediaState.movieObject).length !== 0) {
       alert("応援歌が設定済みの時に、画像AAを使う事は出来ません。");
       return;
     }
@@ -28,17 +32,17 @@ const useMedia = () => {
   }
 
 
-  const setMovie = (movie: { [s: string]: string }): void => {
+  const setMovie = (movieObject: { [s: string]: string }): void => {
     if (Object.keys(mediaState.pictures).length !== 0) {
       alert("画像AAを使用中の時に、応援歌を使う事は出来ません。");
       return;
     }
 
-    mediaState.movie = movie;
+    mediaState.movieObject = movieObject;
   }
 
   const removeMovie = (): void => {
-    mediaState.movie = {};
+    mediaState.movieObject = {};
   }
 
 

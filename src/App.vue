@@ -103,12 +103,12 @@
               </div>
 
               <button
-                v-if="Object.keys(mediaState.movie).length !== 0"
+                v-if="Object.keys(mediaState.movieObject).length !== 0"
                 type="button"
                 class="mt-2 btn btn-outline-danger"
                 @click="removeMovie"
               >
-                応援歌『{{ mediaState.movie.label }}』を削除
+                応援歌『{{ mediaState.movieObject.label }}』を削除
               </button>
             </div>
 
@@ -175,8 +175,7 @@ export default defineComponent({
     */
     const newTweetTab = (text: string, pictures: { [s: string]: string }[]): void => {
       const pictureLinks = pictures.reduce((acc, p) => `${acc} ${p.msg}`, "");
-      const movieUrl = Object.keys(mediaState.movie).length === 0 ? "" : mediaState.movie.url;
-      const tweet = encodeURIComponent(`${text}${pictureLinks} ${movieUrl}`);
+      const tweet = encodeURIComponent(`${text}${pictureLinks} ${mediaState.movieUrl}`);
 
       const homePageUrl = "https://ant2357.github.io/baseball-tweet/";
       window.open(`https://twitter.com/intent/tweet?url=${homePageUrl}&text=${tweet}`, "_blank");
