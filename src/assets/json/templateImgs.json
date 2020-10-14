@@ -5,6 +5,16 @@
     "url": "./assets/img/hr.png"
   },
   {
+    "label": "野球_ファインプレー画像AA",
+    "msg": "https://twitter.com/AntBaseball/status/1316284953865285635/photo/1",
+    "url": "./assets/img/fine_play.png"
+  },
+  {
+    "label": "野球_エラー画像AA",
+    "msg": "https://twitter.com/AntBaseball/status/1316285165530832898/photo/1",
+    "url": "./assets/img/e.png"
+  },
+  {
     "label": "大爆発AA",
     "msg": "https://twitter.com/AntBaseball/status/1311192860486639616/photo/1",
     "url": "./assets/img/explosion_three.png"
