@@ -3,10 +3,14 @@ import { reactive, computed, ComputedRef } from '@vue/composition-api';
 const useMedia = () => {
   const mediaState = reactive<{
       pictures: { [s: string]: string }[];
+      picturesUrl: ComputedRef<string>;
       movieObject: { [s: string]: string };
       movieUrl: ComputedRef<string>;
     }>({
+      // 画像情報
       pictures: [],
+      // 画像URL
+      picturesUrl: computed((): string => mediaState.pictures.reduce((acc, p) => `${acc} ${p.msg}`, "")),
       // 動画情報
       movieObject: {},
       // 動画URL

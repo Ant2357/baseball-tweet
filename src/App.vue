@@ -174,8 +174,7 @@ export default defineComponent({
     *  新規タブで、ツイート画面を開く
     */
     const newTweetTab = (text: string, pictures: { [s: string]: string }[]): void => {
-      const pictureLinks = pictures.reduce((acc, p) => `${acc} ${p.msg}`, "");
-      const tweet = encodeURIComponent(`${text}${pictureLinks} ${mediaState.movieUrl}`);
+      const tweet = encodeURIComponent(`${text}${mediaState.picturesUrl} ${mediaState.movieUrl}`);
 
       const homePageUrl = "https://ant2357.github.io/baseball-tweet/";
       window.open(`https://twitter.com/intent/tweet?url=${homePageUrl}&text=${tweet}`, "_blank");
