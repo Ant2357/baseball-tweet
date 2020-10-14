@@ -58,7 +58,7 @@
                 </div>
               </b-tab>
 
-              <b-tab title="応援歌(作成中)">
+              <b-tab title="応援歌">
                 <div class="d-inline-flex flex-wrap">
                   <div v-for="song in templateState.templateSongs" :key="song.label" class="p-1">
                     <button
