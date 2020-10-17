@@ -28,6 +28,12 @@ const useMedia = () => {
       return;
     }
 
+    const newPictures = [...new Set([...mediaState.pictures, picture])];
+    if (mediaState.pictures.length + 1 !== newPictures.length) {
+      alert("同じ画像を使う事は出来ません。");
+      return;
+    }
+
     mediaState.pictures.push(picture);
   }
 
