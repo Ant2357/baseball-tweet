@@ -124,7 +124,7 @@
             <button
               type="button"
               class="btn btn-primary"
-              @click="newTweetTab(tweetState.tweet, mediaState.pictures)"
+              @click="newTweetTab(tweetState.tweet, mediaState.picturesUrl, mediaState.movieUrl)"
             >送信</button>
 
           </form>
@@ -173,8 +173,8 @@ export default defineComponent({
     /**
     *  新規タブで、ツイート画面を開く
     */
-    const newTweetTab = (text: string, pictures: { [s: string]: string }[]): void => {
-      const tweet = encodeURIComponent(`${text}${mediaState.picturesUrl} ${mediaState.movieUrl}`);
+    const newTweetTab = (text: string, picturesUrl: string, movieUrl: string): void => {
+      const tweet = encodeURIComponent(`${text}${picturesUrl} ${movieUrl}`);
 
       const homePageUrl = "https://ant2357.github.io/baseball-tweet/";
       window.open(`https://twitter.com/intent/tweet?url=${homePageUrl}&text=${tweet}`, "_blank");
