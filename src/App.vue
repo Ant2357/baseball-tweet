@@ -1,5 +1,6 @@
 <template>
   <div>
+    <v-header/>
     <div class="container my-3">
 
       <div class="card shadow">
@@ -152,11 +153,13 @@ import { useTemplate } from '@/composition/template.ts';
 import { useTweet } from '@/composition/tweet.ts';
 import { useMedia } from '@/composition/media.ts';
 
+import VHeader from '@/components/VHeader.vue';
 import VFooter from '@/components/VFooter.vue';
 
 export default defineComponent({
   components: {
     AnimatedNumber,
+    VHeader,
     VFooter
   },
   setup() {
