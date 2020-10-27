@@ -126,8 +126,9 @@
               type="button"
               class="btn btn-primary"
               @click="newTweetTab(tweetState.tweet, mediaState.picturesUrl, mediaState.movieUrl)"
-            >送信</button>
-
+            >
+              <font-awesome-icon :icon="['fab', 'twitter']" /> ツイート
+            </button>
           </form>
         </div>
       </div>
