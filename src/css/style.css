@@ -18,3 +18,9 @@ footer {
 .body-background {
   background-image: url("./../assets/img/agsquare.png")
 }
+
+@font-face {
+  font-family: "UndertaleFont";
+  src: url("./../assets/font/DeterminationJP.ttf") format("truetype");
+}
+.undertaleFont { font-family: "UndertaleFont"; }

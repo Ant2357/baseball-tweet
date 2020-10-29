@@ -1,6 +1,11 @@
 <template>
   <b-navbar toggleable="lg" type="dark" variant="dark">
-    <b-navbar-brand to="https://ant2357.github.io/baseball-tweet/">野球用画面</b-navbar-brand>
+
+    <b-navbar-brand to="https://ant2357.github.io/baseball-tweet/" class="mr-auto">
+      <img src="./../assets/img/logo.png" alt="Logo" class="align-middle mr-2">
+      <span class="align-middle undertaleFont">野球用ツイート画面</span> 
+    </b-navbar-brand>
+
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
