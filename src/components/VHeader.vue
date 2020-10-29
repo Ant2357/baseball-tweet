@@ -5,8 +5,8 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
-        <b-nav-item to="https://ant2357.github.io/ant-blog/#/posts">Antのブログらしきもの</b-nav-item>
-        <b-nav-item to="https://github.com/Ant2357">GitHub</b-nav-item>
+        <b-nav-item to="https://ant2357.github.io/ant-blog/#/posts"><font-awesome-icon :icon="['fas', 'blog']" /> Antのブログらしきもの</b-nav-item>
+        <b-nav-item to="https://github.com/Ant2357"><font-awesome-icon :icon="['fab', 'github']" /> GitHub</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
 
