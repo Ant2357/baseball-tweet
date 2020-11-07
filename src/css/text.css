@@ -54,4 +54,9 @@
   background-clip: text; -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.text-bs { color: #BBAD38; }
+.text-bs {
+  color: #BBAD38;
+  background: -webkit-linear-gradient(0deg, #BBAD38, #CBBD57);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
