@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="christmas-snow">
     <v-header/>
     <div class="container my-3">
 
@@ -144,6 +144,7 @@ import "@/css/style.css";
 import "@/css/text.css";
 import "@/css/checkbox.css";
 import "@/css/animate.min.css";
+import "@/css/christmas.css";
 
 // @ts-ignore
 import AnimatedNumber from "animated-number-vue";
