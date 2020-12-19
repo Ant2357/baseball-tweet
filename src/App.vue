@@ -180,9 +180,7 @@ export default defineComponent({
     */
     const newTweetTab = (text: string, picturesUrl: string, movieUrl: string): void => {
       const tweet = encodeURIComponent(`${text}${picturesUrl} ${movieUrl}`);
-
-      const homePageUrl = "https://ant2357.github.io/baseball-tweet/";
-      window.open(`https://twitter.com/intent/tweet?url=${homePageUrl}&text=${tweet}`, "_blank");
+      window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
     }
 
     const teamColor = (tagJpName: string): { [s: string]: boolean } => {
