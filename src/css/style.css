@@ -3,9 +3,10 @@ html {
   min-height: 100%;
 }
 
-/* body {
-  margin-bottom: 60px;
-} */
+body {
+  /* margin-bottom: 60px; */
+  font-family: "UndertaleFont";
+}
 
 /* .footer {
   position: absolute;
@@ -23,6 +24,11 @@ html {
   font-family: "UndertaleFont";
   src: url("./../assets/font/DeterminationJP.ttf") format("truetype");
 }
-.undertaleFont {
+
+.font-undertale {
   font-family: "UndertaleFont";
+}
+
+.font-helvetica {
+  font-family: "Helvetica";
 }

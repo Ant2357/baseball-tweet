@@ -80,7 +80,7 @@
                 :rows="tweetState.tweet.split(/\n/).length"
                 id="tweet-textarea"
                 name="text"
-                class="form-control"
+                class="form-control font-helvetica"
                 placeholder="ツイート本文"
               ></textarea>
 
