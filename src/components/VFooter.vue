@@ -1,5 +1,5 @@
 <template>
-  <footer class="christmas-footer">
+  <footer class="footer">
     <div class="text-right px-3">
       © 2020 <a href="https://twitter.com/ant2357">ant2357</a>
     </div>

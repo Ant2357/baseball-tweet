@@ -80,7 +80,7 @@
                 :rows="tweetState.tweet.split(/\n/).length"
                 id="tweet-textarea"
                 name="text"
-                class="form-control font-helvetica"
+                class="form-control"
                 placeholder="ツイート本文"
               ></textarea>
 
@@ -144,7 +144,6 @@ import "@/css/style.css";
 import "@/css/text.css";
 import "@/css/checkbox.css";
 import "@/css/animate.min.css";
-import "@/css/christmas.css";
 
 // @ts-ignore
 import AnimatedNumber from "animated-number-vue";
