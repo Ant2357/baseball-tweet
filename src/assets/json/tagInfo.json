@@ -1,14 +1,14 @@
 [
   { "name": "#giants", "jpName": "#読売巨人軍" },
-  { "name": "#baystars", "jpName": "#横浜DeNAベイスターズ" },
   { "name": "#tigers", "jpName": "#阪神タイガース" },
-  { "name": "#carp", "jpName": "#広島東洋カープ" },
   { "name": "#dragons", "jpName": "#中日ドラゴンズ" },
+  { "name": "#baystars", "jpName": "#横浜DeNAベイスターズ" },
+  { "name": "#carp", "jpName": "#広島東洋カープ" },
   { "name": "#swallows", "jpName": "#東京ヤクルトスワローズ" },
-  { "name": "#seibulions", "jpName": "#埼玉西武ライオンズ" },
   { "name": "#sbhawks", "jpName": "#福岡ソフトバンクホークス" },
-  { "name": "#rakuteneagles", "jpName": "#東北楽天ゴールデンイーグルス" },
   { "name": "#chibalotte", "jpName": "#千葉ロッテマリーンズ" },
+  { "name": "#seibulions", "jpName": "#埼玉西武ライオンズ" },
+  { "name": "#rakuteneagles", "jpName": "#東北楽天ゴールデンイーグルス" },
   { "name": "#lovefighters", "jpName": "#北海道日本ハムファイターズ" },
   { "name": "#bs2020", "jpName": "#オリックス・バファローズ" }
 ]
