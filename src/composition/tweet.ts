@@ -1,4 +1,4 @@
-import allTags from "@/assets/json/tagInfo.json";
+import allTags from "@/assets/json/hashtags.json";
 
 import { reactive, computed, watch, ComputedRef } from '@vue/composition-api';
 
