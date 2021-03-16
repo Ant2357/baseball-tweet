@@ -150,9 +150,9 @@ import AnimatedNumber from "animated-number-vue";
 
 import { defineComponent } from '@vue/composition-api';
 
-import { useTemplate } from '@/composition/template.ts';
-import { useTweet } from '@/composition/tweet.ts';
-import { useMedia } from '@/composition/media.ts';
+import { useTemplate } from '@/composition/template';
+import { useTweet } from '@/composition/tweet';
+import { useMedia } from '@/composition/media';
 
 import VHeader from '@/components/VHeader.vue';
 import VFooter from '@/components/VFooter.vue';
