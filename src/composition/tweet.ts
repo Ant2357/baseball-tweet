@@ -2,7 +2,19 @@ import allTags from "@/assets/json/hashtags.json";
 
 import { reactive, computed, watch, ComputedRef } from '@vue/composition-api';
 
-const useTweet = () => {
+type TweetState = {
+  tweet: string;
+  tweetMsg: string;
+  hashtags: string[];
+  allTags: { [x: string]: string; }[];
+}
+
+interface UseTweet {
+  tweetState: TweetState;
+  addTweetMsg: (addMsg: string) => void;
+}
+
+export const useTweet = (): UseTweet => {
   const tweetState = reactive<{
       tweet: string;
       tweetMsg: ComputedRef<string>;
@@ -43,5 +55,3 @@ const useTweet = () => {
     addTweetMsg
   }
 };
-
-export { useTweet };

@@ -1,6 +1,21 @@
 import { reactive, computed, ComputedRef } from '@vue/composition-api';
 
-const useMedia = () => {
+type MediaState = {
+  pictures: { [x: string]: string; }[];
+  picturesUrl: string;
+  movieObject: { [x: string]: string; };
+  movieUrl: string;
+}
+
+interface UseMedia {
+  mediaState: MediaState,
+  pushTweetPicture: (picture: { [s: string]: string; }) => void;
+  removePicture: (index: number) => void;
+  setMovie: (movieObject: { [x: string]: string; }) => void;
+  removeMovie: () => void;
+}
+
+export const useMedia = (): UseMedia => {
   const mediaState = reactive<{
       pictures: { [s: string]: string }[];
       picturesUrl: ComputedRef<string>;
@@ -64,5 +79,3 @@ const useMedia = () => {
     removeMovie
   };
 };
-
-export { useMedia };
