@@ -11,7 +11,7 @@ type TweetState = {
 
 interface UseTweet {
   tweetState: TweetState;
-  addTweetMsg: (addMsg: string) => void;
+  updateTweet: (msg: string, hashtags: string[]) => void;
 }
 
 export const useTweet = (): UseTweet => {
@@ -38,10 +38,6 @@ export const useTweet = (): UseTweet => {
     tweetState.tweet = `${msg}\n${hashtags.join("\n")}`;
   }
 
-  const addTweetMsg = (addMsg: string): void => {
-    updateTweet(tweetState.tweetMsg + addMsg, tweetState.hashtags);
-  }
-
   watch(
     () => tweetState.hashtags,
     hashtags => {
@@ -52,6 +48,6 @@ export const useTweet = (): UseTweet => {
 
   return {
     tweetState,
-    addTweetMsg
+    updateTweet
   }
 };

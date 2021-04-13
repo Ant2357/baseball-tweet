@@ -30,7 +30,7 @@
                     <button
                       type="button"
                       class="btn btn-sm btn-outline-secondary animated jackInTheBox"
-                      @click="addTweetMsg(t.msg)"
+                      @click="updateTweet(tweetState.tweetMsg + t.msg, tweetState.hashtags)"
                     >{{ t.label }}</button>
                   </div>
                 </div>
@@ -169,7 +169,7 @@ export default defineComponent({
     const { templateState } = useTemplate();
 
     // ツイート関連の機能
-    const { tweetState, addTweetMsg } = useTweet();
+    const { tweetState,  updateTweet} = useTweet();
 
     // メディア(画像 or 動画)関連の機能
     const { mediaState, pushTweetPicture, removePicture, setMovie, removeMovie } = useMedia();
@@ -207,7 +207,7 @@ export default defineComponent({
       // Function
       newTweetTab,
       teamColor,
-      addTweetMsg,
+      updateTweet,
       pushTweetPicture,
       removePicture,
       setMovie,
