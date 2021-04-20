@@ -8,7 +8,7 @@
           <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
             <h5 class="card-title">野球実況用ツイート画面</h5>
 
-            <div v-for="tag in tweetState.allTags" :key="tag.name" class="form-check">
+            <div v-for="tag in templateState.templateHashtags" :key="tag.name" class="form-check">
               <input
                 type="checkbox"
                 :id="tag.name"
@@ -165,7 +165,7 @@ export default defineComponent({
   },
   setup() {
 
-    // テンプレート一覧(AA, AA画像, 応援歌一覧)
+    // テンプレート一覧(AA, AA画像, 応援歌一覧, ハッシュタグ一覧)
     const { templateState } = useTemplate();
 
     // ツイート関連の機能
