@@ -1,5 +1,4 @@
 import { reactive, computed, watch, ComputedRef } from '@vue/composition-api';
-import allHashtags from "@/assets/json/hashtags.json";
 
 type TweetState = {
   tweet: string;
@@ -20,13 +19,10 @@ export const useTweet = (): UseTweet => {
     }>({
       tweet: "",
       // ツイートの本文部分(ハッシュタグは含まない)
-      tweetMsg: computed((): string => {
-        const tagNames: string[] = allHashtags.slice().map(tag => tag.name);
-        // ハッシュタグを除去
-        return tagNames
-          .reduce((acc, tagName) => acc.split(tagName).join(""), tweetState.tweet.slice())
-          .trim();
-      }),
+      tweetMsg: computed((): string => tweetState.tweet
+        .replace(/#[\w\d&]+/g, "")
+        .trim()
+      ),
       hashtags: []
     });
 
