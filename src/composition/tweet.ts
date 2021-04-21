@@ -20,7 +20,7 @@ export const useTweet = (): UseTweet => {
       tweet: "",
       // ツイートの本文部分(ハッシュタグは含まない)
       tweetMsg: computed((): string => tweetState.tweet
-        .replace(/#[\w\d&]+|#[亜-熙ぁ-んァ-ヶー]+/g, "")
+        .replace(/#.*/g, "")
         .trim()
       ),
       hashtags: []
