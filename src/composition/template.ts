@@ -1,31 +1,28 @@
 import { reactive } from '@vue/composition-api';
 
-import templateMsgs from "@/assets/json/templateMsgs.json";
-import templateImgs from "@/assets/json/templateImgs.json";
-import templateSongs from "@/assets/json/templateSongs.json";
+import msgs from "@/assets/json/msgs.json";
+import imgs from "@/assets/json/imgs.json";
+import songs from "@/assets/json/songs.json";
 
-import allHashtags from "@/assets/json/hashtags.json";
+import hashtags from "@/assets/json/hashtags.json";
+
+type TemplateState = {
+  msgs: { [x: string]: string; }[];
+  imgs: { [x: string]: string; }[];
+  songs: { [x: string]: string; }[];
+  hashtags: { [x: string]: string; }[];
+}
 
 interface UseTemplate {
-  templateState: {
-    templateMsgs: { [x: string]: string; }[];
-    templateImgs: { [x: string]: string; }[];
-    templateSongs: { [x: string]: string; }[];
-    templateHashtags: { [x: string]: string; }[];
-  };
+  templateState: TemplateState
 }
 
 export const useTemplate = (): UseTemplate => {
-  const templateState = reactive<{
-      templateMsgs: { [s: string]: string }[];
-      templateImgs: { [s: string]: string }[];
-      templateSongs: { [s: string]: string }[];
-      templateHashtags: { [x: string]: string; }[];
-    }>({
-      templateMsgs: templateMsgs,
-      templateImgs: templateImgs,
-      templateSongs: templateSongs,
-      templateHashtags: allHashtags
+  const templateState = reactive<TemplateState>({
+      msgs: msgs,
+      imgs: imgs,
+      songs: songs,
+      hashtags: hashtags
     });
 
   return {

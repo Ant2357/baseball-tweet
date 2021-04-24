@@ -8,7 +8,7 @@
           <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
             <h5 class="card-title">野球実況用ツイート画面</h5>
 
-            <div v-for="tag in templateState.templateHashtags" :key="tag.name" class="form-check">
+            <div v-for="tag in templateState.hashtags" :key="tag.name" class="form-check">
               <input
                 type="checkbox"
                 :id="tag.name"
@@ -26,7 +26,7 @@
             <b-tabs content-class="mt-2" class="mt-3">
               <b-tab title="AA" active>
                 <div class="d-inline-flex flex-wrap">
-                  <div v-for="t in templateState.templateMsgs" :key="t.label" class="p-1">
+                  <div v-for="t in templateState.msgs" :key="t.label" class="p-1">
                     <button
                       type="button"
                       class="btn btn-sm btn-outline-secondary animated jackInTheBox"
@@ -40,7 +40,7 @@
                 <div class="container">
                   <div class="row">
 
-                    <div v-for="t in templateState.templateImgs" :key="t.label" class="col-12 col-md-3 p-1">
+                    <div v-for="t in templateState.imgs" :key="t.label" class="col-12 col-md-3 p-1">
                       <div class="card h-100 text-center">
                         <img class="card-img-top img-fluid" :src="t.url">
                         <div class="card-body">
@@ -61,7 +61,7 @@
 
               <b-tab title="応援歌">
                 <div class="d-inline-flex flex-wrap">
-                  <div v-for="song in templateState.templateSongs" :key="song.label" class="p-1">
+                  <div v-for="song in templateState.songs" :key="song.label" class="p-1">
                     <button
                       type="button"
                       class="btn btn-sm btn-outline-secondary animated jackInTheBox"
