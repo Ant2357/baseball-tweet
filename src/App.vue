@@ -1,5 +1,5 @@
 <template>
-  <div class="christmas-snow">
+  <div>
     <v-header/>
     <div class="container my-3">
 
