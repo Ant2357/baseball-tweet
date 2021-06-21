@@ -12,26 +12,26 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/vue-fontawesome": "^2.0.2",
-    "@vue/composition-api": "^1.0.0-rc.11",
+    "@vue/composition-api": "^1.0.0-rc.12",
     "animated-number-vue": "^1.0.0",
     "bootstrap-vue": "^2.21.2",
-    "core-js": "^3.14.0",
+    "core-js": "^3.15.0",
     "eslint-loader": "^4.0.2",
     "vue": "^2.6.14",
     "vue-class-component": "^7.2.6",
     "vue-property-decorator": "^9.1.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.26.1",
-    "@typescript-eslint/parser": "^4.26.1",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-eslint": "^4.5.13",
     "@vue/cli-plugin-typescript": "^4.5.13",
     "@vue/cli-service": "^4.5.13",
     "@vue/eslint-config-typescript": "^7.0.0",
-    "eslint": "^7.28.0",
-    "eslint-plugin-vue": "^7.10.0",
-    "typescript": "^4.3.2",
+    "eslint": "^7.29.0",
+    "eslint-plugin-vue": "^7.11.1",
+    "typescript": "^4.3.4",
     "vue-template-compiler": "^2.6.14"
   }
 }
