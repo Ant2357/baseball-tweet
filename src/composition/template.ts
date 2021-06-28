@@ -1,4 +1,4 @@
-import { reactive } from '@vue/composition-api';
+import { reactive } from 'vue';
 
 import msgs from "@/assets/json/msgs.json";
 import imgs from "@/assets/json/imgs.json";

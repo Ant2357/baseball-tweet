@@ -1,4 +1,4 @@
-import { reactive, computed, ComputedRef } from '@vue/composition-api';
+import { reactive, computed, ComputedRef } from 'vue';
 
 type MediaState = {
   pictures: { [x: string]: string; }[];

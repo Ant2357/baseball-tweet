@@ -1,8 +1,5 @@
 # baseball-tweet
 
-## Web page
-[野球用ツイート画面(Webページ)](https://ant2357.github.io/baseball-tweet/ "野球用ツイート画面(Webページ)")
-
 ## Project setup
 ```
 npm install

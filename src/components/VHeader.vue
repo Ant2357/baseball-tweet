@@ -19,9 +19,6 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-
-@Component
-export default class VFooter extends Vue {
-}
+import { defineComponent } from 'vue'
+export default defineComponent({});
 </script>

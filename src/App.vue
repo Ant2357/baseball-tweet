@@ -114,12 +114,7 @@
             </div>
 
             <p :class="{ 'text-danger': tweetState.tweet.length > 280 }">
-              <span>文字数:</span>
-              <animated-number
-                :value="tweetState.tweet.length"
-                :round="true"
-                :duration="500"
-              />
+              <span>文字数: {{ tweetState.tweet.length }}</span>
             </p>
 
             <button
@@ -145,10 +140,7 @@ import "@/css/text.css";
 import "@/css/checkbox.css";
 import "@/css/animate.min.css";
 
-// @ts-ignore
-import AnimatedNumber from "animated-number-vue";
-
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 
 import { useTemplate } from '@/composition/template';
 import { useTweet } from '@/composition/tweet';
@@ -159,7 +151,6 @@ import VFooter from '@/components/VFooter.vue';
 
 export default defineComponent({
   components: {
-    AnimatedNumber,
     VHeader,
     VFooter
   },
