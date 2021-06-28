@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-header/>
+    <the-header/>
     <div class="container my-3">
 
       <div class="card shadow">
@@ -134,7 +134,7 @@
 </template>
 
 <script lang="ts">
-import "@/css/bootstrap.min.css";
+import 'bulma/css/bulma.css';
 import "@/css/style.css";
 import "@/css/text.css";
 import "@/css/checkbox.css";
@@ -146,12 +146,12 @@ import { useTemplate } from '@/composition/template';
 import { useTweet } from '@/composition/tweet';
 import { useMedia } from '@/composition/media';
 
-import VHeader from '@/components/VHeader.vue';
+import TheHeader from '@/components/TheHeader.vue';
 import VFooter from '@/components/VFooter.vue';
 
 export default defineComponent({
   components: {
-    VHeader,
+    TheHeader,
     VFooter
   },
   setup() {
