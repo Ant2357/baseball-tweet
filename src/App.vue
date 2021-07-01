@@ -129,7 +129,7 @@
       </div>
     </div>
 
-    <v-footer/>
+    <the-footer/>
   </div>
 </template>
 
@@ -147,12 +147,12 @@ import { useTweet } from '@/composition/tweet';
 import { useMedia } from '@/composition/media';
 
 import TheHeader from '@/components/TheHeader.vue';
-import VFooter from '@/components/VFooter.vue';
+import TheFooter from '@/components/TheFooter.vue';
 
 export default defineComponent({
   components: {
     TheHeader,
-    VFooter
+    TheFooter
   },
   setup() {
 
@@ -206,5 +206,4 @@ export default defineComponent({
     };
   }
 });
-
 </script>
