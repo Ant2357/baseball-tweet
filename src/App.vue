@@ -1,9 +1,30 @@
 <template>
   <div>
     <the-header/>
-    <div class="container my-3">
+    <div class="container is-fluid my-3">
+      <div class="card">
+        <div class="card-content">
+          <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
+            <span class="title is-5 font-nicomoji">ハッシュタグ一覧</span>
+            <div v-for="tag in templateState.hashtags" :key="tag.name" class="field mb-0">
+              <input
+                type="checkbox"
+                :id="tag.name"
+                :value="tag.name"
+                v-model="tweetState.hashtags"
+                class="is-checkradio"
+              />
+              <label
+                :for="tag.name"
+                class="font-nicomoji"
+                :class="teamColor(tag.jpName)"
+              >{{ tag.jpName }}</label>
+            </div>
+          </form>
+        </div>
+      </div>
 
-      <div class="card shadow">
+      <div class="card has-shadow">
         <div class="card-body">
           <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
             <h5 class="card-title">野球実況用ツイート画面</h5>
