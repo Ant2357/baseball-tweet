@@ -17,20 +17,20 @@ interface UseMedia {
 
 export const useMedia = (): UseMedia => {
   const mediaState = reactive<{
-      pictures: { [s: string]: string }[];
-      picturesUrl: ComputedRef<string>;
-      movieObject: { [s: string]: string };
-      movieUrl: ComputedRef<string>;
-    }>({
-      // 画像情報
-      pictures: [],
-      // 画像URL
-      picturesUrl: computed((): string => mediaState.pictures.reduce((acc, p) => `${acc} ${p.msg}`, "")),
-      // 動画情報
-      movieObject: {},
-      // 動画URL
-      movieUrl: computed((): string => "url" in mediaState.movieObject ? mediaState.movieObject.url : "")
-    });
+    pictures: { [s: string]: string }[];
+    picturesUrl: ComputedRef<string>;
+    movieObject: { [s: string]: string };
+    movieUrl: ComputedRef<string>;
+  }>({
+    // 画像情報
+    pictures: [],
+    // 画像URL
+    picturesUrl: computed((): string => mediaState.pictures.reduce((acc, p) => `${acc} ${p.msg}`, "")),
+    // 動画情報
+    movieObject: {},
+    // 動画URL
+    movieUrl: computed((): string => "url" in mediaState.movieObject ? mediaState.movieObject.url : "")
+  });
 
   const pushTweetPicture = (picture: { [s: string]: string }): void => {
     if (mediaState.pictures.length >= 4) {

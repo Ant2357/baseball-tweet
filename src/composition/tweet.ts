@@ -15,21 +15,21 @@ interface UseTweet {
 
 export const useTweet = (): UseTweet => {
   const tweetState = reactive<{
-      tweet: string;
-      tweetMsg: ComputedRef<string>;
-      hashtags: string[];
-    }>({
-      tweet: "",
-      // ツイートの本文部分(hashtags.json内にあるハッシュタグは含まない)
-      tweetMsg: computed((): string => {
-        const tagNames: string[] = allHashtags.slice().map(tag => tag.name);
-        // ハッシュタグを除去
-        return tagNames
-          .reduce((acc, tagName) => acc.split(tagName).join(""), tweetState.tweet.slice())
-          .trim();
-      }),
-      hashtags: []
-    });
+    tweet: string;
+    tweetMsg: ComputedRef<string>;
+    hashtags: string[];
+  }>({
+    tweet: "",
+    // ツイートの本文部分(hashtags.json内にあるハッシュタグは含まない)
+    tweetMsg: computed((): string => {
+      const tagNames: string[] = allHashtags.slice().map(tag => tag.name);
+      // ハッシュタグを除去
+      return tagNames
+        .reduce((acc, tagName) => acc.split(tagName).join(""), tweetState.tweet.slice())
+        .trim();
+    }),
+    hashtags: []
+  });
 
   const updateTweet = (msg: string, hashtags: string[]): void => {
     tweetState.tweet = `${msg}\n${hashtags.join("\n")}`;

@@ -19,11 +19,11 @@ interface UseTemplate {
 
 export const useTemplate = (): UseTemplate => {
   const templateState = reactive<TemplateState>({
-      msgs: msgs,
-      imgs: imgs,
-      songs: songs,
-      hashtags: hashtags
-    });
+    msgs: msgs,
+    imgs: imgs,
+    songs: songs,
+    hashtags: hashtags
+  });
 
   return {
     templateState
