@@ -1,52 +1,75 @@
 <template>
   <div>
     <the-header/>
-    <div class="container is-fluid my-3">
-      <div class="card">
-        <div class="card-content">
-          <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
+    <div class="container is-fluid my-3 px-4">
+      <div class="columns">
+        <div class="column is-three-fifths is-offset-one-fifth">
 
-            <span class="title is-5 font-nicomoji">ハッシュタグ一覧</span>
-            <div class="mb-4">
-              <div v-for="tag in templateState.hashtags" :key="tag.name" class="field mb-0">
-                <input
-                  type="checkbox"
-                  :id="tag.name"
-                  :value="tag.name"
-                  v-model="tweetState.hashtags"
-                  class="is-checkradio"
-                />
-                <label
-                  :for="tag.name"
-                  class="font-nicomoji"
-                  :class="teamColor(tag.jpName)"
-                >{{ tag.jpName }}</label>
-              </div>
-            </div>
+          <div class="card">
+            <div class="card-content">
+              <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
 
-            <div class="tabs is-boxed">
-              <ul>
-                <li :class="{ 'is-active': appState.activeTab === 'aa' }"><a @click="appState.activeTab = 'aa'">AA</a></li>
-                <li :class="{ 'is-active': appState.activeTab === 'pictures' }"><a @click="appState.activeTab = 'pictures'">画像AA</a></li>
-                <li :class="{ 'is-active': appState.activeTab === 'songs' }"><a @click="appState.activeTab = 'songs'">応援歌</a></li>
-              </ul>
-            </div>
-            <div class="tab-contents">
-              <div class="content" :class="{ 'is-active': appState.activeTab === 'aa' }">
-                AA 
-              </div>
-              <div class="content" :class="{ 'is-active': appState.activeTab === 'pictures' }">
-                Picture
-              </div>
-              <div class="content" :class="{ 'is-active': appState.activeTab === 'songs' }">
-                Music
-              </div>
-            </div>
+                <span class="title is-5 font-nicomoji">ハッシュタグ一覧</span>
+                <div class="mb-4">
+                  <div v-for="tag in templateState.hashtags" :key="tag.name" class="field mb-0">
+                    <input
+                      type="checkbox"
+                      :id="tag.name"
+                      :value="tag.name"
+                      v-model="tweetState.hashtags"
+                      class="is-checkradio"
+                    />
+                    <label
+                      :for="tag.name"
+                      class="font-nicomoji"
+                      :class="teamColor(tag.jpName)"
+                    >{{ tag.jpName }}</label>
+                  </div>
+                </div>
 
-          </form>
+                <div class="tabs is-boxed">
+                  <ul>
+                    <li :class="{ 'is-active': appState.activeTab === 'aa' }"><a @click="appState.activeTab = 'aa'">AA</a></li>
+                    <li :class="{ 'is-active': appState.activeTab === 'pictures' }"><a @click="appState.activeTab = 'pictures'">画像AA</a></li>
+                    <li :class="{ 'is-active': appState.activeTab === 'songs' }"><a @click="appState.activeTab = 'songs'">応援歌</a></li>
+                  </ul>
+                </div>
+                <div class="tab-contents">
+                  <div class="content" :class="{ 'is-active': appState.activeTab === 'aa' }">
+
+                    <div class="buttons">
+                      <button
+                        v-for="t in templateState.msgs" :key="t.label"
+                        type="button"
+                        class="button is-small"
+                        @click="updateTweet(tweetState.tweetMsg + t.msg, tweetState.hashtags)"
+                      >{{ t.label }}</button>
+                    </div>
+
+                  </div>
+
+                  <div class="content" :class="{ 'is-active': appState.activeTab === 'pictures' }">
+                    Picture
+                  </div>
+
+                  <div class="content" :class="{ 'is-active': appState.activeTab === 'songs' }">
+                    <div class="buttons">
+                      <button
+                        v-for="song in templateState.songs" :key="song.label"
+                        type="button"
+                        class="button is-small"
+                        @click="setMovie(song)"
+                      >{{ song.label }}</button>
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
         </div>
       </div>
-
 
 
       <div class="card has-shadow">
