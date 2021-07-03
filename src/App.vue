@@ -5,24 +5,49 @@
       <div class="card">
         <div class="card-content">
           <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
+
             <span class="title is-5 font-nicomoji">ハッシュタグ一覧</span>
-            <div v-for="tag in templateState.hashtags" :key="tag.name" class="field mb-0">
-              <input
-                type="checkbox"
-                :id="tag.name"
-                :value="tag.name"
-                v-model="tweetState.hashtags"
-                class="is-checkradio"
-              />
-              <label
-                :for="tag.name"
-                class="font-nicomoji"
-                :class="teamColor(tag.jpName)"
-              >{{ tag.jpName }}</label>
+            <div class="mb-4">
+              <div v-for="tag in templateState.hashtags" :key="tag.name" class="field mb-0">
+                <input
+                  type="checkbox"
+                  :id="tag.name"
+                  :value="tag.name"
+                  v-model="tweetState.hashtags"
+                  class="is-checkradio"
+                />
+                <label
+                  :for="tag.name"
+                  class="font-nicomoji"
+                  :class="teamColor(tag.jpName)"
+                >{{ tag.jpName }}</label>
+              </div>
             </div>
+
+            <div class="tabs is-boxed">
+              <ul>
+                <li :class="{ 'is-active': appState.activeTab === 'aa' }"><a @click="appState.activeTab = 'aa'">AA</a></li>
+                <li :class="{ 'is-active': appState.activeTab === 'pictures' }"><a @click="appState.activeTab = 'pictures'">画像AA</a></li>
+                <li :class="{ 'is-active': appState.activeTab === 'songs' }"><a @click="appState.activeTab = 'songs'">応援歌</a></li>
+              </ul>
+            </div>
+            <div class="tab-contents">
+              <div class="content" :class="{ 'is-active': appState.activeTab === 'aa' }">
+                AA 
+              </div>
+              <div class="content" :class="{ 'is-active': appState.activeTab === 'pictures' }">
+                Picture
+              </div>
+              <div class="content" :class="{ 'is-active': appState.activeTab === 'songs' }">
+                Music
+              </div>
+            </div>
+
           </form>
         </div>
       </div>
+
+
 
       <div class="card has-shadow">
         <div class="card-body">
@@ -161,7 +186,7 @@ import "@/css/text.css";
 import "@/css/checkbox.css";
 import "@/css/animate.min.css";
 
-import { defineComponent } from 'vue';
+import { defineComponent, reactive } from 'vue';
 
 import { useTemplate } from '@/composition/template';
 import { useTweet } from '@/composition/tweet';
@@ -176,6 +201,12 @@ export default defineComponent({
     TheFooter
   },
   setup() {
+
+    const appState = reactive<{
+      activeTab: string
+    }>({
+      activeTab: "aa"
+    });
 
     // テンプレート一覧(AA, AA画像, 応援歌一覧, ハッシュタグ一覧)
     const { templateState } = useTemplate();
@@ -213,6 +244,7 @@ export default defineComponent({
 
     return {
       // State
+      appState,
       templateState,
       tweetState,
       mediaState,
@@ -228,3 +260,12 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+.tab-contents .content {
+  display: none;
+}
+.tab-contents .content.is-active {
+  display: block;
+}
+</style>
