@@ -3,7 +3,7 @@
     <the-header/>
     <div class="container is-fluid my-3 px-4">
       <div class="columns">
-        <div class="column is-three-fifths is-offset-one-fifth">
+        <div class="column is-10 is-offset-1">
 
           <div class="card">
             <div class="card-content">
@@ -43,13 +43,37 @@
                         type="button"
                         class="button is-small"
                         @click="updateTweet(tweetState.tweetMsg + t.msg, tweetState.hashtags)"
-                      >{{ t.label }}</button>
+                      >
+                        {{ t.label }}
+                      </button>
                     </div>
 
                   </div>
 
                   <div class="content" :class="{ 'is-active': appState.activeTab === 'pictures' }">
-                    Picture
+                    <div class="columns is-multiline is-variable is-1">
+
+                      <div v-for="t in templateState.imgs" :key="t.label" class="column is-3">
+
+                        <div class="card">
+                          <div class="card-image">
+                            <img class="image" :src="t.url">
+                          </div>
+                          
+                          <div class="card-content has-text-centered">
+                            <button
+                              type="button"
+                              class="button-outline"
+                              @click="pushTweetPicture(t)"
+                            >
+                              {{ t.label }}を追加
+                            </button>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
                   </div>
 
                   <div class="content" :class="{ 'is-active': appState.activeTab === 'songs' }">
@@ -290,5 +314,35 @@ export default defineComponent({
 }
 .tab-contents .content.is-active {
   display: block;
+}
+
+.button-outline {
+  cursor: pointer;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid #dbdbdb;
+  padding: .375rem .75rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+}
+.button-outline:hover {
+  border-color: #b5b5b5;
+  color: #363636;
+}
+.button-outline:active {
+  border-color: #4a4a4a;
+  color: #363636;
+}
+.button-outline:focus {
+  border-color: #485fc7;
+  color: #363636;
+  box-shadow: 0 0 0 0.125em rgb(72 95 199 / 25%);
 }
 </style>
