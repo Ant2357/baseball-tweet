@@ -55,7 +55,7 @@
 
                       <div v-for="t in templateState.imgs" :key="t.label" class="column is-3">
 
-                        <div class="card">
+                        <div class="card h-100">
                           <div class="card-image">
                             <img class="image" :src="t.url">
                           </div>
@@ -230,6 +230,8 @@
 import 'bulma/css/bulma.css';
 import "@/css/style.css";
 import "@/css/text.css";
+import "@/css/tabs.css";
+import "@/css/button.css";
 import "@/css/checkbox.css";
 import "@/css/animate.min.css";
 
@@ -307,42 +309,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped>
-.tab-contents .content {
-  display: none;
-}
-.tab-contents .content.is-active {
-  display: block;
-}
-
-.button-outline {
-  cursor: pointer;
-  color: #212529;
-  text-align: center;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: transparent;
-  border: 1px solid #dbdbdb;
-  padding: .375rem .75rem;
-  font-size: 0.75rem;
-  line-height: 1.5;
-  border-radius: .25rem;
-}
-.button-outline:hover {
-  border-color: #b5b5b5;
-  color: #363636;
-}
-.button-outline:active {
-  border-color: #4a4a4a;
-  color: #363636;
-}
-.button-outline:focus {
-  border-color: #485fc7;
-  color: #363636;
-  box-shadow: 0 0 0 0.125em rgb(72 95 199 / 25%);
-}
-</style>
