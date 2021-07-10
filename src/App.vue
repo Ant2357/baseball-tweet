@@ -127,6 +127,14 @@
                   <span>文字数: {{ tweetState.tweet.length }}</span>
                 </p>
 
+              <button
+                type="button"
+                class="button is-info"
+                @click="newTweetTab(tweetState.tweet, mediaState.picturesUrl, mediaState.movieUrl)"
+              >
+                <font-awesome-icon :icon="['fab', 'twitter']" /><span class="ml-1">ツイート</span>
+              </button>
+
               </form>
             </div>
           </div>
