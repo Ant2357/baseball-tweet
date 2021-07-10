@@ -27,3 +27,14 @@
   color: #363636;
   box-shadow: 0 0 0 0.125em rgb(72 95 199 / 25%);
 }
+
+.button-danger {
+  background-color: transparent;
+  border-color: #f14668;
+  color: #f14668;
+}
+.button-danger:hover, .button-danger:focus {
+  background-color: #f14668;
+  border-color: #f14668;
+  color: #fff;
+}

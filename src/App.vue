@@ -59,7 +59,7 @@
                           <div class="card-image">
                             <img class="image" :src="t.url">
                           </div>
-                          
+
                           <div class="card-content has-text-centered">
                             <button
                               type="button"
@@ -68,7 +68,6 @@
                             >
                               {{ t.label }}を追加
                             </button>
-
                           </div>
                         </div>
 
@@ -99,6 +98,28 @@
                       class="textarea"
                       placeholder="ツイート本文"
                     ></textarea>
+                  </div>
+                </div>
+
+                <div class="columns is-multiline is-variable is-1">
+                  <div v-for="(picture, index) in mediaState.pictures" :key="index" class="column is-3">
+
+                    <div class="card h-100">
+                      <div class="card-image">
+                        <img class="image" :src="picture.url">
+                      </div>
+                      
+                      <div class="card-content has-text-centered">
+                        <button
+                          type="button"
+                          class="button-outline button-danger"
+                          @click="removePicture(index)"
+                        >
+                          {{ picture.label }}を削除
+                        </button>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
 
