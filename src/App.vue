@@ -88,6 +88,24 @@
                   </div>
                 </div>
 
+                <div class="field">
+                  <label for="tweet-textarea" class="label">本文</label>
+                  <div class="control">
+                    <textarea
+                      v-model="tweetState.tweet"
+                      :rows="tweetState.tweet.split(/\n/).length"
+                      id="tweet-textarea"
+                      name="text"
+                      class="textarea"
+                      placeholder="ツイート本文"
+                    ></textarea>
+                  </div>
+                </div>
+
+                <p :class="{ 'has-text-danger': tweetState.tweet.length > 280 }">
+                  <span>文字数: {{ tweetState.tweet.length }}</span>
+                </p>
+
               </form>
             </div>
           </div>
@@ -167,7 +185,7 @@
             </b-tabs>
 
             <div class="form-group mt-2 p-2">
-              <label for="tweet-textarea">本文</label>
+              <!-- <label for="tweet-textarea">本文</label>
               <textarea
                 v-model="tweetState.tweet"
                 :rows="tweetState.tweet.split(/\n/).length"
@@ -175,7 +193,7 @@
                 name="text"
                 class="form-control"
                 placeholder="ツイート本文"
-              ></textarea>
+              ></textarea> -->
 
               <div class="container">
                 <div class="row">
