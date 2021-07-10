@@ -123,9 +123,11 @@
                   </div>
                 </div>
 
-                <p :class="{ 'has-text-danger': tweetState.tweet.length > 280 }">
-                  <span>文字数: {{ tweetState.tweet.length }}</span>
-                </p>
+                <div class="field mt-4">
+                  <p :class="{ 'has-text-danger': tweetState.tweet.length > 280 }">
+                    <span>文字数: {{ tweetState.tweet.length }}</span>
+                  </p>
+                </div>
 
               <button
                 type="button"
