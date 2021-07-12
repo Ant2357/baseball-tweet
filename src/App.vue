@@ -123,6 +123,19 @@
                   </div>
                 </div>
 
+                <div class="field">
+                  <div class="control">
+                    <button
+                      v-if="Object.keys(mediaState.movieObject).length !== 0"
+                      type="button"
+                      class="button-outline button-danger mt-2"
+                      @click="removeMovie"
+                    >
+                      応援歌『{{ mediaState.movieObject.label }}』を削除
+                    </button>
+                  </div>
+                </div>
+
                 <div class="field mt-4">
                   <p :class="{ 'has-text-danger': tweetState.tweet.length > 280 }">
                     <span>文字数: {{ tweetState.tweet.length }}</span>
