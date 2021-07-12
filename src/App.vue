@@ -151,18 +151,18 @@
 
 <script lang="ts">
 import 'bulma/css/bulma.css';
-import "@/css/style.css";
-import "@/css/text.css";
-import "@/css/tabs.css";
-import "@/css/button.css";
-import "@/css/checkbox.css";
-import "@/css/animate.min.css";
+import "@/assets/css/style.css";
+import "@/assets/css/text.css";
+import "@/assets/css/tabs.css";
+import "@/assets/css/button.css";
+import "@/assets/css/checkbox.css";
+import "@/assets/css/animate.min.css";
 
 import { defineComponent, reactive } from 'vue';
 
-import { useTemplate } from '@/composition/template';
-import { useTweet } from '@/composition/tweet';
-import { useMedia } from '@/composition/media';
+import { useTemplate } from '@/compositions/template';
+import { useTweet } from '@/compositions/tweet';
+import { useMedia } from '@/compositions/media';
 
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';

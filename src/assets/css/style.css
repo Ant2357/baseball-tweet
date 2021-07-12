@@ -12,12 +12,12 @@
 
 @font-face {
   font-family: "UndertaleFont";
-  src: url("./../assets/font/DeterminationJP.ttf") format("truetype");
+  src: url("../font/DeterminationJP.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "NicomojiFont";
-  src: url("./../assets/font/nicomoji-plus_1.11.ttf") format("truetype");
+  src: url("../font/nicomoji-plus_1.11.ttf") format("truetype");
 }
 
 .font-undertale {
