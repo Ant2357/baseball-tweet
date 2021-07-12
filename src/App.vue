@@ -10,7 +10,7 @@
               <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
 
                 <span class="title is-5 font-nicomoji">ハッシュタグ一覧</span>
-                <div class="mb-4">
+                <div class="mb-3">
                   <div v-for="tag in templateState.hashtags" :key="tag.name" class="field mb-0">
                     <input
                       type="checkbox"
@@ -27,62 +27,67 @@
                   </div>
                 </div>
 
-                <div class="tabs is-boxed">
-                  <ul>
-                    <li :class="{ 'is-active': appState.activeTab === 'aa' }"><a @click="appState.activeTab = 'aa'">AA</a></li>
-                    <li :class="{ 'is-active': appState.activeTab === 'pictures' }"><a @click="appState.activeTab = 'pictures'">画像AA</a></li>
-                    <li :class="{ 'is-active': appState.activeTab === 'songs' }"><a @click="appState.activeTab = 'songs'">応援歌</a></li>
-                  </ul>
-                </div>
-                <div class="tab-contents">
-                  <div class="content" :class="{ 'is-active': appState.activeTab === 'aa' }">
 
-                    <div class="buttons">
-                      <button
-                        v-for="t in templateState.msgs" :key="t.label"
-                        type="button"
-                        class="button is-small"
-                        @click="updateTweet(tweetState.tweetMsg + t.msg, tweetState.hashtags)"
-                      >
-                        {{ t.label }}
-                      </button>
+                <div class="field">
+                  <div class="tabs is-boxed">
+                    <ul>
+                      <li :class="{ 'is-active': appState.activeTab === 'aa' }"><a @click="appState.activeTab = 'aa'">AA</a></li>
+                      <li :class="{ 'is-active': appState.activeTab === 'pictures' }"><a @click="appState.activeTab = 'pictures'">画像AA</a></li>
+                      <li :class="{ 'is-active': appState.activeTab === 'songs' }"><a @click="appState.activeTab = 'songs'">応援歌</a></li>
+                    </ul>
+                  </div>
+                  <div class="tab-contents">
+                    <div class="content" :class="{ 'is-active': appState.activeTab === 'aa' }">
+
+                      <div class="buttons">
+                        <button
+                          v-for="t in templateState.msgs" :key="t.label"
+                          type="button"
+                          class="button is-small"
+                          @click="updateTweet(tweetState.tweetMsg + t.msg, tweetState.hashtags)"
+                        >
+                          {{ t.label }}
+                        </button>
+                      </div>
+
                     </div>
 
-                  </div>
+                    <div class="content" :class="{ 'is-active': appState.activeTab === 'pictures' }">
+                      <div class="columns is-multiline is-variable is-1">
 
-                  <div class="content" :class="{ 'is-active': appState.activeTab === 'pictures' }">
-                    <div class="columns is-multiline is-variable is-1">
+                        <div v-for="t in templateState.imgs" :key="t.label" class="column is-3">
 
-                      <div v-for="t in templateState.imgs" :key="t.label" class="column is-3">
+                          <div class="card h-100">
+                            <div class="card-image">
+                              <img class="image" :src="t.url">
+                            </div>
 
-                        <div class="card h-100">
-                          <div class="card-image">
-                            <img class="image" :src="t.url">
+                            <div class="card-content has-text-centered">
+                              <button
+                                type="button"
+                                class="button-outline"
+                                @click="pushTweetPicture(t)"
+                              >
+                                {{ t.label }}を追加
+                              </button>
+                            </div>
                           </div>
 
-                          <div class="card-content has-text-centered">
-                            <button
-                              type="button"
-                              class="button-outline"
-                              @click="pushTweetPicture(t)"
-                            >
-                              {{ t.label }}を追加
-                            </button>
-                          </div>
                         </div>
-
                       </div>
                     </div>
-                  </div>
 
-                  <div class="content" :class="{ 'is-active': appState.activeTab === 'songs' }">
-                    <div class="buttons">
-                      <button
-                        v-for="song in templateState.songs" :key="song.label"
-                        type="button"
-                        class="button is-small"
-                        @click="setMovie(song)"
-                      >{{ song.label }}</button>
+                    <div class="content" :class="{ 'is-active': appState.activeTab === 'songs' }">
+                      <div class="buttons">
+                        <button
+                          v-for="song in templateState.songs" :key="song.label"
+                          type="button"
+                          class="button is-small"
+                          @click="setMovie(song)"
+                        >
+                          {{ song.label }}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
