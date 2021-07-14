@@ -174,7 +174,6 @@ import "@/assets/css/text.css";
 import "@/assets/css/tabs.css";
 import "@/assets/css/button.css";
 import "@/assets/css/checkbox.css";
-import "@/assets/css/animate.min.css";
 
 import { defineComponent, reactive } from 'vue';
 
