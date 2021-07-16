@@ -1,4 +1,4 @@
-.form-check-input:checked {
+.is-checkradio:checked {
   animation: checkbox-anime 0.5s linear;
 }
 
