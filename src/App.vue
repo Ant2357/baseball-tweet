@@ -59,7 +59,9 @@
 
                           <div class="card h-100">
                             <div class="card-image">
-                              <img class="image" :src="t.url">
+                              <figure class="image is-marginless is-16by9">
+                                <img :src="t.url">
+                              </figure>
                             </div>
 
                             <div class="card-content has-text-centered">
@@ -111,9 +113,11 @@
 
                     <div class="card h-100">
                       <div class="card-image">
-                        <img class="image" :src="picture.url">
+                        <figure class="image is-marginless is-16by9">
+                          <img :src="picture.url">
+                        </figure>
                       </div>
-                      
+
                       <div class="card-content has-text-centered">
                         <button
                           type="button"
