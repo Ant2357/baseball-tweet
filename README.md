@@ -1,7 +1,7 @@
 # baseball-tweet
 
 ## Web page
-[野球用ツイート画面(Webページ)](https://ant2357.github.io/baseball-tweet/ "野球用ツイート画面(Webページ)")
+[Web Page Link](https://ant2357.github.io/baseball-tweet/ "Web Page Link")
 
 ## Project setup
 ```
