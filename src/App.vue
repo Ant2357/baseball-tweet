@@ -184,6 +184,7 @@ import { defineComponent, reactive } from 'vue';
 import { useTemplate } from '@/compositions/template';
 import { useTweet } from '@/compositions/tweet';
 import { useMedia } from '@/compositions/media';
+import { useWeather } from '@/compositions/weather';
 
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
@@ -209,6 +210,9 @@ export default defineComponent({
 
     // メディア(画像 or 動画)関連の機能
     const { mediaState, pushTweetPicture, removePicture, setMovie, removeMovie } = useMedia();
+
+    // 天気予報
+    const { weatherState } = useWeather();
 
     /**
     *  新規タブで、ツイート画面を開く
@@ -241,6 +245,7 @@ export default defineComponent({
       templateState,
       tweetState,
       mediaState,
+      weatherState,
       // Function
       newTweetTab,
       teamColor,
