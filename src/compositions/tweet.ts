@@ -46,5 +46,5 @@ export const useTweet = (): UseTweet => {
   return {
     tweetState,
     updateTweet
-  }
+  };
 };

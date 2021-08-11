@@ -20,5 +20,5 @@ export const useWeather = (): UseWeather => {
 
   return {
     weatherState
-  }
+  };
 };
