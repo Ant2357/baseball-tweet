@@ -5,10 +5,6 @@
       <div class="columns">
         <div class="column is-10 is-offset-1">
 
-          <div class="notification is-primary">
-            2020年東京オリンピック競技大会野球競技にて、
-            日本が金メダル🥇🎌
-          </div>
           <div class="card">
             <div class="card-content">
               <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
@@ -23,7 +19,6 @@
                       v-model="tweetState.hashtags"
                       class="is-checkradio"
                     />
-                    <span>{{ tag.jpName === "#千葉ロッテマリーンズ" ? "" : "🥇" }}</span>
                     <label
                       :for="tag.name"
                       class="font-nicomoji"
