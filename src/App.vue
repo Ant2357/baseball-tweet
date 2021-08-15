@@ -1,6 +1,37 @@
 <template>
   <div>
     <the-header/>
+
+    <teleport to="body">
+      <div v-if="appState.weatherModalOpen" class="modal">
+        <div class="modal-content box w-30 h-50">
+
+          <div class="is-flex">
+            <div class="has-text-centered p-2">
+              <h3 class="subtitle">東京の天気</h3>
+              <p>{{ weatherState.tokyo['forecasts'][0]["telop"] }}</p>
+              <p><img :src="weatherState.tokyo['forecasts'][0]['image']['url']" alt="東京の天気"></p>
+            </div>
+
+            <div class="has-text-centered p-2">
+              <h3 class="subtitle">大阪の天気</h3>
+              <p>{{ weatherState.osaka['forecasts'][0]["telop"] }}</p>
+              <p><img :src="weatherState.osaka['forecasts'][0]['image']['url']" alt="大阪の天気"></p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="button is-danger"
+            aria-label="close"
+            @click="appState.weatherModalOpen = false"
+          >
+            閉じる
+          </button>
+        </div>
+      </div>
+    </teleport>
+
     <div class="container is-fluid my-3 px-4">
       <div class="columns">
         <div class="column is-10 is-offset-1">
@@ -8,6 +39,18 @@
           <div class="card">
             <div class="card-content">
               <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
+
+                <div class="field">
+                  <div class="control">
+                    <button
+                      type="button"
+                      class="button"
+                      @click="appState.weatherModalOpen = true"
+                    >
+                      現在の天気
+                    </button>
+                  </div>
+                </div>
 
                 <span class="title is-5 font-nicomoji">ハッシュタグ一覧</span>
                 <div class="mb-3">
@@ -178,6 +221,7 @@ import "@/assets/css/text.css";
 import "@/assets/css/tabs.css";
 import "@/assets/css/button.css";
 import "@/assets/css/checkbox.css";
+import "@/assets/css/modal.css";
 
 import { defineComponent, reactive } from 'vue';
 
@@ -197,9 +241,11 @@ export default defineComponent({
   setup() {
 
     const appState = reactive<{
-      activeTab: string
+      activeTab: string;
+      weatherModalOpen: boolean;
     }>({
-      activeTab: "aa"
+      activeTab: "aa",
+      weatherModalOpen: false
     });
 
     // テンプレート一覧(AA, AA画像, 応援歌一覧, ハッシュタグ一覧)
