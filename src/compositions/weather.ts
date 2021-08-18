@@ -4,6 +4,8 @@ import { reactive, onMounted } from 'vue';
 type WeatherState = {
   tokyo: WeatherJson.RootObject | unknown;
   osaka: WeatherJson.RootObject | unknown;
+  nagoya: WeatherJson.RootObject | unknown;
+  hiroshima: WeatherJson.RootObject | unknown;
 }
 
 interface UseWeather {
@@ -12,24 +14,10 @@ interface UseWeather {
 
 export const useWeather = (): UseWeather => {
   const weatherState = reactive<WeatherState>({
-    tokyo: {
-      "forecasts": [
-        {
-          "image": {
-            "url": ""
-          }
-        }
-      ]
-    },
-    osaka: {
-      "forecasts": [
-        {
-          "image": {
-            "url": ""
-          }
-        }
-      ]
-    }
+    tokyo: null,
+    osaka: null,
+    nagoya: null,
+    hiroshima: null,
   });
 
   onMounted(() => {
@@ -43,6 +31,16 @@ export const useWeather = (): UseWeather => {
     fetch('https://weather.tsukumijima.net/api/forecast/city/270000')
       .then(res => res.json())
       .then(data => weatherState.osaka = data);
+
+    // 名古屋の天気
+    fetch('https://weather.tsukumijima.net/api/forecast/city/230010')
+      .then(res => res.json())
+      .then(data => weatherState.nagoya = data);
+
+    // 広島の天気
+    fetch('https://weather.tsukumijima.net/api/forecast/city/340010')
+      .then(res => res.json())
+      .then(data => weatherState.hiroshima = data);
 
   });
 
