@@ -7,16 +7,10 @@
         <div class="modal-content box w-30 h-50">
 
           <div class="is-flex">
-            <div class="has-text-centered p-2">
-              <h3 class="subtitle">東京の天気</h3>
-              <p>{{ weatherState.tokyo['forecasts'][0]["telop"] }}</p>
-              <p><img :src="weatherState.tokyo['forecasts'][0]['image']['url']" alt="東京の天気"></p>
-            </div>
-
-            <div class="has-text-centered p-2">
-              <h3 class="subtitle">大阪の天気</h3>
-              <p>{{ weatherState.osaka['forecasts'][0]["telop"] }}</p>
-              <p><img :src="weatherState.osaka['forecasts'][0]['image']['url']" alt="大阪の天気"></p>
+            <div v-for="area in weatherState" :key="area.title" class="has-text-centered p-2">
+              <h3 class="subtitle">{{ area.title.split(" ").slice(1).join("") }}</h3>
+              <p>{{ area.forecasts[0].telop }}</p>
+              <p><img :src="area.forecasts[0].image.url"></p>
             </div>
           </div>
 
