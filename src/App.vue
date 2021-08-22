@@ -1,30 +1,6 @@
 <template>
   <div>
-    <the-header/>
-
-    <teleport to="body">
-      <div v-if="appState.weatherModalOpen" class="modal">
-        <div class="modal-content box w-30 h-50">
-
-          <div class="is-flex">
-            <div v-for="area in weatherState" :key="area.title" class="has-text-centered p-2">
-              <h3 class="subtitle">{{ area.title.split(" ").slice(1).join("") }}</h3>
-              <p>{{ area.forecasts[0].telop }}</p>
-              <p><img :src="area.forecasts[0].image.url"></p>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            class="button is-danger"
-            aria-label="close"
-            @click="appState.weatherModalOpen = false"
-          >
-            閉じる
-          </button>
-        </div>
-      </div>
-    </teleport>
+    <TheHeader />
 
     <div class="container is-fluid my-3 px-4">
       <div class="columns">
@@ -36,13 +12,7 @@
 
                 <div class="field">
                   <div class="control">
-                    <button
-                      type="button"
-                      class="button"
-                      @click="appState.weatherModalOpen = true"
-                    >
-                      現在の天気
-                    </button>
+                    <WeatherModalButton />
                   </div>
                 </div>
 
@@ -204,7 +174,7 @@
       </div>
     </div>
 
-    <the-footer/>
+    <TheFooter />
   </div>
 </template>
 
@@ -222,24 +192,22 @@ import { defineComponent, reactive } from 'vue';
 import { useTemplate } from '@/compositions/template';
 import { useTweet } from '@/compositions/tweet';
 import { useMedia } from '@/compositions/media';
-import { useWeather } from '@/compositions/weather';
 
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
+import WeatherModalButton from '@/components/WeatherModalButton.vue';
 
 export default defineComponent({
   components: {
     TheHeader,
-    TheFooter
+    TheFooter,
+    WeatherModalButton
   },
   setup() {
-
     const appState = reactive<{
       activeTab: string;
-      weatherModalOpen: boolean;
     }>({
       activeTab: "aa",
-      weatherModalOpen: false
     });
 
     // テンプレート一覧(AA, AA画像, 応援歌一覧, ハッシュタグ一覧)
@@ -250,9 +218,6 @@ export default defineComponent({
 
     // メディア(画像 or 動画)関連の機能
     const { mediaState, pushTweetPicture, removePicture, setMovie, removeMovie } = useMedia();
-
-    // 天気予報
-    const { weatherState } = useWeather();
 
     /**
     *  新規タブで、ツイート画面を開く
@@ -285,7 +250,6 @@ export default defineComponent({
       templateState,
       tweetState,
       mediaState,
-      weatherState,
       // Function
       newTweetTab,
       teamColor,
