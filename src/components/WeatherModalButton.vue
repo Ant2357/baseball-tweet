@@ -9,11 +9,11 @@
 
   <teleport to="body">
     <div v-if="weatherModalState.isOpen" class="modal">
-      <div class="modal-content box w-30 h-50">
+      <div class="modal-content box has-text-centered">
 
-        <div class="is-flex">
-          <div v-for="area in weatherState" :key="area.title" class="has-text-centered p-2">
-            <h3 class="subtitle">{{ area.title.split(" ").slice(1).join("") }}</h3>
+        <div class="columns is-multiline is-mobile">
+          <div v-for="area in weatherState" :key="area.title" class="column">
+            <h3 class="subtitle weather-title">{{ area.title.split(" ").slice(1).join("") }}</h3>
             <p>{{ area.forecasts[0].telop }}</p>
             <p><img :src="area.forecasts[0].image.url"></p>
           </div>
@@ -62,3 +62,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+.weather-title {
+  white-space: nowrap;
+}
+</style>
