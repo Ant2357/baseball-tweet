@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer has-background-white">
+  <footer class="footer has-text-white">
     <div class="has-text-centered">
       <p>
         © 2020~2021 <a href="https://twitter.com/ant2357">ant2357</a>
@@ -15,6 +15,6 @@ export default defineComponent({});
 
 <style scoped>
 .footer {
-  border-top: solid 1px #e4e4e4;
+  background-color: #252525;
 }
 </style>
