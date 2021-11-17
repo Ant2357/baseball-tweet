@@ -24,8 +24,15 @@
       <div class="navbar-menu" id="navbar-menu" :class="{ 'is-active': headerState.isOpen }">
 
         <div class="navbar-end">
-          <a class="navbar-item header-item font-nicomoji header-color-accent" href="https://ant2357.github.io/ant-blog/#/posts"><font-awesome-icon :icon="['fas', 'blog']" /><span class="ml-1">Antのブログらしきもの</span></a>
-          <a class="navbar-item header-item font-nicomoji" href="https://github.com/Ant2357"><font-awesome-icon :icon="['fab', 'github']" /><span class="ml-1">GitHub</span></a>
+          <a class="navbar-item header-item font-nicomoji header-color-accent" href="https://ant2357.github.io/we-league-tweet/">
+            <font-awesome-icon :icon="['fas', 'futbol']" /><span class="ml-1">WE League</span>
+          </a>
+          <a class="navbar-item header-item font-nicomoji" href="https://ant2357.github.io/ant-blog/#/posts">
+            <font-awesome-icon :icon="['fas', 'blog']" /><span class="ml-1">Antのブログらしきもの</span>
+          </a>
+          <a class="navbar-item header-item font-nicomoji" href="https://github.com/Ant2357">
+            <font-awesome-icon :icon="['fab', 'github']" /><span class="ml-1">GitHub</span>
+          </a>
         </div>
 
       </div>
