@@ -2,12 +2,6 @@
   <div>
     <TheHeader />
 
-    <div class="snowflakes" aria-hidden="true">
-      <div v-for="i in 12" :key="i" class="snowflake">
-        ❅
-      </div>
-    </div>
-
     <div class="container is-fluid my-3 px-4">
       <div class="columns">
         <div class="column is-10 is-offset-1">
@@ -192,7 +186,6 @@ import "@/assets/css/tabs.css";
 import "@/assets/css/button.css";
 import "@/assets/css/checkbox.css";
 import "@/assets/css/modal.css";
-import "@/assets/css/snow.css";
 
 import { defineComponent, reactive } from 'vue';
 
