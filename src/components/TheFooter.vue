@@ -2,7 +2,7 @@
   <footer class="footer has-text-white">
     <div class="has-text-centered">
       <p>
-        © 2020~2021 <a href="https://twitter.com/ant2357">ant2357</a>
+        © 2022 <a href="https://twitter.com/ant2357">ant2357</a>
       </p>
     </div>
   </footer>
