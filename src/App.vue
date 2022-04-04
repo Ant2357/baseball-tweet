@@ -6,6 +6,10 @@
       <div class="columns">
         <div class="column is-10 is-offset-1">
 
+          <NpbStandings 
+            :standings="standingsState.cl"
+          />
+
           <div class="card">
             <div class="card-content">
               <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
@@ -192,16 +196,20 @@ import { defineComponent, reactive } from 'vue';
 import { useTemplate } from '@/compositions/template';
 import { useTweet } from '@/compositions/tweet';
 import { useMedia } from '@/compositions/media';
+import { useStandings } from '@/compositions/standings';
 
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import WeatherModalButton from '@/components/WeatherModalButton.vue';
+import NpbStandings from '@/components/NpbStandings.vue';
+
 
 export default defineComponent({
   components: {
     TheHeader,
     TheFooter,
-    WeatherModalButton
+    WeatherModalButton,
+    NpbStandings
   },
   setup() {
     const appState = reactive<{
@@ -218,6 +226,9 @@ export default defineComponent({
 
     // メディア(画像 or 動画)関連の機能
     const { mediaState, pushTweetPicture, removePicture, setMovie, removeMovie } = useMedia();
+
+    // プロ野球順位表情報
+    const { standingsState } = useStandings();
 
     /**
     *  新規タブで、ツイート画面を開く
@@ -250,6 +261,7 @@ export default defineComponent({
       templateState,
       tweetState,
       mediaState,
+      standingsState,
       // Function
       newTweetTab,
       teamColor,
