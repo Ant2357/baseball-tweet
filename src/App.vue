@@ -6,12 +6,13 @@
       <div class="columns">
         <div class="column is-10 is-offset-1">
 
-          <NpbStandings 
-            :standings="standingsState.cl"
-          />
-
           <div class="card">
             <div class="card-content">
+
+              <NpbStandings
+                :standingsState="standingsState"
+              />
+
               <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
 
                 <div class="field">
@@ -202,7 +203,6 @@ import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import WeatherModalButton from '@/components/WeatherModalButton.vue';
 import NpbStandings from '@/components/NpbStandings.vue';
-
 
 export default defineComponent({
   components: {

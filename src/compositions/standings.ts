@@ -1,13 +1,13 @@
 import { reactive, onMounted } from 'vue';
 
-type StandingsState = {
+export type StandingsState = {
   cl: { [x: string]: string; }[];
   pl: { [x: string]: string; }[];
   cp: { [x: string]: string; }[];
   op: { [x: string]: string; }[];
 }
 
-interface UseStandings {
+export interface UseStandings {
   standingsState: StandingsState
 }
 
