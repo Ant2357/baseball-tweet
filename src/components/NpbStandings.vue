@@ -1,6 +1,4 @@
 <template>
-  <div>TODO: 順位表のレイアウト</div>
-
   <p class="buttons">
     <button class="button" @click="openTableState.clIsOpen = !openTableState.clIsOpen">セ・リーグ順位表</button>
     <button class="button" @click="openTableState.plIsOpen = !openTableState.plIsOpen">パ・リーグ順位表</button>
