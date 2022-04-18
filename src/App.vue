@@ -9,9 +9,11 @@
           <div class="card">
             <div class="card-content">
 
-              <NpbStandings
-                :standingsState="standingsState"
-              />
+              <div class="field">
+                <NpbStandings
+                  :standingsState="standingsState"
+                />
+              </div>
 
               <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
 
