@@ -44,7 +44,6 @@ export default defineComponent({
       sb: "盗塁",
       avg: "打率",
       era: "防御率",
-      pythagorean_expectation: "ピタゴラス勝率",
       pythagen_pat: "PythagenPat"
     };
     return {
