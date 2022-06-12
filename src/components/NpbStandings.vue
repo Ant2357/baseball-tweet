@@ -6,30 +6,48 @@
     <button class="button" @click="openTableState.opIsOpen = !openTableState.opIsOpen">オープン戦順位表</button>
   </p>
 
-  <NpbStandingsTable
-    v-if="openTableState.clIsOpen"
-    :standings="standingsState.cl"
-  />
+  <div v-if="openTableState.clIsOpen">
+    <NpbStandingsTable
+      :standings="standingsState.cl"
+    />
+    <NpbStandingsChart
+      :datas="standingsState.cl"
+    />
+  </div>
 
-  <NpbStandingsTable
-    v-if="openTableState.plIsOpen"
-    :standings="standingsState.pl"
-  />
+  <div v-if="openTableState.plIsOpen">
+    <NpbStandingsTable
+      :standings="standingsState.pl"
+    />
+    <NpbStandingsChart
+      :datas="standingsState.pl"
+    />
+  </div>
 
-  <NpbStandingsTable
-    v-if="openTableState.cpIsOpen"
-    :standings="standingsState.cp"
-  />
+  <div v-if="openTableState.cpIsOpen">
+    <NpbStandingsTable
+      :standings="standingsState.cp"
+    />
+    <NpbStandingsChart
+      :datas="standingsState.cp"
+    />
+  </div>
 
-  <NpbStandingsTable
-    v-if="openTableState.opIsOpen"
-    :standings="standingsState.op"
-  />
+  <div v-if="openTableState.opIsOpen">
+    <NpbStandingsTable
+      :standings="standingsState.op"
+    />
+    <NpbStandingsChart
+      :datas="standingsState.op"
+    />
+  </div>
+
 </template>
 
 <script lang="ts">
 import { StandingsState } from '@/compositions/standings'
 import NpbStandingsTable from '@/components/NpbStandingsTable.vue'
+import NpbStandingsChart from '@/components/NpbStandingsChart.vue'
 import { defineComponent, PropType, reactive } from 'vue';
 
 export default defineComponent({
@@ -37,7 +55,8 @@ export default defineComponent({
     standingsState: Object as PropType<StandingsState>,
   },
   components: {
-    NpbStandingsTable
+    NpbStandingsTable,
+    NpbStandingsChart
   },
   setup() {
     const openTableState = reactive<{
