@@ -1,10 +1,11 @@
+import * as StandingsJson from '@/@types/StandingsJson';
 import { reactive, onMounted } from 'vue';
 
 export type StandingsState = {
-  cl: { [x: string]: string; }[];
-  pl: { [x: string]: string; }[];
-  cp: { [x: string]: string; }[];
-  op: { [x: string]: string; }[];
+  cl: StandingsJson.RootObject | unknown;
+  pl: StandingsJson.RootObject | unknown;
+  cp: StandingsJson.RootObject | unknown;
+  op: StandingsJson.RootObject | unknown;
 }
 
 export interface UseStandings {
