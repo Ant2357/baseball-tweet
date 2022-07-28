@@ -1,7 +1,7 @@
 import * as WeatherJson from '@/@types/WeatherJson';
 import { reactive, onMounted } from 'vue';
 
-type WeatherState = {
+export type WeatherState = {
   tokyo: WeatherJson.RootObject | unknown;
   yokohama: WeatherJson.RootObject | unknown;
   chiba: WeatherJson.RootObject | unknown;
@@ -14,7 +14,7 @@ type WeatherState = {
   hokkaido: WeatherJson.RootObject | unknown;
 }
 
-interface UseWeather {
+export interface UseWeather {
   weatherState: WeatherState;
 }
 
@@ -44,7 +44,7 @@ export const useWeather = (): UseWeather => {
       .then(res => res.json())
       .then(data => weatherState.yokohama = data);
 
-    // 千葉県の天気 ロッテ
+    // 千葉の天気 ロッテ
     fetch('https://weather.tsukumijima.net/api/forecast/city/120010')
       .then(res => res.json())
       .then(data => weatherState.chiba = data);

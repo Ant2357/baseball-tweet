@@ -17,9 +17,13 @@
 
               <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
 
-                <div class="field">
+                <div class="field is-grouped">
                   <div class="control">
                     <WeatherModalButton />
+                  </div>
+
+                  <div class="control">
+                    <StarterModal />
                   </div>
                 </div>
 
@@ -204,6 +208,7 @@ import { useStandings } from '@/compositions/standings';
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import WeatherModalButton from '@/components/WeatherModalButton.vue';
+import StarterModal from '@/components/StarterModal.vue';
 import NpbStandings from '@/components/NpbStandings.vue';
 
 export default defineComponent({
@@ -211,6 +216,7 @@ export default defineComponent({
     TheHeader,
     TheFooter,
     WeatherModalButton,
+    StarterModal,
     NpbStandings
   },
   setup() {
