@@ -18,7 +18,19 @@ export const useStarter = (): UseStarter => {
     //『NPB API』を使用
     fetch('https://npb-result.herokuapp.com/starter')
       .then(res => res.json())
-      .then(data => starterState.starters = data);
+      .then(data => {
+        starterState.starters = data.map((starter: StarterJson.RootObject) => {
+
+          const convertHankaku = (str: string) =>
+            str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, (s: string) => String.fromCharCode(s.charCodeAt(0) - 0xFEE0));
+
+          starter.home_starter_name = convertHankaku(starter.home_starter_name);
+          starter.away_starter_name = convertHankaku(starter.away_starter_name);
+
+          return starter;
+        });
+
+      });
 
   });
 

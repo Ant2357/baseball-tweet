@@ -20,8 +20,17 @@
   src: url("../font/nicomoji-plus_1.11.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Mplus1Bold";
+  src: url("../font/Mplus1-Bold.ttf") format("truetype");
+}
+
 .font-nicomoji {
   font-family: "NicomojiFont";
+}
+
+.font-mplus1-bold {
+  font-family: "Mplus1Bold";
 }
 
 .font-helvetica {
