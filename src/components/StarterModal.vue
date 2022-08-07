@@ -29,9 +29,15 @@
               <div class="card-line"><span>〇</span>{{ starter.ballpark }}</div>
               <footer class="card-footer">
                 <div class="card-footer-item footer-item">
+                  <figure class="image is-32x32 mr-1">
+                    <img :src="npbLogos[starter.home_team_name]">
+                  </figure>
                   <p class="footer-label">{{ starter.home_starter_name }}</p>
                 </div>
                 <div class="card-footer-item footer-item">
+                  <figure class="image is-32x32 mr-1">
+                    <img :src="npbLogos[starter.away_team_name]">
+                  </figure>
                   <p class="footer-label">{{ starter.away_starter_name }}</p>
                 </div>
               </footer>
@@ -68,6 +74,22 @@ export default defineComponent({
       starterModalState.isOpen = false;
     }
 
+    const npbLogos = {
+      "東京ヤクルトスワローズ": require("@/assets/img/logo/npb/S.png"),
+      "読売ジャイアンツ": require("@/assets/img/logo/npb/G.png"),
+      "中日ドラゴンズ": require("@/assets/img/logo/npb/D.png"),
+      "横浜DeNAベイスターズ": require("@/assets/img/logo/npb/DB.png"),
+      "広島東洋カープ": require("@/assets/img/logo/npb/C.png"),
+      "阪神タイガース": require("@/assets/img/logo/npb/T.png"),
+
+      "埼玉西武ライオンズ": require("@/assets/img/logo/npb/L.png"),
+      "千葉ロッテマリーンズ": require("@/assets/img/logo/npb/M.png"),
+      "オリックス・バファローズ": require("@/assets/img/logo/npb/Bs.png"),
+      "北海道日本ハムファイターズ": require("@/assets/img/logo/npb/F.png"),
+      "福岡ソフトバンクホークス": require("@/assets/img/logo/npb/H.png"),
+      "東北楽天ゴールデンイーグルス": require("@/assets/img/logo/npb/E.png"),
+    };
+
     // 天気情報
     const { starterState } = useStarter();
 
@@ -75,6 +97,8 @@ export default defineComponent({
       // State
       starterModalState,
       starterState,
+      // Imgs
+      npbLogos,
       // Function
       openModal,
       closeModal
