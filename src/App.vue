@@ -19,7 +19,7 @@
 
                 <div class="field is-grouped">
                   <div class="control">
-                    <WeatherModalButton />
+                    <WeatherModal />
                   </div>
 
                   <div class="control">
@@ -207,7 +207,7 @@ import { useStandings } from '@/compositions/standings';
 
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
-import WeatherModalButton from '@/components/WeatherModalButton.vue';
+import WeatherModal from '@/components/WeatherModal.vue';
 import StarterModal from '@/components/StarterModal.vue';
 import NpbStandings from '@/components/NpbStandings.vue';
 
@@ -215,7 +215,7 @@ export default defineComponent({
   components: {
     TheHeader,
     TheFooter,
-    WeatherModalButton,
+    WeatherModal,
     StarterModal,
     NpbStandings
   },
