@@ -15,7 +15,12 @@
                 />
               </div>
 
-              <form action="https://twitter.com/intent/tweet" method="get" target="_blank">
+              <form
+                @submit.prevent
+                action="https://twitter.com/intent/tweet"
+                method="get"
+                target="_blank"
+              >
 
                 <div class="field is-grouped">
                   <div class="control">
@@ -68,6 +73,23 @@
                         </button>
                       </div>
 
+                      <div class="field">
+                        <div class="control">
+                          <textarea
+                            v-model="appState.borderText"
+                            :rows="appState.borderText.split(/\n/).length"
+                            class="textarea"
+                            placeholder="枠線AA"
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div class="field">
+                        <p class="control">
+                          <button @click="addFrameBorderAa(appState.borderText)" class="button is-success">
+                            枠線AAを追加
+                          </button>
+                        </p>
+                      </div>
                     </div>
 
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'pictures' }">
@@ -222,8 +244,10 @@ export default defineComponent({
   setup() {
     const appState = reactive<{
       activeTab: string;
+      borderText: string;
     }>({
       activeTab: "aa",
+      borderText: ""
     });
 
     // テンプレート一覧(AA, AA画像, 応援歌一覧, ハッシュタグ一覧)
@@ -237,6 +261,30 @@ export default defineComponent({
 
     // プロ野球順位表情報
     const { standingsState } = useStandings();
+
+    /**
+    *  枠線AAをツイートに追加する
+    */
+    const addFrameBorderAa = (text: string): void => {
+      const arrText = text.split(/\r\n|\n/);
+      const maxMsgLength = arrText.reduce((acc, str) => Math.max(acc, str.length), 0);
+
+      const borderHeader = `┏${"━".repeat(maxMsgLength)}┓`;
+
+      const borderBody = arrText.map(v =>  {
+        // 半角文字を全角文字に変換
+        const str = v.replace(/[!-~]/g, all => String.fromCharCode(all.charCodeAt(0) + 0xFEE0));
+        return str.length === maxMsgLength
+          ? `┃${str}┃`
+          : `┃${str}${"　".repeat(maxMsgLength - str.length)}┃`
+    }).join("\n");
+
+      const borderFooter = `┗${"━".repeat(maxMsgLength)}┛`
+
+      const borderAa =`${borderHeader}\n${borderBody}\n${borderFooter}`;
+      updateTweet(`${tweetState.tweetMsg}\n${borderAa}`, tweetState.hashtags);
+    };
+
 
     /**
     *  新規タブで、ツイート画面を開く
@@ -271,13 +319,14 @@ export default defineComponent({
       mediaState,
       standingsState,
       // Function
+      addFrameBorderAa,
       newTweetTab,
       teamColor,
       updateTweet,
       pushTweetPicture,
       removePicture,
       setMovie,
-      removeMovie
+      removeMovie,
     };
   }
 });
