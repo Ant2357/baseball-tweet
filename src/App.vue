@@ -277,12 +277,12 @@ export default defineComponent({
         return str.length === maxMsgLength
           ? `┃${str}┃`
           : `┃${str}${"　".repeat(maxMsgLength - str.length)}┃`
-    }).join("\n");
+      }).join("\n");
 
       const borderFooter = `┗${"━".repeat(maxMsgLength)}┛`
 
       const borderAa =`${borderHeader}\n${borderBody}\n${borderFooter}`;
-      updateTweet(`${tweetState.tweetMsg}\n${borderAa}`, tweetState.hashtags);
+      updateTweet(`${borderAa}\n${tweetState.tweetMsg}`, tweetState.hashtags);
     };
 
 
