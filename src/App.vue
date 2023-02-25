@@ -9,12 +9,6 @@
           <div class="card">
             <div class="card-content">
 
-              <div class="field">
-                <NpbStandings
-                  :standingsState="standingsState"
-                />
-              </div>
-
               <form
                 @submit.prevent
                 action="https://twitter.com/intent/tweet"
@@ -25,10 +19,6 @@
                 <div class="field is-grouped">
                   <div class="control">
                     <WeatherModal />
-                  </div>
-
-                  <div class="control">
-                    <StarterModal />
                   </div>
                 </div>
 
@@ -225,21 +215,16 @@ import { defineComponent, reactive } from 'vue';
 import { useTemplate } from '@/compositions/template';
 import { useTweet } from '@/compositions/tweet';
 import { useMedia } from '@/compositions/media';
-import { useStandings } from '@/compositions/standings';
 
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import WeatherModal from '@/components/WeatherModal.vue';
-import StarterModal from '@/components/StarterModal.vue';
-import NpbStandings from '@/components/NpbStandings.vue';
 
 export default defineComponent({
   components: {
     TheHeader,
     TheFooter,
-    WeatherModal,
-    StarterModal,
-    NpbStandings
+    WeatherModal
   },
   setup() {
     const appState = reactive<{
@@ -258,9 +243,6 @@ export default defineComponent({
 
     // メディア(画像 or 動画)関連の機能
     const { mediaState, pushTweetPicture, removePicture, setMovie, removeMovie } = useMedia();
-
-    // プロ野球順位表情報
-    const { standingsState } = useStandings();
 
     /**
     *  枠線AAをツイートに追加する
@@ -317,7 +299,6 @@ export default defineComponent({
       templateState,
       tweetState,
       mediaState,
-      standingsState,
       // Function
       addFrameBorderAa,
       newTweetTab,
