@@ -1,0 +1,62 @@
+.text-giants {
+  color: #F60;
+  background: -webkit-linear-gradient(0deg, #F60, #FF5B5B);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-baystars {
+  color: #00428E;
+  background: -webkit-linear-gradient(0deg, #00428E, #006FEF);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-tigers { color: #FFE100; }
+.text-carp {
+  color: #E70C03;
+  background: -webkit-linear-gradient(0deg, #E70C03, #FC544F);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-dragons {
+  color: #00418D;
+  background: -webkit-linear-gradient(0deg, #00418D, #006FEF);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-swallows {
+  color: #0E1350;
+  background: -webkit-linear-gradient(0deg, #0E1350, #1D28A4);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-seibulions {
+  color: #001566;
+  background: -webkit-linear-gradient(0deg, #001566, #002CCC);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-sbhawks { color: #FCC700; }
+.text-rakuteneagles {
+  color: #86000F;
+  background: -webkit-linear-gradient(0deg, #86000F, #EA001B);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-chibalotte {
+  color: #000000;
+  background: -webkit-linear-gradient(0deg, #000000, #333333);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-fighters {
+  color: #01609A;
+  background: -webkit-linear-gradient(0deg, #01609A, #02A0FC);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-bs {
+  color: #BBAD38;
+  background: -webkit-linear-gradient(0deg, #BBAD38, #CBBD57);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

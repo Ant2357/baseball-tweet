@@ -1,6 +1,6 @@
 import { reactive, computed, watch, ComputedRef } from 'vue';
 
-import allHashtags from "@/assets/json/hashtags.json";
+import allHashtags from "@/assets/jsons/hashtags.json";
 
 type TweetState = {
   tweet: string;

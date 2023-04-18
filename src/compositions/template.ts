@@ -1,10 +1,10 @@
 import { reactive } from 'vue';
 
-import msgs from "@/assets/json/msgs.json";
-import imgs from "@/assets/json/imgs.json";
-import songs from "@/assets/json/songs.json";
+import msgs from "@/assets/jsons/msgs.json";
+import imgs from "@/assets/jsons/imgs.json";
+import songs from "@/assets/jsons/songs.json";
 
-import hashtags from "@/assets/json/hashtags.json";
+import hashtags from "@/assets/jsons/hashtags.json";
 
 type TemplateState = {
   msgs: { [x: string]: string; }[];

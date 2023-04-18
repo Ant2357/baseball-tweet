@@ -203,12 +203,13 @@
 
 <script lang="ts">
 import 'bulma/css/bulma.css';
-import "@/assets/css/style.css";
-import "@/assets/css/text.css";
-import "@/assets/css/tabs.css";
-import "@/assets/css/button.css";
-import "@/assets/css/checkbox.css";
-import "@/assets/css/modal.css";
+
+import "@/assets/styles/style.css";
+import "@/assets/styles/text.css";
+import "@/assets/styles/tabs.css";
+import "@/assets/styles/button.css";
+import "@/assets/styles/checkbox.css";
+import "@/assets/styles/modal.css";
 
 import { defineComponent, reactive } from 'vue';
 
