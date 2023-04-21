@@ -2,16 +2,16 @@ import * as WeatherJson from '@/@types/WeatherJson';
 import { reactive, onMounted } from 'vue';
 
 export type WeatherState = {
-  tokyo: WeatherJson.RootObject | unknown;
-  yokohama: WeatherJson.RootObject | unknown;
-  chiba: WeatherJson.RootObject | unknown;
-  saitama: WeatherJson.RootObject | unknown;
-  nagoya: WeatherJson.RootObject | unknown;
-  osaka: WeatherJson.RootObject | unknown;
-  hiroshima: WeatherJson.RootObject | unknown;
-  fukuoka: WeatherJson.RootObject | unknown;
-  miyagi: WeatherJson.RootObject | unknown;
-  hokkaido: WeatherJson.RootObject | unknown;
+  tokyo: WeatherJson.RootObject;
+  yokohama: WeatherJson.RootObject;
+  chiba: WeatherJson.RootObject;
+  saitama: WeatherJson.RootObject;
+  nagoya: WeatherJson.RootObject;
+  osaka: WeatherJson.RootObject;
+  hiroshima: WeatherJson.RootObject;
+  fukuoka: WeatherJson.RootObject;
+  miyagi: WeatherJson.RootObject;
+  hokkaido: WeatherJson.RootObject;
 }
 
 export interface UseWeather {
@@ -20,16 +20,16 @@ export interface UseWeather {
 
 export const useWeather = (): UseWeather => {
   const weatherState = reactive<WeatherState>({
-    tokyo: null,
-    yokohama: null,
-    chiba: null,
-    saitama: null,
-    nagoya: null,
-    osaka: null,
-    hiroshima: null,
-    fukuoka: null,
-    miyagi: null,
-    hokkaido: null
+    tokyo: {} as WeatherJson.RootObject,
+    yokohama: {} as WeatherJson.RootObject,
+    chiba: {} as WeatherJson.RootObject,
+    saitama: {} as WeatherJson.RootObject,
+    nagoya: {} as WeatherJson.RootObject,
+    osaka: {} as WeatherJson.RootObject,
+    hiroshima: {} as WeatherJson.RootObject,
+    fukuoka: {} as WeatherJson.RootObject,
+    miyagi: {} as WeatherJson.RootObject,
+    hokkaido: {} as WeatherJson.RootObject
   });
 
   onMounted(() => {
