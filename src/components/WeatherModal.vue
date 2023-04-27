@@ -44,7 +44,6 @@ import { useWeather } from '@/compositions/weather';
 export default defineComponent({
   setup() {
     const areaBaseballTeamLogo = (areaName: string) => {
-      console.log(areaName);
       switch (areaName) {
         case "東京":
           return require("@/assets/imgs/logo/npb/S.png");
