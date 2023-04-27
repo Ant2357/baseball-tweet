@@ -17,4 +17,5 @@ export default defineComponent({});
 .footer {
   background-color: #252525;
 }
+
 </style>

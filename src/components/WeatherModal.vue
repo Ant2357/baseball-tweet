@@ -13,9 +13,14 @@
 
         <div class="columns is-multiline is-mobile">
           <div v-for="area in weatherState" :key="area.title" class="column">
-            <h3 class="subtitle weather-title">{{ area.title.split(" ").slice(1).join("") }}</h3>
-            <p>{{ area.forecasts[0].telop }}</p>
-            <p><img :src="area.forecasts[0].image.url"></p>
+
+            <div class="area-box">
+              <img :src="areaBaseballTeamLogo(area.title.split(' ')[1])" alt="球団ロゴ" class="is-inline-block image is-48x48" >
+              <h3 class="subtitle">{{ area.title.split(" ").slice(1).join("") }}</h3>
+              <p>{{ area.forecasts[0].telop }}</p>
+              <p><img :src="area.forecasts[0].image.url"></p>
+            </div>
+
           </div>
         </div>
 
@@ -38,6 +43,35 @@ import { useWeather } from '@/compositions/weather';
 
 export default defineComponent({
   setup() {
+    const areaBaseballTeamLogo = (areaName: string) => {
+      console.log(areaName);
+      switch (areaName) {
+        case "東京":
+          return require("@/assets/imgs/logo/npb/S.png");
+        case "横浜":
+          return require("@/assets/imgs/logo/npb/DB.png");
+        case "千葉":
+          return require("@/assets/imgs/logo/npb/M.png");
+        case "さいたま":
+          return require("@/assets/imgs/logo/npb/L.png");
+        case "名古屋":
+          return require("@/assets/imgs/logo/npb/D.png");
+        case "大阪":
+          return require("@/assets/imgs/logo/npb/T.png");
+        case "広島":
+          return require("@/assets/imgs/logo/npb/C.png");
+        case "福岡":
+          return require("@/assets/imgs/logo/npb/H.png");
+        case "仙台":
+          return require("@/assets/imgs/logo/npb/E.png");
+        case "札幌":
+          return require("@/assets/imgs/logo/npb/F.png");
+        default:
+          return require("@/assets/imgs/logo/npb/G.png");
+      }
+    }
+
+
     const weatherModalState = reactive<{ isOpen: boolean }>({
       isOpen: false
     });
@@ -57,14 +91,40 @@ export default defineComponent({
       weatherState,
       // Function
       openModal,
-      closeModal
+      closeModal,
+      areaBaseballTeamLogo
     };
   }
 });
 </script>
 
 <style scoped>
-.weather-title {
+.area-box {
+  position: relative;
   white-space: nowrap;
+  padding: 0.25em 1em;
 }
+
+.area-box:before,.area-box:after{ 
+  content: '';
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  display: inline-block;
+}
+
+.area-box:before{
+  border-right: solid 1px #DBDBDB;
+  border-top: solid 1px #DBDBDB;
+  top: 0;
+  right: 0;
+}
+
+.area-box:after{
+  border-left: solid 1px #DBDBDB;
+  border-bottom: solid 1px #DBDBDB;
+  bottom: 0;
+  left: 0;
+}
+
 </style>
