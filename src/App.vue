@@ -40,47 +40,52 @@
                   </div>
                 </div>
 
+                <div class="field">
+                  <div class="control">
+                    <textarea
+                      v-model="appState.borderText"
+                      :rows="appState.borderText.split(/\n/).length"
+                      class="textarea"
+                      placeholder="枠線AA"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <button @click="addFrameBorderAa(appState.borderText)" class="button is-success">
+                      枠線AAを追加
+                    </button>
+                  </p>
+                </div>
 
                 <div class="field">
                   <div class="tabs is-boxed">
                     <ul>
-                      <li :class="{ 'is-active': appState.activeTab === 'aa' }"><a @click="appState.activeTab = 'aa'">AA</a></li>
+                      <li :class="{ 'is-active': appState.activeTab === 'aa' }"><a @click="appState.activeTab = 'aa'">汎用AA</a></li>
+                      <li :class="{ 'is-active': appState.activeTab === 'aaOchikomu' }"><a @click="appState.activeTab = 'aaOchikomu'">落ち込むAA</a></li>
+                      <li :class="{ 'is-active': appState.activeTab === 'aaBaseball' }"><a @click="appState.activeTab = 'aaBaseball'">野球AA</a></li>
+                      <li :class="{ 'is-active': appState.activeTab === 'aaBaseballTeam' }"><a @click="appState.activeTab = 'aaBaseballTeam'">野球チームAA</a></li>
                       <li :class="{ 'is-active': appState.activeTab === 'pictures' }"><a @click="appState.activeTab = 'pictures'">画像AA</a></li>
                       <li :class="{ 'is-active': appState.activeTab === 'songs' }"><a @click="appState.activeTab = 'songs'">応援歌</a></li>
                     </ul>
                   </div>
                   <div class="tab-contents">
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'aa' }">
-
-                      <div class="buttons">
-                        <button
-                          v-for="t in templateState.msgs" :key="t.label"
-                          type="button"
-                          class="button is-small"
-                          @click="updateTweet(tweetState.tweetMsg + t.msg, tweetState.hashtags)"
-                        >
-                          {{ t.label }}
-                        </button>
-                      </div>
-
-                      <div class="field">
-                        <div class="control">
-                          <textarea
-                            v-model="appState.borderText"
-                            :rows="appState.borderText.split(/\n/).length"
-                            class="textarea"
-                            placeholder="枠線AA"
-                          ></textarea>
-                        </div>
-                      </div>
-                      <div class="field">
-                        <p class="control">
-                          <button @click="addFrameBorderAa(appState.borderText)" class="button is-success">
-                            枠線AAを追加
-                          </button>
-                        </p>
-                      </div>
+                      <AAButtons :aas="templateState.msgs.aa" @addAA="addAA" />
                     </div>
+
+                    <div class="content" :class="{ 'is-active': appState.activeTab === 'aaBaseball' }">
+                      <AAButtons :aas="templateState.msgs.baseball" @addAA="addAA" />
+                    </div>
+
+                    <div class="content" :class="{ 'is-active': appState.activeTab === 'aaBaseballTeam' }">
+                      <AAButtons :aas="templateState.msgs.baseballTeam" @addAA="addAA" />
+                    </div>
+
+                    <div class="content" :class="{ 'is-active': appState.activeTab === 'aaOchikomu' }">
+                      <AAButtons :aas="templateState.msgs.ochikomu" @addAA="addAA" />
+                    </div>
+
 
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'pictures' }">
                       <div class="columns is-multiline is-variable is-1">
@@ -221,11 +226,14 @@ import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import WeatherModal from '@/components/WeatherModal.vue';
 
+import AAButtons from '@/components/aa/AAButtons.vue';
+
 export default defineComponent({
   components: {
     TheHeader,
     TheFooter,
-    WeatherModal
+    WeatherModal,
+    AAButtons
   },
   setup() {
     const appState = reactive<{
@@ -268,6 +276,12 @@ export default defineComponent({
       updateTweet(`${borderAa}\n${tweetState.tweetMsg}`, tweetState.hashtags);
     };
 
+    /**
+    *  ツイート本文にて、AAを追加
+    */
+    const addAA = (aa: string) => {
+      updateTweet(`${tweetState.tweetMsg}${aa}`, tweetState.hashtags);
+    }
 
     /**
     *  新規タブで、ツイート画面を開く
@@ -302,6 +316,7 @@ export default defineComponent({
       mediaState,
       // Function
       addFrameBorderAa,
+      addAA,
       newTweetTab,
       teamColor,
       updateTweet,
