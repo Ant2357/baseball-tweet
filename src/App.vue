@@ -60,7 +60,7 @@
 
                 <div class="field">
                   <div class="tabs is-boxed">
-                    <ul>
+                    <ul class="font-nicomoji">
                       <li :class="{ 'is-active': appState.activeTab === 'aa' }"><a @click="appState.activeTab = 'aa'">汎用AA</a></li>
                       <li :class="{ 'is-active': appState.activeTab === 'aaOchikomu' }"><a @click="appState.activeTab = 'aaOchikomu'">落ち込むAA</a></li>
                       <li :class="{ 'is-active': appState.activeTab === 'aaBaseball' }"><a @click="appState.activeTab = 'aaBaseball'">野球AA</a></li>
@@ -130,7 +130,7 @@
                 </div>
 
                 <div class="field">
-                  <label for="tweet-textarea" class="label">本文</label>
+                  <label for="tweet-textarea" class="label font-nicomoji">本文</label>
                   <div class="control">
                     <textarea
                       v-model="tweetState.tweet"
@@ -180,7 +180,7 @@
                   </div>
                 </div>
 
-                <div class="field mt-4">
+                <div class="field mt-4 font-nicomoji">
                   <p :class="{ 'has-text-danger': tweetState.tweet.length > 280 }">
                     <span>文字数: {{ tweetState.tweet.length }}</span>
                   </p>
@@ -188,7 +188,7 @@
 
               <button
                 type="button"
-                class="button is-info"
+                class="button is-info font-nicomoji"
                 @click="newTweetTab(tweetState.tweet, mediaState.picturesUrl, mediaState.movieUrl)"
               >
                 <font-awesome-icon :icon="['fab', 'twitter']" /><span class="ml-1">ツイート</span>
@@ -206,7 +206,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import 'bulma/css/bulma.css';
 
 import "@/assets/styles/style.css";
@@ -216,7 +216,7 @@ import "@/assets/styles/button.css";
 import "@/assets/styles/checkbox.css";
 import "@/assets/styles/modal.css";
 
-import { defineComponent, reactive } from 'vue';
+import { reactive } from 'vue';
 
 import { useTemplate } from '@/compositions/template';
 import { useTweet } from '@/compositions/tweet';
@@ -228,103 +228,76 @@ import WeatherModal from '@/components/WeatherModal.vue';
 
 import AAButtons from '@/components/aa/AAButtons.vue';
 
-export default defineComponent({
-  components: {
-    TheHeader,
-    TheFooter,
-    WeatherModal,
-    AAButtons
-  },
-  setup() {
-    const appState = reactive<{
-      activeTab: string;
-      borderText: string;
-    }>({
-      activeTab: "aa",
-      borderText: ""
-    });
-
-    // テンプレート一覧(AA, AA画像, 応援歌一覧, ハッシュタグ一覧)
-    const { templateState } = useTemplate();
-
-    // ツイート関連の機能
-    const { tweetState,  updateTweet} = useTweet();
-
-    // メディア(画像 or 動画)関連の機能
-    const { mediaState, pushTweetPicture, removePicture, setMovie, removeMovie } = useMedia();
-
-    /**
-    *  枠線AAをツイートに追加する
-    */
-    const addFrameBorderAa = (text: string): void => {
-      const arrText = text.split(/\r\n|\n/);
-      const maxMsgLength = arrText.reduce((acc, str) => Math.max(acc, str.length), 0);
-
-      const borderHeader = `┏${"━".repeat(maxMsgLength)}┓`;
-
-      const borderBody = arrText.map(v =>  {
-        // 半角文字を全角文字に変換
-        const str = v.replace(/[!-~]/g, all => String.fromCharCode(all.charCodeAt(0) + 0xFEE0));
-        return str.length === maxMsgLength
-          ? `┃${str}┃`
-          : `┃${str}${"　".repeat(maxMsgLength - str.length)}┃`
-      }).join("\n");
-
-      const borderFooter = `┗${"━".repeat(maxMsgLength)}┛`
-
-      const borderAa =`${borderHeader}\n${borderBody}\n${borderFooter}`;
-      updateTweet(`${borderAa}\n${tweetState.tweetMsg}`, tweetState.hashtags);
-    };
-
-    /**
-    *  ツイート本文にて、AAを追加
-    */
-    const addAA = (aa: string) => {
-      updateTweet(`${tweetState.tweetMsg}${aa}`, tweetState.hashtags);
-    }
-
-    /**
-    *  新規タブで、ツイート画面を開く
-    */
-    const newTweetTab = (text: string, picturesUrl: string, movieUrl: string): void => {
-      const tweet = encodeURIComponent(`${text}${picturesUrl} ${movieUrl}`);
-      window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
-    }
-
-    const teamColor = (tagJpName: string): { [s: string]: boolean } => {
-      return {
-        "text-giants": tagJpName === "#読売巨人軍",
-        "text-baystars": tagJpName === "#横浜DeNAベイスターズ",
-        "text-tigers": tagJpName === "#阪神タイガース",
-        "text-carp": tagJpName === "#広島東洋カープ",
-        "text-dragons": tagJpName === "#中日ドラゴンズ",
-        "text-swallows": tagJpName === "#東京ヤクルトスワローズ",
-        "text-seibulions": tagJpName === "#埼玉西武ライオンズ",
-        "text-sbhawks": tagJpName === "#福岡ソフトバンクホークス",
-        "text-rakuteneagles": tagJpName === "#東北楽天ゴールデンイーグルス",
-        "text-chibalotte": tagJpName === "#千葉ロッテマリーンズ",
-        "text-fighters": tagJpName === "#北海道日本ハムファイターズ",
-        "text-bs": tagJpName === "#オリックス・バファローズ",
-      }
-    }
-
-    return {
-      // State
-      appState,
-      templateState,
-      tweetState,
-      mediaState,
-      // Function
-      addFrameBorderAa,
-      addAA,
-      newTweetTab,
-      teamColor,
-      updateTweet,
-      pushTweetPicture,
-      removePicture,
-      setMovie,
-      removeMovie,
-    };
-  }
+const appState = reactive<{
+  activeTab: string;
+  borderText: string;
+}>({
+  activeTab: "aa",
+  borderText: ""
 });
+
+// テンプレート一覧(AA, AA画像, 応援歌一覧, ハッシュタグ一覧)
+const { templateState } = useTemplate();
+
+// ツイート関連の機能
+const { tweetState,  updateTweet} = useTweet();
+
+// メディア(画像 or 動画)関連の機能
+const { mediaState, pushTweetPicture, removePicture, setMovie, removeMovie } = useMedia();
+
+/**
+*  枠線AAをツイートに追加する
+*/
+const addFrameBorderAa = (text: string): void => {
+  const arrText = text.split(/\r\n|\n/);
+  const maxMsgLength = arrText.reduce((acc, str) => Math.max(acc, str.length), 0);
+
+  const borderHeader = `┏${"━".repeat(maxMsgLength)}┓`;
+
+  const borderBody = arrText.map(v =>  {
+    // 半角文字を全角文字に変換
+    const str = v.replace(/[!-~]/g, all => String.fromCharCode(all.charCodeAt(0) + 0xFEE0));
+    return str.length === maxMsgLength
+      ? `┃${str}┃`
+      : `┃${str}${"　".repeat(maxMsgLength - str.length)}┃`
+  }).join("\n");
+
+  const borderFooter = `┗${"━".repeat(maxMsgLength)}┛`
+
+  const borderAa =`${borderHeader}\n${borderBody}\n${borderFooter}`;
+  updateTweet(`${borderAa}\n${tweetState.tweetMsg}`, tweetState.hashtags);
+};
+
+/**
+*  ツイート本文にて、AAを追加
+*/
+const addAA = (aa: string) => {
+  updateTweet(`${tweetState.tweetMsg}${aa}`, tweetState.hashtags);
+}
+
+/**
+*  新規タブで、ツイート画面を開く
+*/
+const newTweetTab = (text: string, picturesUrl: string, movieUrl: string): void => {
+  const tweet = encodeURIComponent(`${text}${picturesUrl} ${movieUrl}`);
+  window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
+}
+
+const teamColor = (tagJpName: string): { [s: string]: boolean } => {
+  return {
+    "text-giants": tagJpName === "#読売巨人軍",
+    "text-baystars": tagJpName === "#横浜DeNAベイスターズ",
+    "text-tigers": tagJpName === "#阪神タイガース",
+    "text-carp": tagJpName === "#広島東洋カープ",
+    "text-dragons": tagJpName === "#中日ドラゴンズ",
+    "text-swallows": tagJpName === "#東京ヤクルトスワローズ",
+    "text-seibulions": tagJpName === "#埼玉西武ライオンズ",
+    "text-sbhawks": tagJpName === "#福岡ソフトバンクホークス",
+    "text-rakuteneagles": tagJpName === "#東北楽天ゴールデンイーグルス",
+    "text-chibalotte": tagJpName === "#千葉ロッテマリーンズ",
+    "text-fighters": tagJpName === "#北海道日本ハムファイターズ",
+    "text-bs": tagJpName === "#オリックス・バファローズ",
+  }
+}
+
 </script>

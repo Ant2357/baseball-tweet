@@ -1,7 +1,7 @@
 <template>
   <button
     type="button"
-    class="button"
+    class="button font-nicomoji"
     @click="openModal"
   >
     現在の天気
@@ -14,7 +14,7 @@
         <div class="columns is-multiline is-mobile">
           <div v-for="area in weatherState" :key="area.title" class="column">
 
-            <div class="area-box">
+            <div class="area-box font-nicomoji">
               <img :src="areaBaseballTeamLogo(area.title.split(' ')[1])" alt="球団ロゴ" class="is-inline-block image is-48x48" >
               <h3 class="subtitle">{{ area.title.split(" ").slice(1).join("") }}</h3>
               <p>{{ area.forecasts[0].telop }}</p>
@@ -37,64 +37,49 @@
   </teleport>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
 import { useWeather } from '@/compositions/weather';
 
-export default defineComponent({
-  setup() {
-    const areaBaseballTeamLogo = (areaName: string) => {
-      switch (areaName) {
-        case "東京":
-          return require("@/assets/imgs/logo/npb/S.png");
-        case "横浜":
-          return require("@/assets/imgs/logo/npb/DB.png");
-        case "千葉":
-          return require("@/assets/imgs/logo/npb/M.png");
-        case "さいたま":
-          return require("@/assets/imgs/logo/npb/L.png");
-        case "名古屋":
-          return require("@/assets/imgs/logo/npb/D.png");
-        case "大阪":
-          return require("@/assets/imgs/logo/npb/T.png");
-        case "広島":
-          return require("@/assets/imgs/logo/npb/C.png");
-        case "福岡":
-          return require("@/assets/imgs/logo/npb/H.png");
-        case "仙台":
-          return require("@/assets/imgs/logo/npb/E.png");
-        case "札幌":
-          return require("@/assets/imgs/logo/npb/F.png");
-        default:
-          return require("@/assets/imgs/logo/npb/G.png");
-      }
-    }
-
-
-    const weatherModalState = reactive<{ isOpen: boolean }>({
-      isOpen: false
-    });
-    const openModal = (): void => {
-      weatherModalState.isOpen = true;
-    }
-    const closeModal = (): void => {
-      weatherModalState.isOpen = false;
-    }
-
-    // 天気情報
-    const { weatherState } = useWeather();
-
-    return {
-      // State
-      weatherModalState,
-      weatherState,
-      // Function
-      openModal,
-      closeModal,
-      areaBaseballTeamLogo
-    };
+const areaBaseballTeamLogo = (areaName: string) => {
+  switch (areaName) {
+    case "東京":
+      return require("@/assets/imgs/logo/npb/S.png");
+    case "横浜":
+      return require("@/assets/imgs/logo/npb/DB.png");
+    case "千葉":
+      return require("@/assets/imgs/logo/npb/M.png");
+    case "さいたま":
+      return require("@/assets/imgs/logo/npb/L.png");
+    case "名古屋":
+      return require("@/assets/imgs/logo/npb/D.png");
+    case "大阪":
+      return require("@/assets/imgs/logo/npb/T.png");
+    case "広島":
+      return require("@/assets/imgs/logo/npb/C.png");
+    case "福岡":
+      return require("@/assets/imgs/logo/npb/H.png");
+    case "仙台":
+      return require("@/assets/imgs/logo/npb/E.png");
+    case "札幌":
+      return require("@/assets/imgs/logo/npb/F.png");
+    default:
+      return require("@/assets/imgs/logo/npb/G.png");
   }
+}
+
+const weatherModalState = reactive<{ isOpen: boolean }>({
+  isOpen: false
 });
+const openModal = (): void => {
+  weatherModalState.isOpen = true;
+}
+const closeModal = (): void => {
+  weatherModalState.isOpen = false;
+}
+
+// 天気情報
+const { weatherState } = useWeather();
 </script>
 
 <style scoped>

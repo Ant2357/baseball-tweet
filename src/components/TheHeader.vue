@@ -37,21 +37,12 @@
   </nav>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive } from 'vue';
-export default defineComponent({
-  setup() {
-    const headerState = reactive<{ isOpen: boolean }>({ isOpen: false });
-    const updateIsOpen = (now: boolean): void => {
-      headerState.isOpen = now
-    };
-
-    return {
-      headerState,
-      updateIsOpen
-    };
-  }
-});
+<script setup lang="ts">
+import { reactive } from 'vue';
+const headerState = reactive<{ isOpen: boolean }>({ isOpen: false });
+const updateIsOpen = (now: boolean): void => {
+  headerState.isOpen = now
+};
 </script>
 
 <style scoped>
