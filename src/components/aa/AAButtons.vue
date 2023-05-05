@@ -4,6 +4,7 @@
       v-for="aa in aas" :key="aa.label"
       type="button"
       class="button is-small aa-button has-text-left"
+      v-scroll-to="'#tweet-textarea'"
       @click="emit('addAA', aa.msg)"
     >
       <pre class="aa-pre">
