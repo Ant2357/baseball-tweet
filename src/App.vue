@@ -103,6 +103,7 @@
                               <button
                                 type="button"
                                 class="button-outline"
+                                v-scroll-to="'#tweet-textarea'"
                                 @click="pushTweetPicture(t)"
                               >
                                 {{ t.label }}を追加
@@ -120,6 +121,7 @@
                           v-for="song in templateState.songs" :key="song.label"
                           type="button"
                           class="button is-small"
+                          v-scroll-to="'#tweet-textarea'"
                           @click="setMovie(song)"
                         >
                           {{ song.label }}
