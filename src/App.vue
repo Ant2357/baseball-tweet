@@ -52,7 +52,11 @@
                 </div>
                 <div class="field">
                   <p class="control">
-                    <button @click="addFrameBorderAa(appState.borderText)" class="button is-success">
+                    <button
+                      class="button is-success"
+                      v-scroll-to="'#tweet-textarea'"
+                      @click="addFrameBorderAa(appState.borderText)"
+                    >
                       枠線AAを追加
                     </button>
                   </p>
