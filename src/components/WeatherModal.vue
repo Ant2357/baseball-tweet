@@ -54,7 +54,7 @@ const areaBaseballTeamLogo = (areaName: string) => {
     case "名古屋":
       return require("@/assets/imgs/logo/npb/D.png");
     case "大阪":
-      return require("@/assets/imgs/logo/npb/T.png");
+      return require("@/assets/imgs/logo/npb/Bs.png");
     case "広島":
       return require("@/assets/imgs/logo/npb/C.png");
     case "福岡":
