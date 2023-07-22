@@ -15,8 +15,8 @@
           <div v-for="area in weatherState" :key="area.title" class="column">
 
             <div class="area-box font-nicomoji">
-              <img :src="areaBaseballTeamLogo(area.title.split(' ')[1])" alt="球団ロゴ" class="is-inline-block image is-48x48" >
-              <h3 class="subtitle">{{ area.title.split(" ").slice(1).join("") }}</h3>
+              <img :src="areaBaseballTeamLogo(area.title)" alt="球団ロゴ" class="is-inline-block image is-48x48" >
+              <h3 class="subtitle">{{ area.title }}の天気</h3>
               <p>{{ area.forecasts[0].telop }}</p>
               <p><img :src="area.forecasts[0].image.url"></p>
             </div>
@@ -61,7 +61,7 @@ const areaBaseballTeamLogo = (areaName: string) => {
       return require("@/assets/imgs/logo/npb/H.png");
     case "仙台":
       return require("@/assets/imgs/logo/npb/E.png");
-    case "札幌":
+    case "北広島":
       return require("@/assets/imgs/logo/npb/F.png");
     default:
       return require("@/assets/imgs/logo/npb/G.png");
