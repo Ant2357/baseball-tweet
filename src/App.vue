@@ -197,7 +197,7 @@
                   class="button is-info font-nicomoji"
                   @click="newTweetTab(tweetState.tweet, mediaState.picturesUrl, mediaState.movieUrl)"
                 >
-                  <font-awesome-icon :icon="['fab', 'twitter']" /><span class="ml-1">ツイート</span>
+                  <font-awesome-icon :icon="['fab', 'twitter']" /><span class="ml-1">ポスト</span>
                 </button>
 
               </form>

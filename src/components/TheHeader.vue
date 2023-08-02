@@ -5,7 +5,7 @@
       <div class="navbar-brand">
 
         <a class="navbar-item" href="https://ant2357.github.io/baseball-tweet/">
-          <span class="title is-5 font-nicomoji has-text-white">野球用AAツイート画面</span>
+          <span class="title is-5 font-nicomoji has-text-white">野球用AAポスト画面</span>
         </a>
 
         <div
