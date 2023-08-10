@@ -144,7 +144,7 @@
                       id="tweet-textarea"
                       name="text"
                       class="textarea"
-                      placeholder="ツイート本文"
+                      placeholder="ポスト本文"
                     ></textarea>
                   </div>
                 </div>
@@ -194,10 +194,10 @@
 
                 <button
                   type="button"
-                  class="button is-info font-nicomoji"
+                  class="button is-dark font-nicomoji"
                   @click="newTweetTab(tweetState.tweet, mediaState.picturesUrl, mediaState.movieUrl)"
                 >
-                  <font-awesome-icon :icon="['fab', 'twitter']" /><span class="ml-1">ポスト</span>
+                  <font-awesome-icon :icon="['fab', 'x-twitter']" /><span class="ml-1">ポスト</span>
                 </button>
 
               </form>

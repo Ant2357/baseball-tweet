@@ -7,7 +7,7 @@ import { library, IconDefinition } from '@fortawesome/fontawesome-svg-core'
 // @ts-ignore
 import { faBlog } from '@fortawesome/free-solid-svg-icons'
 // @ts-ignore
-import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faXTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
 // @ts-ignore
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueScrollTo from 'vue-scrollto'
 
 library.add(faBlog as IconDefinition,
-  faTwitter as IconDefinition,
+  faXTwitter as IconDefinition,
   faGithub as IconDefinition)
 
 createApp(App)
