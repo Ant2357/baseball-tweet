@@ -1,8 +1,7 @@
 # baseball-tweet
 ![baseball-tweetの画面](example.png "baseball-tweetの画面")
 
-X(旧Twitter)にて、使用している野球実況用の Webページ
-
+X(旧Twitter)にて、使用している野球実況用の Webページ  
 [Web Page Link](https://ant2357.github.io/baseball-tweet/ "Web Page Link")
 
 ## Project setup
