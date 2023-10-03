@@ -63,6 +63,28 @@
                 </div>
 
                 <div class="field">
+                  <div class="control">
+                    <textarea
+                      v-model="appState.tategakiText"
+                      :rows="appState.tategakiText.split(/\n/).length"
+                      class="textarea"
+                      placeholder="縦書き文章"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <button
+                      class="button is-success"
+                      v-scroll-to="'#tweet-textarea'"
+                      @click="updateTweet(`${textToTategaki(appState.tategakiText)}\n${tweetState.tweetMsg}`, tweetState.hashtags)"
+                    >
+                      文章を縦書きに変換
+                    </button>
+                  </p>
+                </div>
+
+                <div class="field">
                   <div class="tabs is-boxed">
                     <ul class="font-nicomoji">
                       <li :class="{ 'is-active': appState.activeTab === 'aa' }"><a @click="appState.activeTab = 'aa'">汎用AA</a></li>
@@ -237,9 +259,11 @@ import AAButtons from '@/components/aa/AAButtons.vue';
 const appState = reactive<{
   activeTab: string;
   borderText: string;
+  tategakiText: string;
 }>({
   activeTab: "aa",
-  borderText: ""
+  borderText: "",
+  tategakiText: ""
 });
 
 // テンプレート一覧(AA, AA画像, 応援歌一覧, ハッシュタグ一覧)
@@ -273,6 +297,38 @@ const addFrameBorderAa = (text: string): void => {
   const borderAa =`${borderHeader}\n${borderBody}\n${borderFooter}`;
   updateTweet(`${borderAa}\n${tweetState.tweetMsg}`, tweetState.hashtags);
 };
+
+/**
+*  文章を縦書きに変換する
+*/
+const textToTategaki = (str: string): string => {
+  const data: string[][] = str.split("\n").map(line => line.split(""));
+  const maxLength: number = Math.max(...data.map(arr => arr.length));
+
+  // ['a', 'b', 'c']
+  // ['d', 'e', 'f']
+  // ↓
+  // ['a', 'd']
+  // ['b', 'e']
+  // ['c', 'f']
+  // にして 各行 reverse
+  const res: string[][] = Array.from(
+    Array(maxLength),
+    (_, i) => data.map(line => {
+      if (line[i] === " ") {
+        return "　";
+      }
+
+      const char = line[i] ?? "　";
+      // 半角文字を全角文字に変換
+      return char.replace(/[!-~]/g, all => String.fromCharCode(all.charCodeAt(0) + 0xFEE0));
+    }).reverse()
+  );
+
+  const resText = res.map(line => line.join("　")).join("\n");
+  return resText;
+}
+
 
 /**
 *  ツイート本文にて、AAを追加
