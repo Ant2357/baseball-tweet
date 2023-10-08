@@ -55,7 +55,7 @@
                     <button
                       class="button is-success"
                       v-scroll-to="'#tweet-textarea'"
-                      @click="addFrameBorderAa(appState.borderText)"
+                      @click="updateTweet(`${textToFrameBorderAa(appState.borderText)}\n${tweetState.tweetMsg}`, tweetState.hashtags);"
                     >
                       枠線AAを追加
                     </button>
@@ -246,6 +246,8 @@ import "@/assets/styles/modal.css";
 
 import { reactive } from 'vue';
 
+import { textToFrameBorderAa, textToTategaki } from "@/utils/text";
+
 import { useTemplate } from '@/compositions/template';
 import { useTweet } from '@/compositions/tweet';
 import { useMedia } from '@/compositions/media';
@@ -274,61 +276,6 @@ const { tweetState,  updateTweet} = useTweet();
 
 // メディア(画像 or 動画)関連の機能
 const { mediaState, pushTweetPicture, removePicture, setMovie, removeMovie } = useMedia();
-
-/**
-*  枠線AAをツイートに追加する
-*/
-const addFrameBorderAa = (text: string): void => {
-  const arrText = text.split(/\r\n|\n/);
-  const maxMsgLength = arrText.reduce((acc, str) => Math.max(acc, str.length), 0);
-
-  const borderHeader = `┏${"━".repeat(maxMsgLength)}┓`;
-
-  const borderBody = arrText.map(v =>  {
-    // 半角文字を全角文字に変換
-    const str = v.replace(/[!-~]/g, all => String.fromCharCode(all.charCodeAt(0) + 0xFEE0));
-    return str.length === maxMsgLength
-      ? `┃${str}┃`
-      : `┃${str}${"　".repeat(maxMsgLength - str.length)}┃`
-  }).join("\n");
-
-  const borderFooter = `┗${"━".repeat(maxMsgLength)}┛`
-
-  const borderAa =`${borderHeader}\n${borderBody}\n${borderFooter}`;
-  updateTweet(`${borderAa}\n${tweetState.tweetMsg}`, tweetState.hashtags);
-};
-
-/**
-*  文章を縦書きに変換する
-*/
-const textToTategaki = (str: string): string => {
-  const data: string[][] = str.split("\n").map(line => line.split(""));
-  const maxLength: number = Math.max(...data.map(arr => arr.length));
-
-  // ['a', 'b', 'c']
-  // ['d', 'e', 'f']
-  // ↓
-  // ['a', 'd']
-  // ['b', 'e']
-  // ['c', 'f']
-  // にして 各行 reverse
-  const res: string[][] = Array.from(
-    Array(maxLength),
-    (_, i) => data.map(line => {
-      if (line[i] === " ") {
-        return "　";
-      }
-
-      const char = line[i] ?? "　";
-      // 半角文字を全角文字に変換
-      return char.replace(/[!-~]/g, all => String.fromCharCode(all.charCodeAt(0) + 0xFEE0));
-    }).reverse()
-  );
-
-  const resText = res.map(line => line.join("　")).join("\n");
-  return resText;
-}
-
 
 /**
 *  ツイート本文にて、AAを追加
