@@ -97,19 +97,19 @@
                   </div>
                   <div class="tab-contents">
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'aa' }">
-                      <AAButtons :aas="templateState.msgs.aa" @addAA="addAA" />
+                      <AAButtons :aas="templateState.msgs.aa" @addAA="addTweetMsg" />
                     </div>
 
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'aaBaseball' }">
-                      <AAButtons :aas="templateState.msgs.baseball" @addAA="addAA" />
+                      <AAButtons :aas="templateState.msgs.baseball" @addAA="addTweetMsg" />
                     </div>
 
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'aaBaseballTeam' }">
-                      <AAButtons :aas="templateState.msgs.baseballTeam" @addAA="addAA" />
+                      <AAButtons :aas="templateState.msgs.baseballTeam" @addAA="addTweetMsg" />
                     </div>
 
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'aaOchikomu' }">
-                      <AAButtons :aas="templateState.msgs.ochikomu" @addAA="addAA" />
+                      <AAButtons :aas="templateState.msgs.ochikomu" @addAA="addTweetMsg" />
                     </div>
 
 
@@ -272,17 +272,10 @@ const appState = reactive<{
 const { templateState } = useTemplate();
 
 // ツイート関連の機能
-const { tweetState,  updateTweet} = useTweet();
+const { tweetState,  updateTweet, addTweetMsg } = useTweet();
 
 // メディア(画像 or 動画)関連の機能
 const { mediaState, pushTweetPicture, removePicture, setMovie, removeMovie } = useMedia();
-
-/**
-*  ツイート本文にて、AAを追加
-*/
-const addAA = (aa: string) => {
-  updateTweet(`${tweetState.tweetMsg}${aa}`, tweetState.hashtags);
-}
 
 /**
 *  新規タブで、ツイート画面を開く
