@@ -37,7 +37,7 @@ export const useTweet = (): UseTweet => {
   }
 
   const addTweetMsg = (msg: string): void => {
-    tweetState.tweet = `${tweetState.tweetMsg}${msg}\n${tweetState.hashtags}`;
+    tweetState.tweet = `${tweetState.tweetMsg}${msg}\n${tweetState.hashtags.join("\n")}`;
   }
 
   watch(
