@@ -16,12 +16,6 @@
                 target="_blank"
               >
 
-                <div class="field is-grouped">
-                  <div class="control">
-                    <WeatherModal />
-                  </div>
-                </div>
-
                 <span class="title is-5 font-nicomoji">ハッシュタグ一覧</span>
                 <div class="mb-3">
                   <div v-for="tag in templateState.hashtags" :key="tag.name" class="field mb-0">
@@ -254,7 +248,6 @@ import { useMedia } from '@/compositions/media';
 
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
-import WeatherModal from '@/components/WeatherModal.vue';
 
 import AAButtons from '@/components/aa/AAButtons.vue';
 
