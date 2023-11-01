@@ -106,7 +106,11 @@ ${i}`},uc=e=>{const t=e.split(`
 E⌒トｰ'　　 /／　　 )
 .Yへ＿}ニﾆ}777∧´
 　..ゝ- }////TT///∧
-　　１. Hiroshima∧`},{label:"傘AA",msg:`.
+　　１. Hiroshima∧`},{label:"オリックスAA",msg:`.
+   ＡＡ
+⊂・・⊃▼⌒ヽ
+(ω＿) )　 丑● |～*
+　　ＵＵ~--Ｕ`},{label:"傘AA",msg:`.
 　　　　 ┃
 　　 r-(・ω・)-、
 　 ／ /　｜ ヽ 　＼
