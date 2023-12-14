@@ -47,7 +47,7 @@
                 <div class="field">
                   <p class="control">
                     <button
-                      class="button is-success"
+                      class="button is-success font-nicomoji"
                       v-scroll-to="'#tweet-textarea'"
                       @click="updateTweet(`${textToFrameBorderAa(appState.borderText)}\n${tweetState.tweetMsg}`, tweetState.hashtags);"
                     >
@@ -69,7 +69,7 @@
                 <div class="field">
                   <p class="control">
                     <button
-                      class="button is-success"
+                      class="button is-success font-nicomoji"
                       v-scroll-to="'#tweet-textarea'"
                       @click="updateTweet(`${textToTategaki(appState.tategakiText)}\n${tweetState.tweetMsg}`, tweetState.hashtags)"
                     >
