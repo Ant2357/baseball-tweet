@@ -94,16 +94,16 @@
                       <AAButtons :aas="templateState.msgs.aa" @addAA="addTweetMsg" />
                     </div>
 
+                    <div class="content" :class="{ 'is-active': appState.activeTab === 'aaOchikomu' }">
+                      <AAButtons :aas="templateState.msgs.ochikomu" @addAA="addTweetMsg" />
+                    </div>
+
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'aaBaseball' }">
                       <AAButtons :aas="templateState.msgs.baseball" @addAA="addTweetMsg" />
                     </div>
 
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'aaBaseballTeam' }">
                       <AAButtons :aas="templateState.msgs.baseballTeam" @addAA="addTweetMsg" />
-                    </div>
-
-                    <div class="content" :class="{ 'is-active': appState.activeTab === 'aaOchikomu' }">
-                      <AAButtons :aas="templateState.msgs.ochikomu" @addAA="addTweetMsg" />
                     </div>
 
 
@@ -241,7 +241,6 @@ import "@/assets/styles/text.css";
 import "@/assets/styles/tabs.css";
 import "@/assets/styles/button.css";
 import "@/assets/styles/checkbox.css";
-import "@/assets/styles/modal.css";
 
 import { reactive } from 'vue';
 
