@@ -91,19 +91,19 @@
                   </div>
                   <div class="tab-contents">
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'aa' }">
-                      <AAButtons :aas="templateState.msgs.aa" @addAA="addTweetMsg" />
+                      <AAButtons :aas="templateState.aas.aa" @addAA="addTweetMsg" />
                     </div>
 
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'aaOchikomu' }">
-                      <AAButtons :aas="templateState.msgs.ochikomu" @addAA="addTweetMsg" />
+                      <AAButtons :aas="templateState.aas.ochikomu" @addAA="addTweetMsg" />
                     </div>
 
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'aaBaseball' }">
-                      <AAButtons :aas="templateState.msgs.baseball" @addAA="addTweetMsg" />
+                      <AAButtons :aas="templateState.aas.baseball" @addAA="addTweetMsg" />
                     </div>
 
                     <div class="content" :class="{ 'is-active': appState.activeTab === 'aaBaseballTeam' }">
-                      <AAButtons :aas="templateState.msgs.baseballTeam" @addAA="addTweetMsg" />
+                      <AAButtons :aas="templateState.aas.baseballTeam" @addAA="addTweetMsg" />
                     </div>
 
 

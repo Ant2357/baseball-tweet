@@ -5,11 +5,11 @@
       type="button"
       class="button is-small aa-button has-text-left"
       v-scroll-to="'#tweet-textarea'"
-      @click="emit('addAA', aa.msg)"
+      @click="emit('addAA', aa.arrAA.join('\n'))"
     >
       <pre class="aa-pre">
         『{{ aa.label }}』を追加
-        {{ aa.msg }}
+        {{ aa.arrAA.join("\n") }}
       </pre>
     </button>
   </div>
@@ -19,7 +19,10 @@
 import 'bulma/css/bulma.css';
 
 interface Props {
-  aas: { [x: string]: string; }[];
+  aas: {
+    label: string;
+    arrAA: string[];
+  }[]
 }
 
 interface Emits {

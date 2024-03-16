@@ -10,22 +10,22 @@ import songs from "@/assets/jsons/songs.json";
 import hashtags from "@/assets/jsons/hashtags.json";
 
 type TemplateState = {
-  msgs: {
+  aas: {
     aa: {
       label: string;
-      msg: string;
+      arrAA: string[];
     }[];
     baseball: {
       label: string;
-      msg: string;
+      arrAA: string[];
     }[];
     baseballTeam: {
       label: string;
-      msg: string;
+      arrAA: string[];
     }[];
     ochikomu: {
       label: string;
-      msg: string;
+      arrAA: string[];
     }[];
   };
   imgs: { [x: string]: string; }[];
@@ -39,7 +39,7 @@ interface UseTemplate {
 
 export const useTemplate = (): UseTemplate => {
   const templateState = reactive<TemplateState>({
-    msgs: { 
+    aas: { 
       aa: aa,
       baseball: aaBaseball,
       baseballTeam: aaBaseballTeam,
