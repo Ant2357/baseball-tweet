@@ -16,6 +16,15 @@
                 target="_blank"
               >
 
+                <div class="field">
+                  <Suspense>
+                    <NPBGraphs />
+                    <template #fallback>
+                      <button class="button is-loading">Loading</button>
+                    </template>
+                  </Suspense>
+                </div>
+
                 <span class="title is-5 font-nicomoji">ハッシュタグ一覧</span>
                 <div class="mb-3">
                   <div v-for="tag in templateState.hashtags" :key="tag.name" class="field mb-0">
@@ -252,6 +261,8 @@ import { useMedia } from '@/compositions/media';
 
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
+
+import NPBGraphs from '@/components/NPBGraphs.vue';
 
 import AAButtons from '@/components/aa/AAButtons.vue';
 
