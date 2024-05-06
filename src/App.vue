@@ -228,12 +228,6 @@
               </form>
             </div>
           </div>
-
-          <div class="mt-4">
-            <!-- 「プロ野球Freak」のブログパーツ セ・パ順位表 -->
-            <div style="text-align:center"><a href="https://baseball-data.com/"><img src="https://baseball-data.com/bp/st/header-bk.png" style="height:40px;border:0;margin:0;padding:0" alt="プロ野球データFreak"></a><br><a href="https://baseball-data.com/team/ce.html"><img src="https://baseball-data.com/bp/st/bk-ce1.png" style="height:168px;border:0;margin:0;padding:0" alt="セリーグ順位表"></a><br><a href="https://baseball-data.com/team/pa.html"><img src="https://baseball-data.com/bp/st/bk-paf1.png" style="height:187px;border:0;margin:0;padding:0" alt="パリーグ順位表"></a></div>
-          </div>
-
         </div>
       </div>
     </div>
