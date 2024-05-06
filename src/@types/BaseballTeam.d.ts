@@ -8,7 +8,7 @@ export interface BaseballTeam {
   draw: number;
   pct: number;
   gamesBehind: string;
-  remainingGames: number;
+  remainingGames?: number;
   run: number;
   ra: number;
   hr: number;

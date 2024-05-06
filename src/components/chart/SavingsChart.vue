@@ -20,7 +20,7 @@ import {
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 interface Props {
-  teams: [BaseballTeam];
+  teams: BaseballTeam[];
 }
 const props = defineProps<Props>();
 

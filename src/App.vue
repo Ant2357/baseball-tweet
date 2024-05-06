@@ -18,7 +18,7 @@
 
                 <div class="field">
                   <Suspense>
-                    <NPBGraphs />
+                    <NPBRecord />
                     <template #fallback>
                       <button class="button is-loading">Loading</button>
                     </template>
@@ -262,7 +262,7 @@ import { useMedia } from '@/compositions/media';
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
 
-import NPBGraphs from '@/components/NPBGraphs.vue';
+import NPBRecord from '@/components/NPBRecord.vue';
 
 import AAButtons from '@/components/aa/AAButtons.vue';
 

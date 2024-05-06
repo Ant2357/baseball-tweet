@@ -18,7 +18,8 @@
     "core-js": "^3.35.0",
     "vue": "^3.4.15",
     "vue-chartjs": "^5.3.1",
-    "vue-scrollto": "^2.20.0"
+    "vue-scrollto": "^2.20.0",
+    "vue3-easy-data-table": "^1.5.47"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.41",
