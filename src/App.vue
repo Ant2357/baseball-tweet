@@ -284,7 +284,7 @@ const { mediaState, pushTweetPicture, removePicture, setMovie, removeMovie } = u
 */
 const newTweetTab = (text: string, picturesUrl: string, movieUrl: string): void => {
   const tweet = encodeURIComponent(`${text}${picturesUrl} ${movieUrl}`);
-  window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
+  window.open(`https://x.com/intent/tweet?text=${tweet}`, "_blank");
 }
 
 const teamColor = (tagJpName: string): { [s: string]: boolean } => {
