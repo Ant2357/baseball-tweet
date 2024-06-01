@@ -1,23 +1,23 @@
 <template>
   <div class="charts">
-    <template v-for="league, index in npbStandings" :key="index">
-      <SavingsChart :teams="league" class="chart" />
+    <template v-for="league, index in leagues" :key="index">
+      <SavingsChart :title="`${league.name}の各球団の貯金(勝利数 - 敗北数)`" :teams="league.standings" class="chart" />
     </template>
 
-    <template v-for="league, index in npbStandings" :key="index">
-      <PythagenPatChart :teams="league" class="chart" />
+    <template v-for="league, index in leagues" :key="index">
+      <PythagenPatChart :title="`${league.name}の PythagenPat(ピタゴラス勝率の改善版)`" :teams="league.standings" class="chart" />
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { BaseballTeam } from '@/@types/BaseballTeam';
+import type { League } from '@/@types/NPB';
 
 import SavingsChart from '@/components/chart/SavingsChart.vue';
 import PythagenPatChart from '@/components/chart/PythagenPatChart.vue';
 
 interface Props {
-  npbStandings: BaseballTeam[][];
+  leagues: League[];
 }
 defineProps<Props>();
 </script>

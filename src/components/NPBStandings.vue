@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <label class="label tag">{{ leagueName }}</label>
+    <label class="label tag">{{ league.name }}</label>
     <Vue3EasyDataTable
       :headers="headers"
       :items="items"
@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import 'bulma/css/bulma.css';
 
-import type { BaseballTeam } from '@/@types/BaseballTeam';
+import type { League } from '@/@types/NPB';
 import type { Header, Item } from "vue3-easy-data-table";
 
 import Vue3EasyDataTable from 'vue3-easy-data-table';
@@ -24,12 +24,11 @@ import 'vue3-easy-data-table/dist/style.css';
 
 
 interface Props {
-  leagueName: string,
-  teams: BaseballTeam[];
+  league: League
 }
 const props = defineProps<Props>();
 
-const teamKeys = Object.keys(props.teams[0]);
+const teamKeys = Object.keys(props.league.standings[0]);
 
 const enToJP: { [key: string]: string } = {
   id: "ID",
@@ -55,7 +54,7 @@ const enToJP: { [key: string]: string } = {
 const headers: Header[] = teamKeys.reduce((acc: Header[], key) => {
   return [...acc, { text: enToJP[key], value: key, sortable: true }];
 }, []);
-const items: Item[] = props.teams;
+const items: Item[] = props.league.standings;
 
 </script>
 

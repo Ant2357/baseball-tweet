@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import type { ChartData, ChartOptions } from 'chart.js';
-import type { BaseballTeam } from '@/@types/BaseballTeam';
+import type { BaseballTeam } from '@/@types/NPB';
 
 import { Bar } from 'vue-chartjs'
 import {
@@ -20,6 +20,7 @@ import {
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 interface Props {
+  title: string;
   teams: BaseballTeam[];
 }
 const props = defineProps<Props>();
@@ -50,7 +51,7 @@ const options: ChartOptions<'bar'> = {
     },
     title: {
       display: true,
-      text: '各球団の勝率と PythagenPat(ピタゴラス勝率の改善版)'
+      text: props.title
     }
   }
 }

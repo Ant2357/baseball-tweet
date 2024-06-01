@@ -15,6 +15,11 @@ export interface BaseballTeam {
   sb: number;
   avg: number;
   era: number;
-  e: number;
+  e?: number;
   pythagenPat: number;
+}
+
+export interface League {
+  name: string;
+  standings: BaseballTeam[];
 }
