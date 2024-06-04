@@ -46,6 +46,15 @@ const options: ChartOptions<'bar'> = {
     title: {
       display: true,
       text: props.title
+    },
+    tooltip: {
+      callbacks: {
+        label: function(context) {
+          const label = context.parsed.y >= 0 ? "貯金" : "借金";
+          const value = context.parsed.y >= 0 ? context.parsed.y : -context.parsed.y;
+          return `${label}: ${value}`;
+        }
+      }
     }
   }
 }
