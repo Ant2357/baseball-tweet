@@ -5,8 +5,6 @@
       :headers="headers"
       :items="items"
       multi-sort
-      alternating
-      border-cell
       class="npb-standings font-mplus1-bold"
     />
   </div>
