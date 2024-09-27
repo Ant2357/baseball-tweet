@@ -9,27 +9,27 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-brands-svg-icons": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "@fortawesome/vue-fontawesome": "^3.0.5",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
     "bulma": "^0.9.4",
-    "chart.js": "^4.4.2",
-    "core-js": "^3.35.0",
-    "vue": "^3.4.15",
+    "chart.js": "^4.4.4",
+    "core-js": "^3.38.1",
+    "vue": "^3.5.9",
     "vue-chartjs": "^5.3.1",
     "vue-scrollto": "^2.20.0",
     "vue3-easy-data-table": "^1.5.47"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.41",
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "@typescript-eslint/parser": "^6.19.0",
-    "@vitejs/plugin-vue": "^5.0.3",
-    "@vue/compiler-sfc": "^3.4.15",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/compiler-sfc": "^3.5.9",
     "@vue/eslint-config-typescript": "^12.0.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-vue": "^9.20.1",
-    "typescript": "~5.3.3"
+    "eslint": "^8.57.1",
+    "eslint-plugin-vue": "^9.28.0",
+    "typescript": "~5.6.2"
   }
 }
