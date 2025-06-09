@@ -1,14 +1,14 @@
 [
-  { "name": "#tigers", "jpName": "#阪神タイガース" },
-  { "name": "#carp", "jpName": "#広島東洋カープ" },
-  { "name": "#baystars", "jpName": "#横浜DeNAベイスターズ" },
   { "name": "#giants", "jpName": "#読売巨人軍" },
+  { "name": "#tigers", "jpName": "#阪神タイガース" },
+  { "name": "#baystars", "jpName": "#横浜DeNAベイスターズ" },
+  { "name": "#carp", "jpName": "#広島東洋カープ" },
   { "name": "#swallows", "jpName": "#東京ヤクルトスワローズ" },
   { "name": "#dragons", "jpName": "#中日ドラゴンズ" },
-  { "name": "#bs2025", "jpName": "#オリックス・バファローズ" },
-  { "name": "#chibalotte", "jpName": "#千葉ロッテマリーンズ" },
   { "name": "#sbhawks", "jpName": "#福岡ソフトバンクホークス" },
+  { "name": "#lovefighters", "jpName": "#北海道日本ハムファイターズ" },
+  { "name": "#chibalotte", "jpName": "#千葉ロッテマリーンズ" },
   { "name": "#rakuteneagles", "jpName": "#東北楽天ゴールデンイーグルス" },
-  { "name": "#seibulions", "jpName": "#埼玉西武ライオンズ" },
-  { "name": "#lovefighters", "jpName": "#北海道日本ハムファイターズ" }
+  { "name": "#bs2025", "jpName": "#オリックス・バファローズ" },
+  { "name": "#seibulions", "jpName": "#埼玉西武ライオンズ" }
 ]
