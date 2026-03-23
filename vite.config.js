@@ -13,6 +13,7 @@ export default {
     }
   },
   build: {
-    outDir: "docs"
+    outDir: "docs",
+    cssMinify: false
   }
 }
