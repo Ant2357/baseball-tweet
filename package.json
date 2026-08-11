@@ -15,20 +15,20 @@
     "@fortawesome/vue-fontawesome": "^3.3.3",
     "bulma": "^1.0.4",
     "chart.js": "^4.5.1",
-    "core-js": "^3.49.0",
-    "vue": "^3.5.40",
+    "core-js": "^3.50.0",
+    "vue": "^3.5.41",
     "vue-chartjs": "^5.3.4",
     "vue-scrollto": "^2.20.0",
     "vue3-easy-data-table": "^1.5.47"
   },
   "devDependencies": {
     "@types/chart.js": "^4.0.1",
-    "@typescript-eslint/eslint-plugin": "^8.65.0",
-    "@typescript-eslint/parser": "^8.65.0",
+    "@typescript-eslint/eslint-plugin": "^8.67.0",
+    "@typescript-eslint/parser": "^8.67.0",
     "@vitejs/plugin-vue": "^6.0.8",
-    "@vue/compiler-sfc": "^3.5.40",
+    "@vue/compiler-sfc": "^3.5.41",
     "@vue/eslint-config-typescript": "^14.9.0",
-    "eslint": "^10.8.0",
+    "eslint": "^10.8.1",
     "eslint-plugin-vue": "^10.10.0",
     "typescript": "~5.9.3"
   }
